@@ -3,28 +3,45 @@ package sistema;
 import java.util.List;
 
 public abstract class Monstro {
-	private String nome; // nome
-	private String historia; // historia
-	private String tamanho;
-	private String tipo; 
-
-	private int hp; //Hit Points (Vida)
-	private int ac; //Armor Class (defesa)
-	private int spd; //Velocidade
- 
-	private int forc; //Força
-	private int dex; //Destreza
-	private int con; //Constituição
-	private int inte; //Inteligência
-	private int wis; //Sabedoria
-	private int cha; //Carisma
-
-	private float cr;//Challenge Rating (nivel)
+	private String nome; 
+	private String historia; 
+	private String tamanho; 
+	private int vida; 
+	private int defesa; 
+	private int velocidade; 
+	private int forca; 
+	private int destreza; 
+	private int constituiçao; 
+	private int inteligencia; 
+	private int sabedoria; 
+	private int carisma;
+	private double nivel; 
 	private List<String> resistencias;
-	private List<String> imunidades;
-	private List<String> sentidos;
-	private List<String> linguas;
-	private List<String> habilidades;
+	private List<String> imunidades; 
+	private List<String> sentidos; 
+	private List<String> linguas; 
+	private List<Habilidades> habilidades; 
+	
+	
+	
+	public Monstro(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca,
+			int destreza, int constituiçao, int inteligencia, int sabedoria, int carisma, double nivel) {
+		super();
+		this.nome = nome;
+		this.historia = historia;
+		this.tamanho = tamanho;
+		this.vida = vida;
+		this.defesa = defesa;
+		this.velocidade = velocidade;
+		this.forca = forca;
+		this.destreza = destreza;
+		this.constituiçao = constituiçao;
+		this.inteligencia = inteligencia;
+		this.sabedoria = sabedoria;
+		this.carisma = carisma;
+		this.nivel = nivel;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -43,71 +60,66 @@ public abstract class Monstro {
 	public void setTamanho(String tamanho) {
 		this.tamanho = tamanho;
 	}
-	public String getTipo() {
-		return tipo;
+	
+	public int getVida() {
+		return vida;
 	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setVida(int vida) {
+		this.vida = vida;
 	}
-	public int getHp() {
-		return hp;
+	public int getDefesa() {
+		return defesa;
 	}
-	public void setHp(int hp) {
-		this.hp = hp;
+	public void setDefesa(int defesa) {
+		this.defesa = defesa;
 	}
-	public int getAc() {
-		return ac;
+	public int getVelocidade() {
+		return velocidade;
 	}
-	public void setAc(int ac) {
-		this.ac = ac;
+	public void setVelocidade(int velocidade) {
+		this.velocidade = velocidade;
 	}
-	public int getSpd() {
-		return spd;
+	public int getForca() {
+		return forca;
 	}
-	public void setSpd(int spd) {
-		this.spd = spd;
+	public void setForca(int forca) {
+		this.forca = forca;
 	}
-	public int getForc() {
-		return forc;
+	public int getDestreza() {
+		return destreza;
 	}
-	public void setForc(int forc) {
-		this.forc = forc;
+	public void setDestreza(int destreza) {
+		this.destreza = destreza;
 	}
-	public int getDex() {
-		return dex;
+	public int getConstituiçao() {
+		return constituiçao;
 	}
-	public void setDex(int dex) {
-		this.dex = dex;
+	public void setConstituiçao(int constituiçao) {
+		this.constituiçao = constituiçao;
 	}
-	public int getCon() {
-		return con;
+	public int getInteligencia() {
+		return inteligencia;
 	}
-	public void setCon(int con) {
-		this.con = con;
+	public void setInteligencia(int inteligencia) {
+		this.inteligencia = inteligencia;
 	}
-	public int getInte() {
-		return inte;
+	public int getSabedoria() {
+		return sabedoria;
 	}
-	public void setInte(int inte) {
-		this.inte = inte;
+	public void setSabedoria(int sabedoria) {
+		this.sabedoria = sabedoria;
 	}
-	public int getWis() {
-		return wis;
+	public int getCarisma() {
+		return carisma;
 	}
-	public void setWis(int wis) {
-		this.wis = wis;
+	public void setCarisma(int carisma) {
+		this.carisma = carisma;
 	}
-	public int getCha() {
-		return cha;
+	public double getNivel() {
+		return nivel;
 	}
-	public void setCha(int cha) {
-		this.cha = cha;
-	}
-	public float getCr() {
-		return cr;
-	}
-	public void setCr(float cr) {
-		this.cr = cr;
+	public void setNivel(double nivel) {
+		this.nivel = nivel;
 	}
 	public List<String> getResistencias() {
 		return resistencias;
@@ -133,12 +145,11 @@ public abstract class Monstro {
 	public void setLinguas(List<String> linguas) {
 		this.linguas = linguas;
 	}
-	public List<String> getHabilidades() {
+	public List<Habilidades> getHabilidades() {
 		return habilidades;
 	}
-	public void setHabilidades(List<String> habilidades) {
+	public void setHabilidades(List<Habilidades> habilidades) {
 		this.habilidades = habilidades;
 	}
-
 	
 }
