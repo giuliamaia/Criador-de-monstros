@@ -14,7 +14,7 @@ public class DragaoNegro extends Monstro{
 	
 	private void preencherHabilidades() {
 		this.getHabilidades().add(new Habilidades("Anfíbio", "O dragão pode respirar ar e água."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala ácido em uma linha 5x30 pés. Cada criatura nessa linha precisa fazer um teste de resistência de dificuldade 11, tomando 5d8 de dano ácido numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala ácido em uma linha 5x30 pés. Cada criatura nessa linha precisa fazer um teste de resistência de Destreza de dificuldade 11, tomando 5d8 de dano ácido numa falha, ou metade do dano num sucesso."));
 		
 	}
 	
