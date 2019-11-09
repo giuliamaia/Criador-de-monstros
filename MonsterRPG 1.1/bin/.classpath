@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="MonsterRPG 1.0/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="MonsterRPG 1.0/src"/>
+	<classpathentry kind="output" path="MonsterRPG 1.0/bin"/>
+</classpath>
