@@ -1,8 +1,8 @@
 package monsterRPG.sistema.monstro;
 
 public class DragaoBronze extends Monstro{
-	public DragaoBronze(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiçao, int inteligencia, int sabedoria, int carisma, double nivel) {
-		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiçao, inteligencia, sabedoria, carisma, nivel);
+	public DragaoBronze(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiÃ§ao, int inteligencia, int sabedoria, int carisma, double nivel) {
+		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiÃ§ao, inteligencia, sabedoria, carisma, nivel);
 		this.preencherHabilidades();
 		this.preencherImunidades();
 		this.preencherLinguas();
@@ -11,9 +11,9 @@ public class DragaoBronze extends Monstro{
 
 	
 	private void preencherHabilidades() {
-		this.getHabilidades().add(new Habilidades("Anfíbio", "O dragão pode respirar ar e água."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de relâmpago)", "O dragão exala relâmpago em uma linha 40x5 pés. Cada criatura nessa área precisa fazer um teste de resistência de Destreza de dificuldade 12, tomando 3d10 de dano elétrico numa falha, ou metade do dano num sucesso."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de repulsão)", "O dragão exala energia repulsiva em um cone de 30 pés. Cada criatura nessa área precisa fazer um teste de resistência de Força de dificuldade 12 e passar, caso contrário a criatura é empurrada 30 pés longe do dragão."));
+		this.getHabilidades().add(new Habilidades("AnfÃ­bio", "O dragÃ£o pode respirar ar e Ã¡gua."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de relÃ¢mpago)", "O dragÃ£o exala relÃ¢mpago em uma linha 40x5 pÃ©s. Cada criatura nessa Ã¡rea precisa fazer um teste de resistÃªncia de Destreza de dificuldade 12, tomando 3d10 de dano elÃ©trico numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de repulsÃ£o)", "O dragÃ£o exala energia repulsiva em um cone de 30 pÃ©s. Cada criatura nessa Ã¡rea precisa passar em um teste de resistÃªncia de ForÃ§a de dificuldade 12, caso contrÃ¡rio a criatura Ã© empurrada 30 pÃ©s longe do dragÃ£o."));
 
 	}
 	
@@ -22,12 +22,12 @@ public class DragaoBronze extends Monstro{
 	}
 	
 	private void preencherSentidos() {
-		this.getSentidos().add("Visão noturna (60 pés)");
-		this.getSentidos().add("Visão cega (10 pés)");
+		this.getSentidos().add("VisÃ£o noturna (60 pÃ©s)");
+		this.getSentidos().add("VisÃ£o cega (10 pÃ©s)");
 
 	}
 	
 	private void preencherImunidades() {
-		this.getImunidades().add("Relâmpago");
+		this.getImunidades().add("RelÃ¢mpago");
 	}
 }
