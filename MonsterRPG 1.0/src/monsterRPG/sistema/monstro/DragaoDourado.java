@@ -1,8 +1,8 @@
 package monsterRPG.sistema.monstro;
 
 public class DragaoDourado extends Monstro{
-	public DragaoDourado(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiçao, int inteligencia, int sabedoria, int carisma, double nivel) {
-		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiçao, inteligencia, sabedoria, carisma, nivel);
+	public DragaoDourado(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiÃ§ao, int inteligencia, int sabedoria, int carisma, double nivel) {
+		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiÃ§ao, inteligencia, sabedoria, carisma, nivel);
 		this.preencherHabilidades();
 		this.preencherImunidades();
 		this.preencherLinguas();
@@ -11,9 +11,9 @@ public class DragaoDourado extends Monstro{
 
 	
 	private void preencherHabilidades() {
-		this.getHabilidades().add(new Habilidades("Anfíbio", "O dragão pode respirar ar e água."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de fogo)", "O dragão exala ácido em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de Destreza de dificuldade 13, tomando 4d10 de dano ácido numa falha, ou metade do dano num sucesso."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de enfraquecimento)", "O dragão exala gás em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de Força de dificuldade 13 e passar, caso contrário a criatura tem desvantagem em rolagens de ataques baseados em Força, testes de Força e testes de resistência de Força por 1 minuto. A criatura pode repetir o teste de resistência no final de cada um de seus turnos, acabando com o efeito em um sucesso."));
+		this.getHabilidades().add(new Habilidades("AnfÃ­bio", "O dragÃ£o pode respirar ar e Ã¡gua."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de fogo)", "O dragÃ£o exala Ã¡cido em um cone de 15 pÃ©s. Cada criatura nessa Ã¡rea precisa fazer um teste de resistÃªncia de Destreza de dificuldade 13, tomando 4d10 de dano Ã¡cido numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de enfraquecimento)", "O dragÃ£o exala gÃ¡s em um cone de 15 pÃ©s. Cada criatura nessa Ã¡rea precisa passar em um teste de resistÃªncia de ForÃ§a de dificuldade 13, caso contrÃ¡rio a criatura tem desvantagem em rolagens de ataques baseados em ForÃ§a, testes de ForÃ§a e testes de resistÃªncia de ForÃ§a por 1 minuto. A criatura pode repetir o teste de resistÃªncia no final de cada um de seus turnos, acabando com o efeito em um sucesso."));
 
 	}
 	
@@ -22,8 +22,8 @@ public class DragaoDourado extends Monstro{
 	}
 	
 	private void preencherSentidos() {
-		this.getSentidos().add("Visão noturna (60 pés)");
-		this.getSentidos().add("Visão cega (10 pés)");
+		this.getSentidos().add("VisÃ£o noturna (60 pÃ©s)");
+		this.getSentidos().add("VisÃ£o cega (10 pÃ©s)");
 
 	}
 	
