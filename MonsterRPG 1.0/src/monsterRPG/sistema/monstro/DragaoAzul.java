@@ -11,7 +11,7 @@ public class DragaoAzul extends Monstro{
 
 	
 	private void preencherHabilidades() {
-		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala relâmpagos em uma linha 5x30 pés. Cada criatura nessa linha precisa fazer um teste de resistência de dificuldade 12, tomando 4d10 de dano elétrico numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala relâmpagos em uma linha 5x30 pés. Cada criatura nessa linha precisa fazer um teste de resistência de Destreza de dificuldade 12, tomando 4d10 de dano elétrico numa falha, ou metade do dano num sucesso."));
 		
 	}
 	
