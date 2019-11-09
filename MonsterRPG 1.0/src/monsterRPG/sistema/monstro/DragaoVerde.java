@@ -1,8 +1,8 @@
 package monsterRPG.sistema.monstro;
 
 public class DragaoVerde extends Monstro{
-	public DragaoVerde(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiçao, int inteligencia, int sabedoria, int carisma, double nivel) {
-		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiçao, inteligencia, sabedoria, carisma, nivel);
+	public DragaoVerde(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiÃ§ao, int inteligencia, int sabedoria, int carisma, double nivel) {
+		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiÃ§ao, inteligencia, sabedoria, carisma, nivel);
 		this.preencherHabilidades();
 		this.preencherImunidades();
 		this.preencherLinguas();
@@ -11,8 +11,8 @@ public class DragaoVerde extends Monstro{
 
 	
 	private void preencherHabilidades() {
-		this.getHabilidades().add(new Habilidades("Anfíbio", "O dragão pode respirar ar e água."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala gás venenoso em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de dificuldade 11, tomando 6d6 de dano ácido numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("AnfÃ­bio", "O dragÃ£o pode respirar ar e Ã¡gua."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragÃ£o exala gÃ¡s venenoso em um cone de 15 pÃ©s. Cada criatura nessa Ã¡rea precisa fazer um teste de resistÃªncia de dificuldade 11, tomando 6d6 de dano venenoso numa falha, ou metade do dano num sucesso."));
 
 	}
 	
@@ -21,8 +21,8 @@ public class DragaoVerde extends Monstro{
 	}
 	
 	private void preencherSentidos() {
-		this.getSentidos().add("Visão noturna (60 pés)");
-		this.getSentidos().add("Visão cega (10 pés)");
+		this.getSentidos().add("VisÃ£o noturna (60 pÃ©s)");
+		this.getSentidos().add("VisÃ£o cega (10 pÃ©s)");
 
 	}
 	
