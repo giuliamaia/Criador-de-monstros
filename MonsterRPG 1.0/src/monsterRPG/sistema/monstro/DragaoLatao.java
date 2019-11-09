@@ -12,7 +12,7 @@ public class DragaoLatao extends Monstro{
 	
 	private void preencherHabilidades() {
 		this.getHabilidades().add(new Habilidades("Sopro elemental (de fogo)", "O dragão exala fogo em uma linha 20x5 pés. Cada criatura nessa área precisa fazer um teste de resistência de Destreza de dificuldade 11, tomando 4d6 de dano flamejante numa falha, ou metade do dano num sucesso."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de sono)", "O dragão exala gás sonífero em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de Constituição de dificuldade 11 e passar, caso contrário cai inconsciente por 1 minuto. Esse efeito termina se a criatura tomar dano ou alguém usar uma ação pra acordár-lo."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de sono)", "O dragão exala gás sonífero em um cone de 15 pés. Cada criatura nessa área precisa passar em um teste de resistência de Constituição de dificuldade 11, caso contrário cai inconsciente por 1 minuto. Esse efeito termina se a criatura tomar dano ou alguém usar uma ação pra acordár-lo."));
 
 	}
 	
