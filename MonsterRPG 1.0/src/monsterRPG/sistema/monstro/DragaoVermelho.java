@@ -11,7 +11,7 @@ public class DragaoVermelho extends Monstro{
 
 	
 	private void preencherHabilidades() {
-		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala fogo em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de dificuldade 13, tomando 7d6 de dano flamejante numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala fogo em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de Destreza de dificuldade 13, tomando 7d6 de dano flamejante numa falha, ou metade do dano num sucesso."));
 
 	}
 	
