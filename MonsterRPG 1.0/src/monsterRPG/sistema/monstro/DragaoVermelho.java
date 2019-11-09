@@ -1,8 +1,8 @@
 package monsterRPG.sistema.monstro;
 
 public class DragaoVermelho extends Monstro{
-	public DragaoVermelho(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiÁao, int inteligencia, int sabedoria, int carisma, double nivel) {
-		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiÁao, inteligencia, sabedoria, carisma, nivel);
+	public DragaoVermelho(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constitui√ßao, int inteligencia, int sabedoria, int carisma, double nivel) {
+		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constitui√ßao, inteligencia, sabedoria, carisma, nivel);
 		this.preencherHabilidades();
 		this.preencherImunidades();
 		this.preencherLinguas();
@@ -11,7 +11,7 @@ public class DragaoVermelho extends Monstro{
 
 	
 	private void preencherHabilidades() {
-		this.getHabilidades().add(new Habilidades("Sopro elemental", "O drag„o exala fogo em um cone de 15 pÈs. Cada criatura nessa ·rea precisa fazer um teste de resistÍncia de dificuldade 13, tomando 7d6 de dano ·cido numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental", "O drag√£o exala fogo em um cone de 15 p√©s. Cada criatura nessa √°rea precisa fazer um teste de resist√™ncia de dificuldade 13, tomando 7d6 de dano flamejante numa falha, ou metade do dano num sucesso."));
 
 	}
 	
@@ -20,8 +20,8 @@ public class DragaoVermelho extends Monstro{
 	}
 	
 	private void preencherSentidos() {
-		this.getSentidos().add("Vis„o noturna (60 pÈs)");
-		this.getSentidos().add("Vis„o cega (10 pÈs)");
+		this.getSentidos().add("Vis√£o noturna (60 p√©s)");
+		this.getSentidos().add("Vis√£o cega (10 p√©s)");
 
 	}
 	
