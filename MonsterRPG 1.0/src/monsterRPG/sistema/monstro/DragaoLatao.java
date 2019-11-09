@@ -1,8 +1,8 @@
 package monsterRPG.sistema.monstro;
 
 public class DragaoLatao extends Monstro{
-	public DragaoLatao(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiçao, int inteligencia, int sabedoria, int carisma, double nivel) {
-		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiçao, inteligencia, sabedoria, carisma, nivel);
+	public DragaoLatao(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiÃ§ao, int inteligencia, int sabedoria, int carisma, double nivel) {
+		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiÃ§ao, inteligencia, sabedoria, carisma, nivel);
 		this.preencherHabilidades();
 		this.preencherImunidades();
 		this.preencherLinguas();
@@ -11,8 +11,8 @@ public class DragaoLatao extends Monstro{
 
 	
 	private void preencherHabilidades() {
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de fogo)", "O dragão exala fogo em uma linha 20x5 pés. Cada criatura nessa área precisa fazer um teste de resistência de Destreza de dificuldade 11, tomando 4d6 de dano flamejante numa falha, ou metade do dano num sucesso."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de sono)", "O dragão exala gás sonífero em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de Constituição de dificuldade 11 e passar, ou cai inconsciente por 1 minuto. Esse efeito termina se a criatura tomar dano ou alguém usar uma ação pra acordár-lo."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de fogo)", "O dragÃ£o exala fogo em uma linha 20x5 pÃ©s. Cada criatura nessa Ã¡rea precisa fazer um teste de resistÃªncia de Destreza de dificuldade 11, tomando 4d6 de dano flamejante numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de sono)", "O dragÃ£o exala gÃ¡s sonÃ­fero em um cone de 15 pÃ©s. Cada criatura nessa Ã¡rea precisa fazer um teste de resistÃªncia de ConstituiÃ§Ã£o de dificuldade 11 e passar, caso contrÃ¡rio cai inconsciente por 1 minuto. Esse efeito termina se a criatura tomar dano ou alguÃ©m usar uma aÃ§Ã£o pra acordÃ¡r-lo."));
 
 	}
 	
@@ -21,8 +21,8 @@ public class DragaoLatao extends Monstro{
 	}
 	
 	private void preencherSentidos() {
-		this.getSentidos().add("Visão noturna (60 pés)");
-		this.getSentidos().add("Visão cega (10 pés)");
+		this.getSentidos().add("VisÃ£o noturna (60 pÃ©s)");
+		this.getSentidos().add("VisÃ£o cega (10 pÃ©s)");
 
 	}
 	
