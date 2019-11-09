@@ -1,8 +1,8 @@
 package monsterRPG.sistema.monstro;
 
 public class DragaoCobre extends Monstro{
-	public DragaoCobre(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiçao, int inteligencia, int sabedoria, int carisma, double nivel) {
-		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiçao, inteligencia, sabedoria, carisma, nivel);
+	public DragaoCobre(String nome, String historia, String tamanho, int vida, int defesa, int velocidade, int forca, int destreza, int constituiÃ§ao, int inteligencia, int sabedoria, int carisma, double nivel) {
+		super(nome, historia, tamanho, vida, defesa, velocidade, forca, destreza, constituiÃ§ao, inteligencia, sabedoria, carisma, nivel);
 		this.preencherHabilidades();
 		this.preencherImunidades();
 		this.preencherLinguas();
@@ -11,8 +11,8 @@ public class DragaoCobre extends Monstro{
 
 	
 	private void preencherHabilidades() {
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de ácido)", "O dragão exala ácido em uma linha 20x5 pés. Cada criatura nessa área precisa fazer um teste de resistência de Destreza de dificuldade 11, tomando 4d8 de dano ácido numa falha, ou metade do dano num sucesso."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental (de lentidão)", "O dragão exala gás em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de Constituição de dificuldade 12 e passar, caso contrário a criatura não pode usar reações, sua velocidade é dividida pela metade, e não pode fazer mais de um ataque no seu turno. Em adição, a criatura pode usar ou ou uma ação ou uma ação bônus no seu turno (mas não ambos). Esse efeito dura por 1 minuto. A criatura pode repetir o teste de resistência no final de cada um de seus turnos, acabando com o efeito nele mesmo com um sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de Ã¡cido)", "O dragÃ£o exala Ã¡cido em uma linha 20x5 pÃ©s. Cada criatura nessa Ã¡rea precisa fazer um teste de resistÃªncia de Destreza de dificuldade 11, tomando 4d8 de dano Ã¡cido numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental (de lentidÃ£o)", "O dragÃ£o exala gÃ¡s em um cone de 15 pÃ©s. Cada criatura nessa Ã¡rea precisa passar em um teste de resistÃªncia de ConstituiÃ§Ã£o de dificuldade 12, caso contrÃ¡rio a criatura nÃ£o pode usar reaÃ§Ãµes, sua velocidade Ã© dividida pela metade, e nÃ£o pode fazer mais de um ataque no seu turno. Em adiÃ§Ã£o, a criatura pode usar ou ou uma aÃ§Ã£o ou uma aÃ§Ã£o bÃ´nus no seu turno (mas nÃ£o ambos). Esse efeito dura por 1 minuto. A criatura pode repetir o teste de resistÃªncia no final de cada um de seus turnos, acabando com o efeito nele mesmo com um sucesso."));
 
 	}
 	
@@ -21,12 +21,12 @@ public class DragaoCobre extends Monstro{
 	}
 	
 	private void preencherSentidos() {
-		this.getSentidos().add("Visão noturna (60 pés)");
-		this.getSentidos().add("Visão cega (10 pés)");
+		this.getSentidos().add("VisÃ£o noturna (60 pÃ©s)");
+		this.getSentidos().add("VisÃ£o cega (10 pÃ©s)");
 
 	}
 	
 	private void preencherImunidades() {
-		this.getImunidades().add("Ácido");
+		this.getImunidades().add("Ãcido");
 	}
 }
