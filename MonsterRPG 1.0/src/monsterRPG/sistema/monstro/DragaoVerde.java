@@ -12,7 +12,7 @@ public class DragaoVerde extends Monstro{
 	
 	private void preencherHabilidades() {
 		this.getHabilidades().add(new Habilidades("Anfíbio", "O dragão pode respirar ar e água."));
-		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala gás venenoso em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de dificuldade 11, tomando 6d6 de dano venenoso numa falha, ou metade do dano num sucesso."));
+		this.getHabilidades().add(new Habilidades("Sopro elemental", "O dragão exala gás venenoso em um cone de 15 pés. Cada criatura nessa área precisa fazer um teste de resistência de Constituição de dificuldade 11, tomando 6d6 de dano venenoso numa falha, ou metade do dano num sucesso."));
 
 	}
 	
