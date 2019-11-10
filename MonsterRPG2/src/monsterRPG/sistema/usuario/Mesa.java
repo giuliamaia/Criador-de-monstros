@@ -8,7 +8,7 @@ public class Mesa {
 	private String descriçao;
 	private List<String> jogadores;
 	private List<String> monstros;
-	HashMap<String, String> blocoNotas = new HashMap<String, String>();
+	private HashMap<String, String> blocoNotas = new HashMap<String, String>();
 	public Mesa(String nome, String descriçao, List<String> jogadores, List<String> monstros,
 			HashMap<String, String> blocoNotas) {
 
