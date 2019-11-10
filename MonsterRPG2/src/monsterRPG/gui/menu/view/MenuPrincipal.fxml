@@ -116,15 +116,12 @@
                   <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="669.0">
                      <children>
                         <Label alignment="CENTER" font="$x1" layoutX="286.0" layoutY="14.0" style="&#10;" text="Informações" textAlignment="CENTER" textFill="#12accede" wrapText="false" />
-                        <Text fill="#9e9b9b" layoutX="25.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" textAlignment="JUSTIFY" wrappingWidth="39.947935938835144" />
-                        <TextFlow layoutX="335.0" layoutY="153.0" prefHeight="293.0" prefWidth="135.0" />
-                        <Text fill="#9e9b9b" layoutX="369.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vantagens" textAlignment="JUSTIFY" wrappingWidth="65.00000762939453" />
-                        <TextFlow layoutX="486.0" layoutY="158.0" prefHeight="293.0" prefWidth="135.0" />
-                        <Text fill="#9e9b9b" layoutX="511.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desvantagens" textAlignment="JUSTIFY" wrappingWidth="85.99999177455902" />
-                        <TextField layoutX="65.0" layoutY="89.0" />
-                        <Text fill="#9e9b9b" layoutX="25.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" textAlignment="JUSTIFY" wrappingWidth="39.947935938835144" />
-                        <TextField layoutX="65.0" layoutY="119.0" />
-                        <DatePicker layoutX="65.0" layoutY="385.0" />
+                        <TextFlow layoutX="339.0" layoutY="149.0" prefHeight="293.0" prefWidth="305.0" />
+                        <Text fill="#9e9b9b" layoutX="451.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" textAlignment="JUSTIFY" wrappingWidth="82.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Text>
+                        <DatePicker layoutX="78.0" layoutY="297.0" />
                         <ToggleButton layoutX="597.0" layoutY="28.0" mnemonicParsing="false" onAction="#isBotaoFavoritoPressed" prefHeight="27.0" prefWidth="30.0" textFill="#21a42a">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
@@ -134,7 +131,20 @@
                               </ImageView>
                            </graphic>
                         </ToggleButton>
-                        <Text fill="#9e9b9b" layoutX="109.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de criação" textAlignment="JUSTIFY" wrappingWidth="86.94793593883514" />
+                        <Text fill="#9e9b9b" layoutX="101.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de criação" textAlignment="JUSTIFY" wrappingWidth="128.94793593883514">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Text>
+                        <Text fill="#9e9b9b" layoutX="25.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" textAlignment="JUSTIFY" wrappingWidth="49.99999999999997">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#9e9b9b" layoutX="25.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" textAlignment="JUSTIFY" wrappingWidth="39.947935938835144">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
                </content>

@@ -23,6 +23,7 @@ public class MenuPrincipalPaneController {
 	}
 	public void ordenarPorNomeDecrescente() {
 		//TODO ordenar
+		System.out.println("Decesce");
 	}
 	public void ordenarPorMortos() {
 		//TODO ordenar
