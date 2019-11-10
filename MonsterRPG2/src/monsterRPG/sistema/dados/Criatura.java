@@ -6,7 +6,7 @@ public class Criatura extends Status {
 	private String nome;
 	private String descrição;
 	private Types tipo;
-	private LocalDate dataCriação;
+	private LocalDate dataCriacao;
 	private boolean favorito;
 	//TODO Fotinhaaa
 	public Criatura(int vida, int defesa, double nivel, int força, int destreza, int constituição, int inteligência, int sabedoria,
@@ -15,7 +15,7 @@ public class Criatura extends Status {
 		this.nome = nome;
 		this.descrição = descrição;
 		this.tipo = tipo;
-		this.dataCriação = LocalDate.now();
+		this.dataCriacao = LocalDate.now();
 		this.favorito = false;
 	}
 	public String getNome() {
@@ -37,10 +37,10 @@ public class Criatura extends Status {
 		this.tipo = tipo;
 	}
 	public LocalDate getDataCriação() {
-		return dataCriação;
+		return dataCriacao;
 	}
 	public void setDataCriação(LocalDate dataCriação) {
-		this.dataCriação = dataCriação;
+		this.dataCriacao = dataCriação;
 	}
 	public boolean isFavorito() {
 		return favorito;

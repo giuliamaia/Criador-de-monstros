@@ -4,26 +4,25 @@ public abstract class Status {
 	private int vida;
 	private int defesa;
 	private double nivel;
-	private int força;
+	private int forca;
 	private int destreza;
-	private int constituição;
-	private int inteligência;
+	private int constituicao;
+	private int inteligencia;
 	private int sabedoria;
 	private int carisma;
-	
-	public Status(int vida, int defesa, double nivel, int força, int destreza, int constituição, int inteligência, int sabedoria,
-			int carisma) {
+	public Status(int vida, int defesa, double nivel, int forca, int destreza, int constituicao, int inteligencia,
+			int sabedoria, int carisma) {
+
 		this.vida = vida;
 		this.defesa = defesa;
 		this.nivel = nivel;
-		this.força = força;
+		this.forca = forca;
 		this.destreza = destreza;
-		this.constituição = constituição;
-		this.inteligência = inteligência;
+		this.constituicao = constituicao;
+		this.inteligencia = inteligencia;
 		this.sabedoria = sabedoria;
 		this.carisma = carisma;
 	}
-	
 	public int getVida() {
 		return vida;
 	}
@@ -39,14 +38,14 @@ public abstract class Status {
 	public double getNivel() {
 		return nivel;
 	}
-	public void setNivel(int nivel) {
+	public void setNivel(double nivel) {
 		this.nivel = nivel;
 	}
-	public int getForça() {
-		return força;
+	public int getForca() {
+		return forca;
 	}
-	public void setForça(int força) {
-		this.força = força;
+	public void setForca(int forca) {
+		this.forca = forca;
 	}
 	public int getDestreza() {
 		return destreza;
@@ -54,17 +53,17 @@ public abstract class Status {
 	public void setDestreza(int destreza) {
 		this.destreza = destreza;
 	}
-	public int getConstituição() {
-		return constituição;
+	public int getConstituicao() {
+		return constituicao;
 	}
-	public void setConstituição(int constituição) {
-		this.constituição = constituição;
+	public void setConstituicao(int constituicao) {
+		this.constituicao = constituicao;
 	}
-	public int getInteligência() {
-		return inteligência;
+	public int getInteligencia() {
+		return inteligencia;
 	}
-	public void setInteligência(int inteligência) {
-		this.inteligência = inteligência;
+	public void setInteligencia(int inteligencia) {
+		this.inteligencia = inteligencia;
 	}
 	public int getSabedoria() {
 		return sabedoria;
@@ -78,4 +77,8 @@ public abstract class Status {
 	public void setCarisma(int carisma) {
 		this.carisma = carisma;
 	}
+	
+	
+
+	
 }
