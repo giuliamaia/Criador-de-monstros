@@ -3,19 +3,23 @@ package monsterRPG.gui.menu.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import monsterRPG.sistema.dados.Criatura;
 
 public class MenuPrincipalPaneController {
 	private boolean favorito = false;
 	private Criatura criaturaSelecionada;
-	
+	private String texto = "";
 	
 	@FXML
 	private Label labelNomeMonstro;
 	@FXML
-	private Button buttonFavorito;
+	private Image imagem;
+	
+	@FXML
 	public void Pesquisar() {
-		System.out.println("Funciona para K+1");
+		texto.concat("a");
+		labelNomeMonstro.setText(texto);
 		//TODO Pesquisar
 	}
 	public boolean isBotaoFavoritoPressed() {

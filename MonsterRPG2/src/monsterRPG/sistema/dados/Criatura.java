@@ -25,13 +25,18 @@ public class Criatura extends Status {
 		this.tipo = tipo;
 		this.dataCriacao = LocalDate.now();
 		this.favorito = favorito;
-		if (tipo.equals(Types.Besta)) {
-			try {
-				fotinha = ImageIO.read(new File("monsterRPG/gui/images/images.png"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.getMessage();
-			}
+		try {
+			this.setaFoto();
+			return;
+		}
+		catch(IOException e) {
+			System.out.println("Deu merda");
+		}
+		
+	}
+	private void setaFoto() throws IOException {
+		if(tipo == Types.Besta) {
+			fotinha = ImageIO.read(new File("/MonsterRPG/src/monsterRPG/gui/images/images.png"));
 		}
 	}
 	public List<String> getJogadoresQueMataram() {
