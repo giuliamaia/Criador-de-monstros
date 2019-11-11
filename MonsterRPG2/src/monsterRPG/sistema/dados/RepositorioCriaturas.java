@@ -18,7 +18,6 @@ public class RepositorioCriaturas {
 			throw new CriaturaInvalidaException("Criatura criada não pode ser vazia. SEU ANIMAL!");
 		}
 	}
-	
 	public void removerCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.remove(c);

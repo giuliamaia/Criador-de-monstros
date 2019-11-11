@@ -24,7 +24,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.MenuPrincipalPaneController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.162" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.MenuPrincipalPaneController">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -122,7 +122,7 @@
                               <Font size="18.0" />
                            </font></Text>
                         <DatePicker layoutX="78.0" layoutY="297.0" />
-                        <ToggleButton layoutX="597.0" layoutY="28.0" mnemonicParsing="false" onAction="#isBotaoFavoritoPressed" prefHeight="27.0" prefWidth="30.0" textFill="#21a42a">
+                        <ToggleButton fx:id="buttonFavorito" layoutX="597.0" layoutY="28.0" mnemonicParsing="false" onAction="#isBotaoFavoritoPressed" prefHeight="27.0" prefWidth="30.0" textFill="#21a42a">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -145,6 +145,7 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
+                        <Label fx:id="labelNomeMonstro" layoutX="78.0" layoutY="222.0" prefHeight="25.0" prefWidth="121.0" />
                      </children>
                   </AnchorPane>
                </content>
