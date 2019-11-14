@@ -18,9 +18,8 @@ public class MenuPrincipalPaneController {
 	
 	@FXML
 	public void Pesquisar() {
-		texto.concat("a");
-		labelNomeMonstro.setText(texto);
 		//TODO Pesquisar
+		System.out.println("Tá funcionando");
 	}
 	public boolean isBotaoFavoritoPressed() {
 		favorito = !favorito;
