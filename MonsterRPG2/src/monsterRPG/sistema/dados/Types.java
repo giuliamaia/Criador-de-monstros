@@ -1,6 +1,6 @@
 package monsterRPG.sistema.dados;
 
 public enum Types {
-	Aberracao, Besta, Celestial, Construto, Dragao, Elemental, Fada, Demonio, Gigante,
-	Humanoide, Monstruosidade, Gosma, Planta, MortoVivo;
+	ABERRAÇAO, BESTA, CELESTIAL, CONSTRUTO, DRAGAO, ELEMENTAL, FADA, DEMONIO, GIGANTE,
+	HUMANOIDE, MONSTRUOSIDADE, GOSMA, PLANTA, MORTOVIVO;
 }

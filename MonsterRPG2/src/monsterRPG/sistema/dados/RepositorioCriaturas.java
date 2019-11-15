@@ -1,11 +1,13 @@
 package monsterRPG.sistema.dados;
 
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class RepositorioCriaturas {
-	List<Criatura> criaturas;
+	ArrayList<Criatura> criaturas;
 	
 	public RepositorioCriaturas() {
 		this.criaturas = new ArrayList<Criatura>();
@@ -26,7 +28,7 @@ public class RepositorioCriaturas {
 		}
 	}
 	
-	public List<Criatura> listarPorNome(String nome) {
+	public List<Criatura> filtrarPorNome(String nome) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
 		if(nome == null) return null;
@@ -38,8 +40,17 @@ public class RepositorioCriaturas {
 		}
 		return ret;
 	}
+	//FALTA FAZER
+	public List<Criatura> ordenarNomePorOrdemAlfabetica(){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		for(int i=0; i<this.criaturas.size(); i++) {
+			
+		}
+		return ret;
+		
+	}
 	
-	public List<Criatura> listarPorTipo(Types tipo) {
+	public List<Criatura> filtrarPorTipo(Types tipo) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
 		for(Criatura c : this.criaturas) {
@@ -49,8 +60,16 @@ public class RepositorioCriaturas {
 		}
 		return ret;
 	}
-	
-	public List<Criatura> listarPorNivel(double menor, double maior) {
+	//FALTA FAZER
+	public List<Criatura> ordenarPorNivel(){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		for(int i=0; i<this.criaturas.size(); i++) {
+			
+		}
+		return ret;
+		
+	}
+	public List<Criatura> filtrarPorNivel(double menor, double maior) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
 		for(Criatura c : this.criaturas) {
@@ -62,7 +81,7 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
-	public List<Criatura> listarPorQuemMatou(String nomeJogador){
+	public List<Criatura> filtrarPorQuemMatou(String nomeJogador){
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
 		for(int i=0; i<this.criaturas.size(); i++) {
@@ -76,7 +95,7 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
-	public List<Criatura> listarFavoritos(){
+	public List<Criatura> filtrarFavoritos(){
 		List<Criatura> ret = new ArrayList<Criatura>();
 		for(int i=0; i<this.criaturas.size(); i++) {
 			if(this.criaturas.get(i).isFavorito()) {
@@ -87,8 +106,43 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
+	public List<Criatura> filtrarPorData(LocalDate data){
+		List<Criatura> ret = new ArrayList<Criatura>();
 	
-	
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).getDataCriação().isEqual(data)) {
+				ret.add(this.criaturas.get(i));
+			}
+		}
+		return ret;
+	}
+	//ainda vou testar
+	public List<Criatura> OrdenarPorDataCrescente(){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		LocalDate comp = LocalDate.of(1950, 1, 1);
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).getDataCriação().isAfter(comp)) {
+				ret.add(this.criaturas.get(i));
+				comp = this.criaturas.get(i).getDataCriação();
+			}
+		}
+		return ret;
+	}
+	//ainda vou testar
+	public List<Criatura> OrdenarPorDataDecrescente(){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		LocalDate comp = LocalDate.now();
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).getDataCriação().equals(comp)) {
+				ret.add(this.criaturas.get(i));
+			}
+			else if(this.criaturas.get(i).getDataCriação().isBefore(comp)) {
+				ret.add(this.criaturas.get(i));
+				comp = this.criaturas.get(i).getDataCriação();
+			}
+		}
+		return ret;
+	}
 	
 	
 	

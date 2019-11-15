@@ -34,7 +34,7 @@ public class Criatura extends Status {
 		}
 	}
 	private void setaFoto() throws IOException {
-		if(tipo == Types.Besta) {
+		if(tipo == Types.BESTA) {
 			fotinha = ImageIO.read(new File("/MonsterRPG/src/monsterRPG/gui/images/images.png"));
 		}
 	}

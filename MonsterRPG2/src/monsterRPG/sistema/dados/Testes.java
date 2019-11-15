@@ -2,7 +2,8 @@ package monsterRPG.sistema.dados;
 
 public class Testes {
 	public static void main(String[] args) {
-		Criatura primeira = new Criatura(10, 10, 5.5, 10, 10, 40, 0, 0, 0, "Ordnael", "Infelizmente vivemos em uma sociedade em que", Types.Besta, true);
+		Criatura primeira = new Criatura(10, 10, 5.5, 10, 10, 40, 0, 0, 0, "Ordnael", "Infelizmente vivemos em uma sociedade em que", Types.BESTA, true);
+		
 		RepositorioCriaturas reposit = new RepositorioCriaturas();
 		try {
 			reposit.adicionarCriatura(primeira);
@@ -11,9 +12,9 @@ public class Testes {
 			System.out.println("DEU MERDA!");
 		}
 		System.out.println("Nome do bicho criado: " + primeira.getNome());
-		System.out.println("Size do pesquisar por nome: " + reposit.listarPorNome("Ordnael").size());
+		System.out.println("Size do pesquisar por nome: " + reposit.filtrarPorNome("Ordnael").size());
 		primeira.adicionarMortePeloJogador("Ordnael");
-		System.out.println(reposit.listarFavoritos());
-		System.out.println(reposit.listarPorQuemMatou("Ordnael"));
+		System.out.println(reposit.filtrarFavoritos());
+		System.out.println(reposit.filtrarPorQuemMatou("Ordnael"));
 	}
 }
