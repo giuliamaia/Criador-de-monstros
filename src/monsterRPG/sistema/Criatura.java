@@ -1,13 +1,10 @@
 package monsterRPG.sistema;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 
 public class Criatura extends Status {
 	private String nome;
@@ -16,7 +13,7 @@ public class Criatura extends Status {
 	private LocalDate dataCriacao;
 	private boolean favorito;
 	private List<String> jogadoresQueMataram = new ArrayList<String>();
-	private BufferedImage fotinha;
+	private String UrlDaFotinha;
 	public Criatura(int vida, int defesa, double nivel, int força, int destreza, int constituição, int inteligência, int sabedoria,
 			int carisma, String nome, String descrição, Types tipo) {
 		super(vida, defesa, nivel, força, destreza, constituição, inteligência, sabedoria, carisma);
@@ -35,8 +32,18 @@ public class Criatura extends Status {
 	}
 	private void setaFoto() throws IOException {
 		if(tipo == Types.Besta) {
-			fotinha = ImageIO.read(new File("/MonsterRPG/src/monsterRPG/gui/images/images.png"));
+			UrlDaFotinha = "/MonsterRPG/src/monsterRPG/gui/images/images.png";
 		}
+		else {
+			UrlDaFotinha = "/MonsterRPG/src/monsterRPG/gui/images/1 zv9W7fMl12F1EYUuMR7q6A.jpeg";
+		}
+	}
+
+	public String getUrlDaFotinha() {
+		return UrlDaFotinha;
+	}
+	public void setUrlDaFotinha(String urlDaFotinha) {
+		UrlDaFotinha = urlDaFotinha;
 	}
 	public List<String> getJogadoresQueMataram() {
 		return jogadoresQueMataram;

@@ -63,9 +63,18 @@ public class NovaContaDialogController {
     @FXML
     public void submeter() {
     	try{
-    		bicho = new Criatura(Integer.parseInt(txVida.getText()),Integer.parseInt(txDefesa.getText()),Double.parseDouble(txNivel.getText()),Integer.parseInt(txForca.getText()),Integer.parseInt(txDestreza.getText()),Integer.parseInt(txConstituicao.getText()),Integer.parseInt(txInteligencia.getText()),Integer.parseInt(txSabedoria.getText()),Integer.parseInt(txCarisma.getText()),txNome.getText(), txDescricao.getText(), escolhaDeTipo.getSelectionModel().getSelectedItem());
-    		controlador.adicionarCriatura(bicho);
-    		cancelar();
+    		if(escolhaDeTipo.getSelectionModel().getSelectedIndex() == -1) {
+    			Alert alerta = new Alert(Alert.AlertType.WARNING);
+        		alerta.setTitle("Tipo inválido");
+        		alerta.setContentText("Seu monstro não pode ser criado sem um tipo\nEscolha um tipo válido.");
+        		alerta.setHeaderText("TIPO INVÁLIDO");
+        		alerta.show();
+    		}
+    		else {
+    			bicho = new Criatura(Integer.parseInt(txVida.getText()),Integer.parseInt(txDefesa.getText()),Double.parseDouble(txNivel.getText()),Integer.parseInt(txForca.getText()),Integer.parseInt(txDestreza.getText()),Integer.parseInt(txConstituicao.getText()),Integer.parseInt(txInteligencia.getText()),Integer.parseInt(txSabedoria.getText()),Integer.parseInt(txCarisma.getText()),txNome.getText(), txDescricao.getText(), escolhaDeTipo.getSelectionModel().getSelectedItem());
+        		controlador.adicionarCriatura(bicho);
+        		cancelar();
+    		}
     	}catch (Exception e) {
     		Alert alerta = new Alert(Alert.AlertType.WARNING);
     		alerta.setTitle("Atributo(s) inválido(s)");

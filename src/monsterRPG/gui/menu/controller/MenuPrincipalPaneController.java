@@ -1,32 +1,23 @@
 package monsterRPG.gui.menu.controller;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.negocio.ControladorSistema;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
 
 public class MenuPrincipalPaneController {
 	private MonsterRPG monsterRPG = new MonsterRPG();
@@ -57,15 +48,87 @@ public class MenuPrincipalPaneController {
 	@FXML
 	private Image imagem;
 
+    @FXML
+    private Label labelTipo;
+
+    @FXML
+    private Label labelVida;
+
+    @FXML
+    private Label labelDefesa;
+
+    @FXML
+    private Label labelNivel;
+
+    @FXML
+    private Label labelForca;
+
+    @FXML
+    private Label labelDestreza;
+
+    @FXML
+    private Label labelConstituicao;
+
+    @FXML
+    private Label labelInteligencia;
+
+    @FXML
+    private Label labelSabedoria;
+
+    @FXML
+    private Label labelCarisma;
+
+    @FXML
+    private Label labelDataCriacao;
+    
+    @FXML
+    private Label labelDescrição;
 	@FXML
 	public void Pesquisar() {
 		listaLocal = controlador.listarPorNome(barraDePesquisa.getText());
 		atualizarLista();
 	}
+	public void setaFoto() {
+		try{
+			
+		}catch(Exception e) {
+			
+		}
+		
+	}
+	public void selecionaCriatura() {
+		try{
+			criaturaSelecionada = lvLista.getSelectionModel().getSelectedItem();
+			labelCarisma.setText("" + criaturaSelecionada.getCarisma());
+			labelConstituicao.setText("" + criaturaSelecionada.getConstituicao());
+			labelDefesa.setText("" + criaturaSelecionada.getDefesa());
+			labelDestreza.setText("" + criaturaSelecionada.getDestreza());
+			labelForca.setText("" + criaturaSelecionada.getForca());
+			labelInteligencia.setText("" + criaturaSelecionada.getInteligencia());
+			labelNivel.setText("" + criaturaSelecionada.getNivel());
+			labelNomeMonstro.setText("" + criaturaSelecionada.getNome());
+			labelSabedoria.setText("" + criaturaSelecionada.getSabedoria());
+			labelTipo.setText("" + criaturaSelecionada.getTipo().toString());
+			labelVida.setText("" + criaturaSelecionada.getVida());
+			labelCarisma.setText("" + criaturaSelecionada.getCarisma());
+			labelDataCriacao.setText(criaturaSelecionada.getDataCriação().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+			labelDescrição.setText(criaturaSelecionada.getDescrição());
+			if(criaturaSelecionada.isFavorito()) {
+				buttonFavorito.setSelected(true);
+			}
+			else {
+				buttonFavorito.setSelected(false);
+			}
+			setaFoto();
+		}catch(Exception e) {
+			
+		}
+		
+	}
 	public void isBotaoFavoritoPressed() {
 		
 		try{
-			criaturaSelecionada.setFavorito(buttonFavorito.isPressed());
+			criaturaSelecionada.setFavorito(buttonFavorito.isSelected());
 		}catch(NullPointerException e) {
 			buttonFavorito.setSelected(false);
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
