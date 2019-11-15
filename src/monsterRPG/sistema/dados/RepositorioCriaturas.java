@@ -43,6 +43,14 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
+	public List<Criatura> getCriaturas() {
+		return criaturas;
+	}
+
+	public void setCriaturas(List<Criatura> criaturas) {
+		this.criaturas = criaturas;
+	}
+
 	public List<Criatura> listarPorTipo(Types tipo) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		

@@ -20,6 +20,7 @@ public class MonsterRPG extends Application{
 	private static Scene cenaMain;
 	private static Scene cenaEditar;
 	private static Scene cenaCriar;
+	private static Stage dialogStageCriar;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -49,14 +50,16 @@ public class MonsterRPG extends Application{
 			e.printStackTrace();
 		}
 
-        Stage dialogStage = new Stage();
-        dialogStage.setTitle("Novo Monstro");
-        dialogStage.initModality(Modality.WINDOW_MODAL);
-        dialogStage.initOwner(estagio);
+		dialogStageCriar = new Stage();
+        dialogStageCriar.setTitle("Novo Monstro");
+        dialogStageCriar.initModality(Modality.WINDOW_MODAL);
+        dialogStageCriar.initOwner(estagio);
         cenaCriar = new Scene(conteudoDialog);
-        dialogStage.setScene(cenaCriar);
+        dialogStageCriar.setScene(cenaCriar);
 
-        dialogStage.showAndWait();
+        dialogStageCriar.showAndWait();
 	}
-
+	public void fecharNovoMonstroDialog() {
+		dialogStageCriar.close();
+	}
 }

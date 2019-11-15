@@ -12,6 +12,12 @@ public class ControladorSistema {
 	private RepositorioCriaturas repositCriaturas;
 	private RepositorioMesas repositMesa;
 	
+	public List<Criatura> getCriaturas() {
+		return repositCriaturas.getCriaturas();
+	}
+	public void setCriaturas(List<Criatura> criaturas) {
+		repositCriaturas.setCriaturas(criaturas);
+	}
 	public static ControladorSistema Instancia= new ControladorSistema();
 	public static ControladorSistema GetInstance() {
 		return Instancia;

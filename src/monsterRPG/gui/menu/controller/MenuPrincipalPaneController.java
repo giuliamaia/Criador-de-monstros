@@ -4,6 +4,7 @@ import java.util.List;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,10 +18,37 @@ import javafx.stage.Stage;
 import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.negocio.ControladorSistema;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class MenuPrincipalPaneController {
 	private MonsterRPG monsterRPG = new MonsterRPG();
 	private ControladorSistema controlador = ControladorSistema.GetInstance();
+	private List<Criatura> listaLocal = controlador.getCriaturas();
+    @FXML
+    private Font x1;
+
+    @FXML
+    private TextField barraDePesquisa;
+
+    @FXML
+    private ListView<Criatura> lvLista;
+
+    @FXML
+    private ImageView fotoDoBicho;
+
+    @FXML
+    private Font x3;
+
+    @FXML
+    private Color x4;
 	private Criatura criaturaSelecionada;
 	@FXML
 	private Label labelNomeMonstro;
@@ -28,13 +56,12 @@ public class MenuPrincipalPaneController {
 	private ToggleButton buttonFavorito;
 	@FXML
 	private Image imagem;
-    @FXML
-    private TextField barraDePesquisa;
+
 	@FXML
 	public void Pesquisar() {
-		String pesquisa = "Ordnael";
-		List<Criatura> criaturas = controlador.listarPorNome(pesquisa);
-		
+		System.out.println(barraDePesquisa.getText());
+		listaLocal = controlador.listarPorNome(barraDePesquisa.getText());
+		atualizarLista();
 	}
 	public void isBotaoFavoritoPressed() {
 		
@@ -42,7 +69,11 @@ public class MenuPrincipalPaneController {
 			criaturaSelecionada.setFavorito(buttonFavorito.isPressed());
 		}catch(NullPointerException e) {
 			buttonFavorito.setSelected(false);
-			System.out.println("Criatura deve ser valida");
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
+			alerta.setContentText("Você precisa selecionar algum monstro para favoritar");
+			alerta.setHeaderText("Nenhum monstro selecionado");
+			alerta.setTitle("Error 404: Monstro não encontrado");
+			alerta.showAndWait();
 		}
 	}
 	public void ordenarPorDataCrescente() {
@@ -73,19 +104,17 @@ public class MenuPrincipalPaneController {
 		return true;
 	}
 	@FXML
-	public boolean addCriatura() {
+	public void addCriatura() {
 		monsterRPG.abrirNovoMonstroDialog();
-		
-		
-		
-		
-		return true;
+		listaLocal = controlador.getCriaturas();
+		Pesquisar();
 	}
 	public void atualizarLista() {
-		//TODO atualizar
+		lvLista.setItems(FXCollections.observableList(listaLocal));
 	}
-	public void inicializar() {
-		//TODO inicializar
+	public void initialize() {
+		atualizarLista();
 		
 	}
+
 }

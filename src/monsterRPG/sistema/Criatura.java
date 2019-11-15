@@ -18,13 +18,12 @@ public class Criatura extends Status {
 	private List<String> jogadoresQueMataram = new ArrayList<String>();
 	private BufferedImage fotinha;
 	public Criatura(int vida, int defesa, double nivel, int força, int destreza, int constituição, int inteligência, int sabedoria,
-			int carisma, String nome, String descrição, Types tipo, boolean favorito) {
+			int carisma, String nome, String descrição, Types tipo) {
 		super(vida, defesa, nivel, força, destreza, constituição, inteligência, sabedoria, carisma);
 		this.nome = nome;
 		this.descrição = descrição;
 		this.tipo = tipo;
 		this.dataCriacao = LocalDate.now();
-		this.favorito = favorito;
 		try {
 			this.setaFoto();
 			return;
@@ -78,4 +77,17 @@ public class Criatura extends Status {
 	public void adicionarMortePeloJogador(String jogador) {
 		this.jogadoresQueMataram.add(jogador);
 	}
+	
+	@Override
+	public String toString() {
+		String retorno = getNome();
+		if(jogadoresQueMataram != null && jogadoresQueMataram.size() > 0) {
+			retorno.concat("    Mataram:");
+			for (int i = 0; i < jogadoresQueMataram.size(); i++) {
+				retorno.concat(" " + jogadoresQueMataram.get(i));
+			}
+		}
+		return retorno;
+	}
+	
 }

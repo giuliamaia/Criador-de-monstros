@@ -160,12 +160,12 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="518.0" layoutY="359.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="62.0" text="Cancelar">
+      <Button layoutX="518.0" layoutY="359.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="27.0" prefWidth="62.0" text="Cancelar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="438.0" layoutY="359.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="62.0" text="Ok">
+      <Button layoutX="438.0" layoutY="359.0" mnemonicParsing="false" onAction="#submeter" prefHeight="27.0" prefWidth="62.0" text="Ok">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
