@@ -30,7 +30,7 @@ public class Criatura extends Status {
 			return;
 		}
 		catch(IOException e) {
-			System.out.println("Deu merda");
+			System.out.println("Deu merda na foto");
 		}
 	}
 	private void setaFoto() throws IOException {

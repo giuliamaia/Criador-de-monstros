@@ -16,6 +16,7 @@ public class RepositorioCriaturas {
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.add(c);
+			c.setDataCriação(LocalDate.now());
 		} catch (NullPointerException e) {
 			throw new CriaturaInvalidaException("Criatura criada não pode ser vazia. SEU ANIMAL!");
 		}
@@ -100,7 +101,7 @@ public class RepositorioCriaturas {
 		for(int i=0; i<this.criaturas.size(); i++) {
 			if(this.criaturas.get(i).isFavorito()) {
 				ret.add(this.criaturas.get(i));
-				System.out.println("add na lista de favoritos");
+				System.out.println("add na lista de favoritos;"+this.criaturas.get(i).getNome());
 			}
 		}
 		return ret;
@@ -116,13 +117,14 @@ public class RepositorioCriaturas {
 		}
 		return ret;
 	}
-	//ainda vou testar
+	//ok
 	public List<Criatura> OrdenarPorDataCrescente(){
 		List<Criatura> ret = new ArrayList<Criatura>();
 		LocalDate comp = LocalDate.of(1950, 1, 1);
 		for(int i=0; i<this.criaturas.size(); i++) {
 			if(this.criaturas.get(i).getDataCriação().isAfter(comp)) {
 				ret.add(this.criaturas.get(i));
+				System.out.println(this.criaturas.get(i).getDataCriação());
 				comp = this.criaturas.get(i).getDataCriação();
 			}
 		}
@@ -135,10 +137,12 @@ public class RepositorioCriaturas {
 		for(int i=0; i<this.criaturas.size(); i++) {
 			if(this.criaturas.get(i).getDataCriação().equals(comp)) {
 				ret.add(this.criaturas.get(i));
+				System.out.println(this.criaturas.get(i).getDataCriação());
 			}
 			else if(this.criaturas.get(i).getDataCriação().isBefore(comp)) {
 				ret.add(this.criaturas.get(i));
 				comp = this.criaturas.get(i).getDataCriação();
+				System.out.println(this.criaturas.get(i).getDataCriação());
 			}
 		}
 		return ret;
