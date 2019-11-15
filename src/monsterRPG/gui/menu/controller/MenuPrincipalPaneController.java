@@ -59,7 +59,6 @@ public class MenuPrincipalPaneController {
 
 	@FXML
 	public void Pesquisar() {
-		System.out.println(barraDePesquisa.getText());
 		listaLocal = controlador.listarPorNome(barraDePesquisa.getText());
 		atualizarLista();
 	}
