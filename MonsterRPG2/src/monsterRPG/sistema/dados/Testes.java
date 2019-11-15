@@ -12,5 +12,8 @@ public class Testes {
 		}
 		System.out.println("Nome do bicho criado: " + primeira.getNome());
 		System.out.println("Size do pesquisar por nome: " + reposit.listarPorNome("Ordnael").size());
+		primeira.adicionarMortePeloJogador("Ordnael");
+		System.out.println(reposit.listarFavoritos());
+		System.out.println(reposit.listarPorQuemMatou("Ordnael"));
 	}
 }

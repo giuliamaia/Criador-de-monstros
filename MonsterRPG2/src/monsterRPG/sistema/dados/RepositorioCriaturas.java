@@ -61,4 +61,40 @@ public class RepositorioCriaturas {
 		}
 		return ret;
 	}
+	
+	public List<Criatura> listarPorQuemMatou(String nomeJogador){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		
+		for(int i=0; i<this.criaturas.size(); i++) {
+			for(int j=0; j<this.criaturas.get(i).getJogadoresQueMataram().size(); j++) {
+				if(this.criaturas.get(i).getJogadoresQueMataram().get(j).equals(nomeJogador)) {
+					ret.add(this.criaturas.get(i));
+					System.out.println("Adicionou na lista de quem matou");
+				}
+			}
+		}
+		return ret;
+	}
+	
+	public List<Criatura> listarFavoritos(){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).isFavorito()) {
+				ret.add(this.criaturas.get(i));
+				System.out.println("add na lista de favoritos");
+			}
+		}
+		return ret;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -32,7 +32,6 @@ public class Criatura extends Status {
 		catch(IOException e) {
 			System.out.println("Deu merda");
 		}
-		
 	}
 	private void setaFoto() throws IOException {
 		if(tipo == Types.Besta) {
