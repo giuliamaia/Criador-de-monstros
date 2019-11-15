@@ -11,13 +11,7 @@ import monsterRPG.sistema.dados.RepositorioMesas;
 public class ControladorSistema {
 	private RepositorioCriaturas repositCriaturas;
 	private RepositorioMesas repositMesa;
-	private Criatura criaturaSelecionada;
-	public Criatura getCriaturaSelecionada() {
-		return criaturaSelecionada;
-	}
-	public void setCriaturaSelecionada(Criatura criaturaSelecionada) {
-		this.criaturaSelecionada = criaturaSelecionada;
-	}
+	
 	public static ControladorSistema Instancia= new ControladorSistema();
 	public static ControladorSistema GetInstance() {
 		return Instancia;

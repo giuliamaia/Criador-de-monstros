@@ -1,29 +1,49 @@
 package monsterRPG.gui.menu.controller;
 
+import java.util.List;
+
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.negocio.ControladorSistema;
 
 public class MenuPrincipalPaneController {
-	private boolean favorito = false;
-	ControladorSistema controlador = ControladorSistema.GetInstance();
+	private MonsterRPG monsterRPG = new MonsterRPG();
+	private ControladorSistema controlador = ControladorSistema.GetInstance();
+	private Criatura criaturaSelecionada;
 	@FXML
 	private Label labelNomeMonstro;
 	@FXML
+	private ToggleButton buttonFavorito;
+	@FXML
 	private Image imagem;
-	
+    @FXML
+    private TextField barraDePesquisa;
 	@FXML
 	public void Pesquisar() {
-		//TODO Pesquisar
-		System.out.println("Tá funcionando");
+		String pesquisa = "Ordnael";
+		List<Criatura> criaturas = controlador.listarPorNome(pesquisa);
+		
 	}
-	public boolean isBotaoFavoritoPressed() {
-		favorito = !favorito;
-		System.out.println(favorito);
-		return favorito;
+	public void isBotaoFavoritoPressed() {
+		
+		try{
+			criaturaSelecionada.setFavorito(buttonFavorito.isPressed());
+		}catch(NullPointerException e) {
+			buttonFavorito.setSelected(false);
+			System.out.println("Criatura deve ser valida");
+		}
 	}
 	public void ordenarPorDataCrescente() {
 		//TODO ordenar
@@ -44,7 +64,7 @@ public class MenuPrincipalPaneController {
 	public void ordenarPorFavoritos() {
 		//TODO ordenar
 	}
-	public boolean addCriatura() {
+	public boolean editCriatura() {
 		//TODO adicionar
 		return true;
 	}
@@ -52,8 +72,13 @@ public class MenuPrincipalPaneController {
 		//TODO remover
 		return true;
 	}
-	public boolean editCriatura() {
-		//TODO editar
+	@FXML
+	public boolean addCriatura() {
+		monsterRPG.abrirNovoMonstroDialog();
+		
+		
+		
+		
 		return true;
 	}
 	public void atualizarLista() {
@@ -61,5 +86,6 @@ public class MenuPrincipalPaneController {
 	}
 	public void inicializar() {
 		//TODO inicializar
+		
 	}
 }

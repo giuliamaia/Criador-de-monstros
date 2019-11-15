@@ -36,7 +36,7 @@ public class RepositorioCriaturas {
 		if(nome == null) return null;
 		
 		for(Criatura c : this.criaturas) {
-			if(c.getNome().equals(nome)) {
+			if(c.getNome().contains(nome)) {
 				ret.add(c);
 			}
 		}
