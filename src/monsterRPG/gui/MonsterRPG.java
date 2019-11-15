@@ -1,6 +1,8 @@
 package monsterRPG.gui;
 
+import java.io.IOException;
 import java.net.URL;
+
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -13,27 +15,24 @@ import javafx.stage.Stage;
 import monsterRPG.gui.menu.controller.MenuPrincipalPaneController;
 import monsterRPG.sistema.negocio.ControladorSistema;
 public class MonsterRPG extends Application{
-	private Stage estagio;
+	private static Stage estagio;
 	
-	private Scene cenaMain;
-	private Scene cenaEditar;
-	private Scene cenaCriar;
+	private static Scene cenaMain;
+	private static Scene cenaEditar;
+	private static Scene cenaCriar;
 	@Override
 	public void start(Stage primaryStage) {
-		estagio = primaryStage;
 		try {
-			
+			estagio = primaryStage;
 			Parent rootMain = FXMLLoader.load(getClass().getResource("menu/view/MenuPrincipal.fxml"));
 			cenaMain = new Scene(rootMain);
-			
-			Parent rootCriar = FXMLLoader.load(getClass().getResource("menu/view/NovaDialog.fxml"));
-			cenaCriar = new Scene(rootCriar);
+
 			
 			primaryStage.setTitle("MonsterRPG 1.0");
 			primaryStage.setScene(cenaMain);
 			primaryStage.show();
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("Sout america nemesis");
 		}
 	}
 	
@@ -42,7 +41,22 @@ public class MonsterRPG extends Application{
 	}
 	@FXML
 	public void abrirNovoMonstroDialog() {
-		estagio.setScene(cenaCriar);
+        AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane)  FXMLLoader.load(getClass().getResource("menu/view/NovaDialog.fxml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Novo Monstro");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(estagio);
+        cenaCriar = new Scene(conteudoDialog);
+        dialogStage.setScene(cenaCriar);
+
+        dialogStage.showAndWait();
 	}
 
 }

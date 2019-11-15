@@ -1,14 +1,18 @@
 package monsterRPG.gui.menu.controller;
+
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-public class EditarDialogController {
+import monsterRPG.sistema.Types;
+public class NovaContaDialogController {
 
     @FXML
     private TextField txNome;
 
     @FXML
-    private ComboBox<?> escolhaDeTipo;
+    private ComboBox<Types> escolhaDeTipo;
 
     @FXML
     private TextField txCarisma;
@@ -38,5 +42,5 @@ public class EditarDialogController {
     private TextField txSabedoria;
 
     @FXML
-    private TextField txDescricao;
+    private TextArea txDescricao;
 }
