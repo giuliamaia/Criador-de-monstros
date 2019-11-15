@@ -1,4 +1,4 @@
-package monsterRPG.sistema.dados;
+package monsterRPG.sistema;
 
 public class CriaturaInvalidaException extends Exception {
 	

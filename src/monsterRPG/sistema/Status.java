@@ -1,4 +1,4 @@
-package monsterRPG.sistema.dados;
+package monsterRPG.sistema;
 
 public abstract class Status {
 	private int vida;

@@ -1,4 +1,4 @@
-package monsterRPG.sistema.dados;
+package monsterRPG.sistema;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

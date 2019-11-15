@@ -4,13 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import monsterRPG.sistema.dados.Criatura;
+import monsterRPG.sistema.Criatura;
+import monsterRPG.sistema.negocio.ControladorSistema;
 
 public class MenuPrincipalPaneController {
 	private boolean favorito = false;
-	private Criatura criaturaSelecionada;
-	private String texto = "";
-	
+	ControladorSistema controlador = ControladorSistema.GetInstance();
 	@FXML
 	private Label labelNomeMonstro;
 	@FXML

@@ -3,6 +3,10 @@ package monsterRPG.sistema.dados;
 import java.util.ArrayList;
 import java.util.List;
 
+import monsterRPG.sistema.Criatura;
+import monsterRPG.sistema.CriaturaInvalidaException;
+import monsterRPG.sistema.Types;
+
 
 public class RepositorioCriaturas {
 	List<Criatura> criaturas;

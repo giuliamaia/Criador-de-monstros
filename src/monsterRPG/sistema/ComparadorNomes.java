@@ -1,4 +1,4 @@
-package monsterRPG.sistema.dados;
+package monsterRPG.sistema;
 
 import java.util.Comparator;
 

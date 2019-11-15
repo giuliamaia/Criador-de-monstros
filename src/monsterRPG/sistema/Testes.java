@@ -1,4 +1,6 @@
-package monsterRPG.sistema.dados;
+package monsterRPG.sistema;
+
+import monsterRPG.sistema.dados.RepositorioCriaturas;
 
 public class Testes {
 	public static void main(String[] args) {
