@@ -23,7 +23,6 @@ public class Criatura extends Status {
 		this.dataCriacao = LocalDate.now();
 		try {
 			this.setaFoto();
-			return;
 		}
 		catch(IOException e) {
 			System.out.println("Deu merda");
