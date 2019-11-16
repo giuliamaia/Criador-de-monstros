@@ -146,7 +146,7 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametroReverse(List<Criatura> listaCriaturas){
-		List<Criatura> ret = ordenarNomesPorOrdemAlfabeticaComParametroReverse(listaCriaturas);
+		List<Criatura> ret = ordenarNomesPorOrdemAlfabeticaComParametro(listaCriaturas);
 		Collections.reverse(ret);
 		return ret;
 	}

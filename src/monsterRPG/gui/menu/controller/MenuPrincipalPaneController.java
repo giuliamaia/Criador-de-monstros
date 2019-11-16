@@ -1,6 +1,9 @@
 package monsterRPG.gui.menu.controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -12,6 +15,7 @@ import javafx.scene.image.Image;
 import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
+import monsterRPG.sistema.Types;
 import monsterRPG.sistema.negocio.ControladorSistema;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -35,7 +39,8 @@ public class MenuPrincipalPaneController {
 
     @FXML
     private ImageView fotoDoBicho;
-
+    @FXML
+    private ComboBox<Types> escolhaDeTipo;
     @FXML
     private Font x3;
 
@@ -101,8 +106,10 @@ public class MenuPrincipalPaneController {
     private Button buttonPesquisaNome;
     @FXML
     void PesquisarPorData() {
-    	if(checkBoxDuasDatas.isPressed()) {
-    		//TODO data entre
+    	if(checkBoxDuasDatas.isSelected()) {
+    		if (txData2.getValue()!=null) {
+    			//listaLocal 
+    		}
     	}
     	else {
     		listaLocal = controlador.filtrarPorData(txData1.getValue());
@@ -117,6 +124,7 @@ public class MenuPrincipalPaneController {
     	buttonPesquisaNome.setVisible(false);
     	
     	//ativa esse botão
+    	escolhaDeTipo.setVisible(false);
     	buttonPesquisarPorData.setVisible(true);
     	checkBoxDuasDatas.setVisible(true);
     	txData1.setVisible(true);
@@ -126,7 +134,6 @@ public class MenuPrincipalPaneController {
     }
     @FXML
     private void abrirData2() {
-    	System.out.println(checkBoxDuasDatas.isPressed());
 		if(!checkBoxDuasDatas.isSelected()) {
 			txData2.setDisable(true);
 		}
@@ -137,19 +144,30 @@ public class MenuPrincipalPaneController {
 
 	@FXML
     void alterarBarraPesquisaParaTipo() {
+		//Abilita esse botões
+		escolhaDeTipo.setVisible(true);
     	
-    }
-    @FXML
-    void alterarBarraPesquisaParaNome() {
-    	//Desabilita outros botões
-    	barraDePesquisa.setVisible(true);
-    	buttonPesquisaNome.setVisible(true);
     	
-    	//ativa esse botão
+    	//desativa esse botão
     	buttonPesquisarPorData.setVisible(false);
     	txData1.setVisible(false);
     	txData2.setVisible(false);
     	checkBoxDuasDatas.setVisible(false);
+    	barraDePesquisa.setVisible(false);
+    	buttonPesquisaNome.setVisible(false);
+    }
+    @FXML
+    void alterarBarraPesquisaParaNome() {
+    	//Abilita esse botões
+    	barraDePesquisa.setVisible(true);
+    	buttonPesquisaNome.setVisible(true);
+    	
+    	//desativa esse botão
+    	buttonPesquisarPorData.setVisible(false);
+    	txData1.setVisible(false);
+    	txData2.setVisible(false);
+    	checkBoxDuasDatas.setVisible(false);
+    	escolhaDeTipo.setVisible(false);
     }
     @FXML
     void filtrarListaFavoritos() {
@@ -161,11 +179,14 @@ public class MenuPrincipalPaneController {
 		listaLocal = controlador.filtrarPorNome(barraDePesquisa.getText());
 		atualizarLista();
 	}
+	@FXML
+	public void PesquisarPorTipo() {
+		listaLocal = controlador.filtrarPorTipo(escolhaDeTipo.getSelectionModel().getSelectedItem());
+		atualizarLista();
+	}
 	public void setaFoto() {
 		try{
-			
 		}catch(Exception e) {
-			
 		}
 		
 	}
@@ -226,17 +247,20 @@ public class MenuPrincipalPaneController {
 		}
 	}
 	public void ordenarPorDataCrescente() {
-		//TODO ordenar
+		controlador.ordenarDatasCrescenteComParametro(listaLocal);
+		atualizarLista();
 	}
 	public void ordenarPorDataDecrescente() {
-		//TODO ordenar
+		controlador.ordenarDatasDecrescenteComParametro(listaLocal);
+		atualizarLista();
 	}
 	public void ordenarPorNomeCrescente() {
-		//TODO ordenar
+		controlador.ordenarNomesPorOrdemAlfabeticaComParametro(listaLocal);
+		atualizarLista();
 	}
 	public void ordenarPorNomeDecrescente() {
-		//TODO ordenar
-		
+		controlador.ordenarNomesPorOrdemAlfabeticaComParametroReverse(listaLocal);
+		atualizarLista();
 	}
 	public void ordenarPorMortos() {
 		//TODO ordenar
@@ -299,9 +323,31 @@ public class MenuPrincipalPaneController {
 		lvLista.setItems(FXCollections.observableList(listaLocal));
 		selecionaCriatura();
 	}
+	private void setarComboBox() {
+		List<Types> tipos = new ArrayList<Types>();
+		tipos.add(Types.ABERRAÇAO);
+		tipos.add(Types.BESTA);
+		tipos.add(Types.CELESTIAL);
+		tipos.add(Types.CONSTRUTO);
+		tipos.add(Types.DEMONIO);
+		tipos.add(Types.DRAGAO);
+		tipos.add(Types.DEMONIO);
+		tipos.add(Types.DRAGAO);
+		tipos.add(Types.ELEMENTAL);
+		tipos.add(Types.FADA);
+		tipos.add(Types.GIGANTE);
+		tipos.add(Types.GOSMA);
+		tipos.add(Types.HUMANOIDE);
+		tipos.add(Types.MONSTRUOSIDADE);
+		tipos.add(Types.MORTOVIVO);
+		tipos.add(Types.PLANTA);
+		
+		escolhaDeTipo.setItems(FXCollections.observableArrayList(tipos));
+	}
 	public void initialize() {
 		atualizarLista();
 		alterarBarraPesquisaParaNome();
+		setarComboBox();
 	}
 
 }

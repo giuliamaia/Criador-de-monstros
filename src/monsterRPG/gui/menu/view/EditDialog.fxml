@@ -175,6 +175,6 @@
             <Font name="Colonna MT" size="40.0" />
          </font>
       </Text>
-      <TextArea fx:id="txDescricao" layoutX="318.0" layoutY="72.0" prefHeight="278.0" prefWidth="274.0" />
+      <TextArea fx:id="txDescricao" layoutX="318.0" layoutY="72.0" prefHeight="278.0" prefWidth="274.0" wrapText="true" />
    </children>
 </AnchorPane>
