@@ -1,6 +1,7 @@
 package monsterRPG.sistema.dados;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -169,6 +170,23 @@ public class RepositorioCriaturas {
 	public List<Criatura> ordenarDatasDecrescenteComParametro(List<Criatura> listaCriaturas){
 		List<Criatura> ret = ordenarDatasCrescenteComParametro(listaCriaturas);
 		Collections.reverse(ret);
+		return ret;
+	}
+	public Criatura procurarPorCriaturaPorUmNome(String nomeCriatura){
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).getNome().contains(nomeCriatura)) {
+				return this.criaturas.get(i);
+			}
+		}
+		return null;
+	}
+	public List<Criatura> filtrarCriaturasCriadasEntreDuasDatas(LocalDate inicio, LocalDate fim){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).getDataCriação().isAfter(inicio)&&this.criaturas.get(i).getDataCriação().isBefore(fim)) {
+				ret.add(this.criaturas.get(i));
+			}
+		}
 		return ret;
 	}
 	

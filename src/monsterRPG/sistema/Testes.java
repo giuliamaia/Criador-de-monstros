@@ -52,11 +52,12 @@ System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("
 		c5.setDataCriação(LocalDate.of(2018, 7, 2));
 		c6.setDataCriação(LocalDate.of(2015, 6, 6));
 		
-		System.out.println("Fav: "+controlador.filtrarFavoritos());
-		System.out.println("Quem matou: "+ controlador.filtrarPorQuemMatou("Ordnael"));
-		System.out.println("Nomes em ordem alfabetica: "+controlador.ordenarNomesDoRepositorioPorOrdemAlfabetica());
-		System.out.println("Nomes em ordem alfabetica reverse: "+controlador.ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse());
-		System.out.println("Datas crescente: "+controlador.ordenarDatasDoRepositorioCrescente());
-		System.out.println("Datas decrescente: "+controlador.ordenarDatasDoRepositorioDecrescente());
+		System.out.println("Fav: " + controlador.filtrarFavoritos());
+		System.out.println("Quem matou: " + controlador.filtrarPorQuemMatou("Ordnael"));
+		System.out.println("Nomes em ordem alfabetica: "+ controlador.ordenarNomesDoRepositorioPorOrdemAlfabetica());
+		System.out.println("Nomes em ordem alfabetica reverse: " + controlador.ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse());
+		System.out.println("Datas crescente: " + controlador.ordenarDatasDoRepositorioCrescente());
+		System.out.println("Datas decrescente: " + controlador.ordenarDatasDoRepositorioDecrescente());
+		System.out.println("Monstros criados entre 15/1/2001 e 3/12/2015: " + controlador.filtrarCriaturasCriadasEntreDuasDatas(LocalDate.of(2001, 1, 15), LocalDate.of(2015, 12, 3)));
 	}
 }

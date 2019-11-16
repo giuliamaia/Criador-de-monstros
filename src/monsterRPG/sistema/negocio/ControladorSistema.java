@@ -1,6 +1,7 @@
 package monsterRPG.sistema.negocio;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -87,7 +88,11 @@ public class ControladorSistema {
 	public List<Criatura> ordenarDatasDecrescenteComParametro(List<Criatura> listaCriaturas){
 		return repositCriaturas.ordenarDatasDecrescenteComParametro(listaCriaturas);
 	}
-	
-	
+	public Criatura procurarPorCriaturaPorUmNome(String nomeCriatura){
+		return repositCriaturas.procurarPorCriaturaPorUmNome(nomeCriatura);
+	}
+	public List<Criatura> filtrarCriaturasCriadasEntreDuasDatas(LocalDate inicio, LocalDate fim){
+		return repositCriaturas.filtrarCriaturasCriadasEntreDuasDatas(inicio, fim);
+	}
 	
 }
