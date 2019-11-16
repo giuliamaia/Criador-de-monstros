@@ -1,5 +1,6 @@
 package monsterRPG.sistema.dados;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class RepositorioCriaturas {
 		}
 	}
 	
-	public List<Criatura> listarPorNome(String nome) {
+	public List<Criatura> filtrarPorNome(String nome) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
 		if(nome == null) return null;
@@ -51,7 +52,7 @@ public class RepositorioCriaturas {
 		this.criaturas = criaturas;
 	}
 
-	public List<Criatura> listarPorTipo(Types tipo) {
+	public List<Criatura> filtrarPorTipo(Types tipo) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
 		for(Criatura c : this.criaturas) {
@@ -62,7 +63,7 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
-	public List<Criatura> listarPorNivel(double menor, double maior) {
+	public List<Criatura> filtrarPorNivel(double menor, double maior) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
 		for(Criatura c : this.criaturas) {
@@ -73,4 +74,47 @@ public class RepositorioCriaturas {
 		}
 		return ret;
 	}
+	
+	public List<Criatura> filtrarPorQuemMatou(String nomeJogador){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		
+		for(int i=0; i<this.criaturas.size(); i++) {
+			for(int j=0; j<this.criaturas.get(i).getJogadoresQueMataram().size(); j++) {
+				if(this.criaturas.get(i).getJogadoresQueMataram().get(j).equals(nomeJogador)) {
+					ret.add(this.criaturas.get(i));
+					System.out.println("Adicionou na lista de quem matou");
+				}
+			}
+		}
+		return ret;
+	}
+	
+	public List<Criatura> filtrarFavoritos(){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).isFavorito()) {
+				ret.add(this.criaturas.get(i));
+				System.out.println("add na lista de favoritos;"+this.criaturas.get(i).getNome());
+			}
+		}
+		return ret;
+	}
+	
+	public List<Criatura> filtrarPorData(LocalDate data){
+		List<Criatura> ret = new ArrayList<Criatura>();
+	
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).getDataCriação().isEqual(data)) {
+				ret.add(this.criaturas.get(i));
+			}
+		}
+		return ret;
+	}
+	
+
+	
+	
+	
+	
+	
 }

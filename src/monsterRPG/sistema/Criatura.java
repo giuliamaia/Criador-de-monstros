@@ -31,7 +31,7 @@ public class Criatura extends Status {
 		
 	}
 	private void setaFoto() throws IOException {
-		if(tipo == Types.Besta) {
+		if(tipo == Types.BESTA) {
 			UrlDaFotinha = "/MonsterRPG/src/monsterRPG/gui/images/images.png";
 		}
 		else {

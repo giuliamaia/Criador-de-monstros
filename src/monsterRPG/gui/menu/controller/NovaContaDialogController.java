@@ -91,22 +91,22 @@ public class NovaContaDialogController {
 
 	private void setarComboBox() {
 		List<Types> tipos = new ArrayList<Types>();
-		tipos.add(Types.Aberracao);
-		tipos.add(Types.Besta);
-		tipos.add(Types.Celestial);
-		tipos.add(Types.Construto);
-		tipos.add(Types.Demonio);
-		tipos.add(Types.Dragao);
-		tipos.add(Types.Demonio);
-		tipos.add(Types.Dragao);
-		tipos.add(Types.Elemental);
-		tipos.add(Types.Fada);
-		tipos.add(Types.Gigante);
-		tipos.add(Types.Gosma);
-		tipos.add(Types.Humanoide);
-		tipos.add(Types.Monstruosidade);
-		tipos.add(Types.MortoVivo);
-		tipos.add(Types.Planta);
+		tipos.add(Types.ABERRAÇAO);
+		tipos.add(Types.BESTA);
+		tipos.add(Types.CELESTIAL);
+		tipos.add(Types.CONSTRUTO);
+		tipos.add(Types.DEMONIO);
+		tipos.add(Types.DRAGAO);
+		tipos.add(Types.DEMONIO);
+		tipos.add(Types.DRAGAO);
+		tipos.add(Types.ELEMENTAL);
+		tipos.add(Types.FADA);
+		tipos.add(Types.GIGANTE);
+		tipos.add(Types.GOSMA);
+		tipos.add(Types.HUMANOIDE);
+		tipos.add(Types.MONSTRUOSIDADE);
+		tipos.add(Types.MORTOVIVO);
+		tipos.add(Types.PLANTA);
 		
 		escolhaDeTipo.setItems(FXCollections.observableArrayList(tipos));
 	}

@@ -1,5 +1,6 @@
 package monsterRPG.sistema.negocio;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import monsterRPG.sistema.Criatura;
@@ -32,14 +33,24 @@ public class ControladorSistema {
 	public void removerCriatura(Criatura c) throws CriaturaInvalidaException {
 		repositCriaturas.removerCriatura(c);
 	}
-	public List<Criatura> listarPorNome(String nome) {
-		return repositCriaturas.listarPorNome(nome);
+	public List<Criatura> filtrarPorNome(String nome) {
+		return repositCriaturas.filtrarPorNome(nome);
 	}
-	public List<Criatura> listarPorTipo(Types tipo) {
-		return repositCriaturas.listarPorTipo(tipo);
+	public List<Criatura> filtrarPorTipo(Types tipo) {
+		return repositCriaturas.filtrarPorTipo(tipo);
 	}
-	public List<Criatura> listarPorNivel(double menor, double maior) {
-		return repositCriaturas.listarPorNivel(menor, maior);
+	public List<Criatura> filtrarPorNivel(double menor, double maior) {
+		return repositCriaturas.filtrarPorNivel(menor, maior);
 	}
+	public List<Criatura> filtrarFavoritos(){
+		return repositCriaturas.filtrarFavoritos();
+	}
+	public List<Criatura> filtrarPorQuemMatou(String j){
+		return repositCriaturas.filtrarPorQuemMatou(j);
+	}
+	public List<Criatura> filtrarPorData(LocalDate j){
+		return repositCriaturas.filtrarPorData(j);
+	}
+	
 	
 }

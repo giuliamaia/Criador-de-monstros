@@ -85,7 +85,7 @@ public class MenuPrincipalPaneController {
     private Label labelDescrição;
 	@FXML
 	public void Pesquisar() {
-		listaLocal = controlador.listarPorNome(barraDePesquisa.getText());
+		listaLocal = controlador.filtrarPorNome(barraDePesquisa.getText());
 		atualizarLista();
 	}
 	public void setaFoto() {
