@@ -16,6 +16,7 @@ public class RepositorioCriaturas {
 		this.criaturas = new ArrayList<Criatura>();
 	}
 	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException{
+		nova.setFavorito(antiga.isFavorito());
 		int i = getIndex(antiga);
 		removerCriatura(antiga);
 		this.criaturas.add(i, nova);

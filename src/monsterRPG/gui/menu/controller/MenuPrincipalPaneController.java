@@ -11,6 +11,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
+import monsterRPG.sistema.CriaturaInvalidaException;
 import monsterRPG.sistema.negocio.ControladorSistema;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -120,8 +121,22 @@ public class MenuPrincipalPaneController {
 				buttonFavorito.setSelected(false);
 			}
 			setaFoto();
-		}catch(Exception e) {
-			
+		}catch(Exception e) {		
+			labelCarisma.setText("");
+			labelConstituicao.setText("");
+			labelDefesa.setText("");
+			labelDestreza.setText("");
+			labelForca.setText("");
+			labelInteligencia.setText("");
+			labelNivel.setText("");
+			labelNomeMonstro.setText("");
+			labelSabedoria.setText("");
+			labelTipo.setText("");
+			labelVida.setText("");
+			labelCarisma.setText("");
+			labelDataCriacao.setText("");
+			labelDescrição.setText("");
+			buttonFavorito.setSelected(false);
 		}
 		
 	}
@@ -158,7 +173,27 @@ public class MenuPrincipalPaneController {
 		//TODO ordenar
 	}
 	public boolean removeCriatura() {
-		//TODO remover
+		try {
+			if (criaturaSelecionada==null) {
+				Alert alerta = new Alert(Alert.AlertType.ERROR);
+				alerta.setContentText("Você precisa selecionar algum monstro para editar");
+				alerta.setHeaderText("Nenhum monstro selecionado");
+				alerta.setTitle("Error 404: Monstro não encontrado");
+				alerta.showAndWait();
+			}
+			controlador.removerCriatura(criaturaSelecionada);
+			listaLocal = controlador.getCriaturas();
+			Pesquisar();
+			criaturaSelecionada = null;
+		} catch (CriaturaInvalidaException e) {
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
+			alerta.setContentText("Você precisa selecionar algum monstro para editar");
+			alerta.setHeaderText("Nenhum monstro selecionado");
+			alerta.setTitle("Error 404: Monstro não encontrado");
+			alerta.showAndWait();
+		}
+		
+		
 		return true;
 	}
 	@FXML
@@ -166,18 +201,31 @@ public class MenuPrincipalPaneController {
 		monsterRPG.abrirNovoMonstroDialog();
 		listaLocal = controlador.getCriaturas();
 		Pesquisar();
+		selecionaCriatura();
 		criaturaSelecionada = null;
 	}
 	public void editCriatura() {
-		controlador.setCriaturaAux(criaturaSelecionada);
-		monsterRPG.abrirEditarMonstroDialog();
-		listaLocal = controlador.getCriaturas();
-		Pesquisar();
-		criaturaSelecionada = null;
-		controlador.setCriaturaAux(null);
+		if(criaturaSelecionada == null) {
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
+			alerta.setContentText("Você precisa selecionar algum monstro para editar");
+			alerta.setHeaderText("Nenhum monstro selecionado");
+			alerta.setTitle("Error 404: Monstro não encontrado");
+			alerta.showAndWait();
+		}
+		else {
+			controlador.setCriaturaAux(criaturaSelecionada);
+			monsterRPG.abrirEditarMonstroDialog();
+			listaLocal = controlador.getCriaturas();
+			Pesquisar();
+			criaturaSelecionada = null;
+			selecionaCriatura();
+			controlador.setCriaturaAux(null);
+		}
+		
 	}
 	public void atualizarLista() {
 		lvLista.setItems(FXCollections.observableList(listaLocal));
+		selecionaCriatura();
 	}
 	public void initialize() {
 		atualizarLista();
