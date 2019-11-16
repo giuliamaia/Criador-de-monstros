@@ -36,6 +36,13 @@ public class MenuPrincipalPaneController {
 
     @FXML
     private ListView<Criatura> lvLista;
+    @FXML
+    private TextField tfNivel1;
+
+    @FXML
+    private TextField tfNivel2;
+    @FXML
+    private Button buttonPesquisarPorNivel;
 
     @FXML
     private ImageView fotoDoBicho;
@@ -124,6 +131,9 @@ public class MenuPrincipalPaneController {
     	buttonPesquisaNome.setVisible(false);
     	
     	//ativa esse botão
+    	tfNivel1.setVisible(false);
+    	tfNivel2.setVisible(false);
+    	buttonPesquisarPorNivel.setVisible(false);
     	escolhaDeTipo.setVisible(false);
     	buttonPesquisarPorData.setVisible(true);
     	checkBoxDuasDatas.setVisible(true);
@@ -149,6 +159,9 @@ public class MenuPrincipalPaneController {
     	
     	
     	//desativa esse botão
+		tfNivel1.setVisible(false);
+    	tfNivel2.setVisible(false);
+    	buttonPesquisarPorNivel.setVisible(false);
     	buttonPesquisarPorData.setVisible(false);
     	txData1.setVisible(false);
     	txData2.setVisible(false);
@@ -163,6 +176,9 @@ public class MenuPrincipalPaneController {
     	buttonPesquisaNome.setVisible(true);
     	
     	//desativa esse botão
+    	tfNivel1.setVisible(false);
+    	tfNivel2.setVisible(false);
+    	buttonPesquisarPorNivel.setVisible(false);
     	buttonPesquisarPorData.setVisible(false);
     	txData1.setVisible(false);
     	txData2.setVisible(false);
@@ -173,6 +189,52 @@ public class MenuPrincipalPaneController {
     void filtrarListaFavoritos() {
     	listaLocal = controlador.filtrarFavoritos();
     	atualizarLista();
+    }
+    @FXML 
+    void crimeOcorre(){
+    	
+    }
+    @FXML
+    void filtrarListaNivel() {
+    	if(!tfNivel1.getText().isEmpty() && !tfNivel2.getText().isEmpty()) {
+    		try {
+        		double a = Double.parseDouble(tfNivel1.getText());
+        		double b = Double.parseDouble(tfNivel2.getText());
+        		if(b<a) {
+        			tfNivel1.setText(""+b);
+        			tfNivel2.setText(""+a);
+        			listaLocal = controlador.filtrarPorNivel(b, a);
+        		}
+        		else {
+        			listaLocal = controlador.filtrarPorNivel(a, b);
+        		}
+        		atualizarLista();
+        	}catch(Exception e) {
+        		Alert alert = new Alert(Alert.AlertType.ERROR);
+        		alert.setContentText("Você está usando paramêtros inválidos na sua pesquisa.");
+        		alert.setHeaderText("Paramêtros invalidos para pesquisa");
+        		alert.setTitle("Error 4002-8922");
+        		alert.showAndWait();
+        	}
+    	}
+    }
+
+    @FXML
+    void alteraBarraDePesquisaParaNivel() {
+    	//Abilita esse botões
+    	tfNivel1.setVisible(true);
+    	tfNivel2.setVisible(true);
+    	buttonPesquisarPorNivel.setVisible(true);
+    	
+    	
+    	//desativa esse botão
+    	barraDePesquisa.setVisible(false);
+    	buttonPesquisaNome.setVisible(false);
+    	buttonPesquisarPorData.setVisible(false);
+    	txData1.setVisible(false);
+    	txData2.setVisible(false);
+    	checkBoxDuasDatas.setVisible(false);
+    	escolhaDeTipo.setVisible(false);
     }
 	@FXML
 	public void Pesquisar() {

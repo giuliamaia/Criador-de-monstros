@@ -44,10 +44,9 @@
                   <MenuItem mnemonicParsing="false" onAction="#atualizarLista" text="Atualizar" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Procurar">
+            <Menu mnemonicParsing="false" text="Ver">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Por tipo" />
-                  <MenuItem mnemonicParsing="false" text="Por nivel" />
+                  <MenuItem mnemonicParsing="false" onAction="#crimeOcorre" text="Mesas" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Filtrar">
@@ -56,6 +55,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#alterarBarraPesquisaParaData" text="Por data..." />
                   <MenuItem mnemonicParsing="false" onAction="#alterarBarraPesquisaParaTipo" text="Por tipo..." />
                   <MenuItem mnemonicParsing="false" onAction="#filtrarListaFavoritos" text="Por favoritos..." />
+                  <MenuItem mnemonicParsing="false" onAction="#alteraBarraDePesquisaParaNivel" text="Por nivel..." />
                </items>
             </Menu>
          </menus>
@@ -112,9 +112,6 @@
                         <SeparatorMenuItem mnemonicParsing="false" />
                       <MenuItem mnemonicParsing="false" onAction="#ordenarPorNomeCrescente" text="Nome ↓" />
                         <MenuItem mnemonicParsing="false" onAction="#ordenarPorNomeDecrescente" text="Nome ↑" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" onAction="#ordenarPorMortos" text="Mortos" />
-                        <MenuItem mnemonicParsing="false" onAction="#ordenarPorFavoritos" text="Favoritos" />
                     </items>
                   </MenuButton>
                   <ListView fx:id="lvLista" layoutX="3.0" layoutY="97.0" onKeyReleased="#selecionaCriatura" onMouseClicked="#selecionaCriatura" prefHeight="407.0" prefWidth="216.0" />
@@ -135,6 +132,17 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ComboBox>
+                  <TextField fx:id="tfNivel1" layoutX="4.0" layoutY="507.0" onAction="#filtrarListaNivel" onKeyReleased="#filtrarListaNivel" prefHeight="25.0" prefWidth="72.0" />
+                  <TextField fx:id="tfNivel2" layoutX="97.0" layoutY="508.0" onAction="#filtrarListaNivel" onKeyReleased="#filtrarListaNivel" prefHeight="25.0" prefWidth="72.0" />
+                  <Button fx:id="buttonPesquisarPorNivel" layoutX="189.0" layoutY="508.0" mnemonicParsing="false" onAction="#filtrarListaNivel" prefHeight="16.0" prefWidth="17.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/f9bb81e576c1a361c61a8c08945b2c48---cone-de-pesquisa-by-vexels.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
             <ScrollPane prefHeight="554.0" prefWidth="672.0">
