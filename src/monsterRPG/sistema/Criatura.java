@@ -32,10 +32,49 @@ public class Criatura extends Status {
 	}
 	private void setaFoto() throws IOException {
 		if(tipo == Types.BESTA) {
-			UrlDaFotinha = "/MonsterRPG/src/monsterRPG/gui/images/images.png";
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.ABERRAÇAO) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.CELESTIAL) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.CONSTRUTO) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.DEMONIO) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.DRAGAO) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.ELEMENTAL) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.FADA) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.GIGANTE) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.GOSMA) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.HUMANOIDE) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.MONSTRUOSIDADE) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.MORTOVIVO) {
+			UrlDaFotinha = "images/";
+		}
+		else if (tipo == Types.PLANTA) {
+			UrlDaFotinha = "images/";
 		}
 		else {
-			UrlDaFotinha = "/MonsterRPG/src/monsterRPG/gui/images/1 zv9W7fMl12F1EYUuMR7q6A.jpeg";
+			UrlDaFotinha = "images/amem.jpeg";
 		}
 	}
 

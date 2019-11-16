@@ -155,7 +155,7 @@
                            <font>
                               <Font size="18.0" />
                            </font></Text>
-                        <ImageView fx:id="fotoDoBicho" fitHeight="116.0" fitWidth="120.0" layoutX="62.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="fotoDoBicho" fitHeight="116.0" fitWidth="120.0" layoutX="62.0" layoutY="34.0" pickOnBounds="true" />
                         <ToggleButton fx:id="buttonFavorito" layoutX="597.0" layoutY="28.0" mnemonicParsing="false" onAction="#isBotaoFavoritoPressed" prefHeight="27.0" prefWidth="30.0" textFill="#21a42a">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">

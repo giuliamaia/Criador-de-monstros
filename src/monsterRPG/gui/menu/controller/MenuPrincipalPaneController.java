@@ -249,7 +249,7 @@ public class MenuPrincipalPaneController {
 	}
 	public void setaFoto() {
 		try{
-			fotoDoBicho.setImage(new Image(getClass().getResource("images/foto1.png").toExternalForm()));
+			fotoDoBicho.setImage(new Image(getClass().getResource(criaturaSelecionada.getUrlDaFotinha()).toExternalForm()));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
