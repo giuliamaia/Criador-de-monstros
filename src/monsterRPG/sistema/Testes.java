@@ -2,7 +2,7 @@ package monsterRPG.sistema;
 
 import java.time.LocalDate;
 
-
+import monsterRPG.sistema.dados.RepositorioCriaturas;
 import monsterRPG.sistema.negocio.ControladorSistema;
 
 public class Testes {
@@ -15,48 +15,21 @@ public class Testes {
 		Criatura c5 = new Criatura(23, 30, 15.55, 16, 10, 14, 80, 90, 80, "Ordnael", "Nessa bagaça", Types.BESTA);
 		Criatura c6 = new Criatura(20,40,5.9,60,70,80,10,30,20, "Kaique", "eu vou eu vou pra casa agr eu vou", Types.ABERRAÇAO);
 		
-		ControladorSistema controlador = ControladorSistema.GetInstance();
-		try {
-			controlador.adicionarCriatura(primeira);
-			controlador.adicionarCriatura(c1);
-			controlador.adicionarCriatura(c2);
-			controlador.adicionarCriatura(c3);
-			controlador.adicionarCriatura(c4);
-			controlador.adicionarCriatura(c5);
-			controlador.adicionarCriatura(c6);
-		} catch (CriaturaInvalidaException e) {
-			// TODO Auto-generated catch block
-			System.out.println("DEU MERDA EM ADD CRIATURA!");
-		}
-		System.out.println("Nome do bicho criado: " + primeira.getNome());
-		System.out.println("Nome do bicho criado: " + c1.getNome());
-		System.out.println("Nome do bicho criado: " + c2.getNome());
-		System.out.println("Nome do bicho criado: " + c3.getNome());
-		System.out.println("Nome do bicho criado: " + c4.getNome());
-		System.out.println("Nome do bicho criado: " + c5.getNome());
-		System.out.println("Nome do bicho criado: " + c6.getNome());
+		RepositorioCriaturas repo = new RepositorioCriaturas();
 		
-		System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("Ordnael").size());
-		
-System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("Ordnael").size());
-		
-		c1.adicionarMortePeloJogador("Ordnael");
-		c5.adicionarMortePeloJogador("Ordnael");
-		c3.adicionarMortePeloJogador("Ordnael");
-		c2.adicionarMortePeloJogador("Ordnael");
-		
-		c1.setDataCriação(LocalDate.of(2003, 6, 13));
-		c2.setDataCriação(LocalDate.of(2005, 2, 1));
-		c3.setDataCriação(LocalDate.of(2001, 1, 11));
-		c4.setDataCriação(LocalDate.of(2000, 3, 1));
-		c5.setDataCriação(LocalDate.of(2018, 7, 2));
-		c6.setDataCriação(LocalDate.of(2015, 6, 6));
-		
-		System.out.println("Fav: "+controlador.filtrarFavoritos());
-		System.out.println("Quem matou: "+ controlador.filtrarPorQuemMatou("Ordnael"));
-		System.out.println("Nomes em ordem alfabetica: "+controlador.ordenarNomesDoRepositorioPorOrdemAlfabetica());
-		System.out.println("Nomes em ordem alfabetica reverse: "+controlador.ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse());
-		System.out.println("Datas crescente: "+controlador.ordenarDatasDoRepositorioCrescente());
-		System.out.println("Datas decrescente: "+controlador.ordenarDatasDoRepositorioDecrescente());
+		/*try {
+			repo.adicionarCriatura(primeira);
+			repo.adicionarCriatura(c1);
+			repo.adicionarCriatura(c2);
+			repo.adicionarCriatura(c3);
+			repo.adicionarCriatura(c4);
+			repo.adicionarCriatura(c5);
+			repo.adicionarCriatura(c6);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}*/
+		repo.load();
+		System.out.println(repo.getCriaturas());
+		//repo.save();
 	}
 }

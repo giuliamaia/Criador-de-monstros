@@ -37,13 +37,16 @@ public class ControladorSistema {
 	}
 	private ControladorSistema() {
 		this.repositCriaturas = new RepositorioCriaturas();
+		repositCriaturas.load();
 		this.repositMesa = new RepositorioMesas();
 	}
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		repositCriaturas.adicionarCriatura(c);
+		repositCriaturas.save();
 	}
 	public void removerCriatura(Criatura c) throws CriaturaInvalidaException {
 		repositCriaturas.removerCriatura(c);
+		repositCriaturas.save();
 	}
 	public List<Criatura> filtrarPorNome(String nome) {
 		return repositCriaturas.filtrarPorNome(nome);

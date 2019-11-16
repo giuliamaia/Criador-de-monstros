@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import java.io.*;
+
 import monsterRPG.sistema.ComparadorNomes;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
@@ -172,4 +174,26 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
+	public void save() {
+		try {
+			FileOutputStream fos = new FileOutputStream("Criaturas.hnf");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(criaturas);
+			oos.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void load() {
+		try {
+			FileInputStream fis = new FileInputStream("Criaturas.hnf");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			List<Criatura> criaturasTemp = (List<Criatura>) ois.readObject();
+			this.criaturas = criaturasTemp;
+			ois.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
