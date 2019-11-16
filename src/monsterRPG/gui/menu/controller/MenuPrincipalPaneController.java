@@ -84,6 +84,78 @@ public class MenuPrincipalPaneController {
     
     @FXML
     private Label labelDescrição;
+    
+    @FXML
+    private DatePicker txData1;
+
+    @FXML
+    private DatePicker txData2;
+
+    @FXML
+    private Button buttonPesquisarPorData;
+
+    @FXML
+    private CheckBox checkBoxDuasDatas;
+    
+    @FXML
+    private Button buttonPesquisaNome;
+    @FXML
+    void PesquisarPorData() {
+    	if(checkBoxDuasDatas.isPressed()) {
+    		//TODO data entre
+    	}
+    	else {
+    		listaLocal = controlador.filtrarPorData(txData1.getValue());
+    		atualizarLista();
+    	}
+    }
+
+    @FXML
+    void alterarBarraPesquisaParaData() {
+    	//Desabilita outros botões
+    	barraDePesquisa.setVisible(false);
+    	buttonPesquisaNome.setVisible(false);
+    	
+    	//ativa esse botão
+    	buttonPesquisarPorData.setVisible(true);
+    	checkBoxDuasDatas.setVisible(true);
+    	txData1.setVisible(true);
+    	txData2.setVisible(true);
+    	abrirData2();
+    	
+    }
+    @FXML
+    private void abrirData2() {
+    	System.out.println(checkBoxDuasDatas.isPressed());
+		if(!checkBoxDuasDatas.isSelected()) {
+			txData2.setDisable(true);
+		}
+		else {
+			txData2.setDisable(false);
+		}
+	}
+
+	@FXML
+    void alterarBarraPesquisaParaTipo() {
+    	
+    }
+    @FXML
+    void alterarBarraPesquisaParaNome() {
+    	//Desabilita outros botões
+    	barraDePesquisa.setVisible(true);
+    	buttonPesquisaNome.setVisible(true);
+    	
+    	//ativa esse botão
+    	buttonPesquisarPorData.setVisible(false);
+    	txData1.setVisible(false);
+    	txData2.setVisible(false);
+    	checkBoxDuasDatas.setVisible(false);
+    }
+    @FXML
+    void filtrarListaFavoritos() {
+    	listaLocal = controlador.filtrarFavoritos();
+    	atualizarLista();
+    }
 	@FXML
 	public void Pesquisar() {
 		listaLocal = controlador.filtrarPorNome(barraDePesquisa.getText());
@@ -229,7 +301,7 @@ public class MenuPrincipalPaneController {
 	}
 	public void initialize() {
 		atualizarLista();
-		
+		alterarBarraPesquisaParaNome();
 	}
 
 }

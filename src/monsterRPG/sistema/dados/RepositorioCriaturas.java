@@ -101,7 +101,6 @@ public class RepositorioCriaturas {
 			for(int j=0; j<this.criaturas.get(i).getJogadoresQueMataram().size(); j++) {
 				if(this.criaturas.get(i).getJogadoresQueMataram().get(j).equals(nomeJogador)) {
 					ret.add(this.criaturas.get(i));
-					System.out.println("Adicionou na lista de quem matou");
 				}
 			}
 		}
@@ -113,7 +112,6 @@ public class RepositorioCriaturas {
 		for(int i=0; i<this.criaturas.size(); i++) {
 			if(this.criaturas.get(i).isFavorito()) {
 				ret.add(this.criaturas.get(i));
-				System.out.println("add na lista de favoritos;"+this.criaturas.get(i).getNome());
 			}
 		}
 		return ret;
