@@ -2,6 +2,7 @@ package monsterRPG.gui.menu.controller;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -248,7 +249,9 @@ public class MenuPrincipalPaneController {
 	}
 	public void setaFoto() {
 		try{
+			fotoDoBicho.setImage(new Image(getClass().getResource("images/foto1.png").toExternalForm()));
 		}catch(Exception e) {
+			e.printStackTrace();
 		}
 		
 	}
@@ -331,6 +334,7 @@ public class MenuPrincipalPaneController {
 		//TODO ordenar
 	}
 	public boolean removeCriatura() {
+		
 		try {
 			if (criaturaSelecionada==null) {
 				Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -339,10 +343,20 @@ public class MenuPrincipalPaneController {
 				alerta.setTitle("Error 404: Monstro não encontrado");
 				alerta.showAndWait();
 			}
-			controlador.removerCriatura(criaturaSelecionada);
-			listaLocal = controlador.getCriaturas();
-			Pesquisar();
-			criaturaSelecionada = null;
+			else {
+				Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+				alerta.setContentText("Você deseja confirmar a remoção?");
+				alerta.setHeaderText("Confirmação");
+				alerta.setTitle("REMOVER MONSTRO");
+				alerta.showAndWait();
+				if (alerta.getResult() == alerta.getResult().OK) {
+					controlador.removerCriatura(criaturaSelecionada);
+					listaLocal = controlador.getCriaturas();
+					Pesquisar();
+					criaturaSelecionada = null;
+				}
+			}
+			
 		} catch (CriaturaInvalidaException e) {
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setContentText("Você precisa selecionar algum monstro para editar");
