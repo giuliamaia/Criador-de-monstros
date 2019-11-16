@@ -7,12 +7,12 @@ import monsterRPG.sistema.negocio.ControladorSistema;
 
 public class Testes {
 	public static void main(String[] args) {
-		Criatura primeira = new Criatura(10, 10, 5.5, 10, 10, 40, 0, 0, 0, "Ordnael", "Infelizmente vivemos em uma sociedade em que", Types.BESTA);
-		Criatura c1 = new Criatura(10, 10, 5.5, 10, 10, 40, 0, 0, 0, "Ordnael", "Infelizmente vivemos em uma sociedade em que", Types.BESTA);
+		Criatura primeira = new Criatura(10, 10, 5.5, 10, 10, 40, 0, 0, 0, "Tatu", "Infelizmente vivemos em uma sociedade em que", Types.BESTA);
+		Criatura c1 = new Criatura(10, 10, 5.5, 10, 10, 40, 0, 0, 0, "Noé", "Infelizmente vivemos em uma sociedade em que", Types.BESTA);
 		Criatura c2 = new Criatura(2,4,5.0,6,7,8,1,3,2, "Fofinho", "lalalalalalala", Types.ABERRAÇAO);
-		Criatura c3 = new Criatura(11, 13, 3.5, 0, 1, 4, 3, 2, 1, "Corno","ppppppppp", Types.CELESTIAL);
-		Criatura c4 = new Criatura(12,4,1.0,3,9,8,0,3,0, "Fofuxo", "pararatimbum", Types.ABERRAÇAO);
-		Criatura c5 = new Criatura(23, 30, 15.55, 16, 10, 14, 80, 90, 80, "Ordem", "Nessa bagaça", Types.BESTA);
+		Criatura c3 = new Criatura(11, 13, 3.5, 0, 1, 4, 3, 2, 1, "Wcorno","ppppppppp", Types.CELESTIAL);
+		Criatura c4 = new Criatura(12,4,1.0,3,9,8,0,3,0, "Xuxa", "pararatimbum", Types.ABERRAÇAO);
+		Criatura c5 = new Criatura(23, 30, 15.55, 16, 10, 14, 80, 90, 80, "Ordnael", "Nessa bagaça", Types.BESTA);
 		Criatura c6 = new Criatura(20,40,5.9,60,70,80,10,30,20, "Kaique", "eu vou eu vou pra casa agr eu vou", Types.ABERRAÇAO);
 		
 		ControladorSistema controlador = ControladorSistema.GetInstance();
@@ -45,9 +45,18 @@ System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("
 		c3.adicionarMortePeloJogador("Ordnael");
 		c2.adicionarMortePeloJogador("Ordnael");
 		
-		System.out.println(controlador.filtrarFavoritos());
-		System.out.println(controlador.filtrarPorQuemMatou("Ordnael"));
-
+		c1.setDataCriação(LocalDate.of(2003, 6, 13));
+		c2.setDataCriação(LocalDate.of(2005, 2, 1));
+		c3.setDataCriação(LocalDate.of(2001, 1, 11));
+		c4.setDataCriação(LocalDate.of(2000, 3, 1));
+		c5.setDataCriação(LocalDate.of(2018, 7, 2));
+		c6.setDataCriação(LocalDate.of(2015, 6, 6));
 		
+		System.out.println("Fav: "+controlador.filtrarFavoritos());
+		System.out.println("Quem matou: "+ controlador.filtrarPorQuemMatou("Ordnael"));
+		System.out.println("Nomes em ordem alfabetica: "+controlador.ordenarNomesDoRepositorioPorOrdemAlfabetica());
+		System.out.println("Nomes em ordem alfabetica reverse: "+controlador.ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse());
+		System.out.println("Datas crescente: "+controlador.ordenarDatasDoRepositorioCrescente());
+		System.out.println("Datas decrescente: "+controlador.ordenarDatasDoRepositorioDecrescente());
 	}
 }

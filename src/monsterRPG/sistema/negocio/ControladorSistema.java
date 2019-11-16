@@ -1,11 +1,14 @@
 package monsterRPG.sistema.negocio;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
+import monsterRPG.sistema.ComparadorNomes;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
 import monsterRPG.sistema.Types;
+import monsterRPG.sistema.dados.ComparadorDatas;
 import monsterRPG.sistema.dados.RepositorioCriaturas;
 import monsterRPG.sistema.dados.RepositorioMesas;
 
@@ -60,6 +63,31 @@ public class ControladorSistema {
 	public List<Criatura> filtrarPorData(LocalDate j){
 		return repositCriaturas.filtrarPorData(j);
 	}
+	public List<Criatura> ordenarNomesDoRepositorioPorOrdemAlfabetica(){
+		return repositCriaturas.ordenarNomesDoRepositorioPorOrdemAlfabetica();
+	}
+	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametro(List<Criatura> listaCriaturas){
+		return repositCriaturas.ordenarNomesPorOrdemAlfabeticaComParametro(listaCriaturas);
+	}
+	public List<Criatura> ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse(){
+		return repositCriaturas.ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse();
+	}
+	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametroReverse(List<Criatura> listaCriaturas){
+		return repositCriaturas.ordenarNomesPorOrdemAlfabeticaComParametroReverse(listaCriaturas);
+	}
+	public List<Criatura> ordenarDatasDoRepositorioCrescente(){
+		return repositCriaturas.ordenarDatasCrescenteDoRepositorio();
+	}
+	public List<Criatura> ordenarDatasCrescenteComParametro(List<Criatura> listaCriaturas){
+		return repositCriaturas.ordenarDatasCrescenteComParametro(listaCriaturas);
+	}
+	public List<Criatura> ordenarDatasDoRepositorioDecrescente(){
+		return repositCriaturas.ordenarDatasDecrescenteDoRepositorio();
+	}
+	public List<Criatura> ordenarDatasDecrescenteComParametro(List<Criatura> listaCriaturas){
+		return repositCriaturas.ordenarDatasDecrescenteComParametro(listaCriaturas);
+	}
+	
 	
 	
 }
