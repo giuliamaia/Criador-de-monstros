@@ -21,19 +21,20 @@ public class MonsterRPG extends Application{
 	private static Scene cenaEditar;
 	private static Scene cenaCriar;
 	private static Stage dialogStageCriar;
+	private static Stage dialogStageEditar;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			estagio = primaryStage;
 			Parent rootMain = FXMLLoader.load(getClass().getResource("menu/view/MenuPrincipal.fxml"));
 			cenaMain = new Scene(rootMain);
-
+			
 			
 			primaryStage.setTitle("MonsterRPG 1.0");
 			primaryStage.setScene(cenaMain);
 			primaryStage.show();
 		} catch(Exception e) {
-			System.out.println("Sout america nemesis");
+			System.out.println("Erro na TELA MAIN");
 		}
 	}
 	
@@ -59,7 +60,27 @@ public class MonsterRPG extends Application{
 
         dialogStageCriar.showAndWait();
 	}
+	public void abrirEditarMonstroDialog() {
+        AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane)  FXMLLoader.load(getClass().getResource("menu/view/EditDialog.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		dialogStageEditar = new Stage();
+        dialogStageEditar.setTitle("Editar Monstro");
+        dialogStageEditar.initModality(Modality.WINDOW_MODAL);
+        dialogStageEditar.initOwner(estagio);
+        cenaEditar = new Scene(conteudoDialog);
+        dialogStageEditar.setScene(cenaEditar);
+
+        dialogStageEditar.showAndWait();
+	}
 	public void fecharNovoMonstroDialog() {
 		dialogStageCriar.close();
+	}
+	public void fecharEditarMonstroDialog() {
+		dialogStageEditar.close();
 	}
 }

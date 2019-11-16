@@ -15,7 +15,25 @@ public class RepositorioCriaturas {
 	public RepositorioCriaturas() {
 		this.criaturas = new ArrayList<Criatura>();
 	}
-	
+	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException{
+		int i = getIndex(antiga);
+		removerCriatura(antiga);
+		this.criaturas.add(i, nova);
+	}
+	private int getIndex(Criatura c) throws CriaturaInvalidaException{
+		int retorno = -1;
+		for (int i = 0; i < this.criaturas.size() && retorno==-1; i++) {
+			if (criaturas.get(i).getNome().contentEquals(c.getNome())) {
+				retorno = i;
+			}
+		}
+		if(retorno == -1) {
+			throw new CriaturaInvalidaException("Criatura não existe") ;
+		}
+		else {
+			return retorno;
+		}
+	}
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.add(c);

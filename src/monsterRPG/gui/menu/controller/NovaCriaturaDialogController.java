@@ -14,7 +14,7 @@ import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.Types;
 import monsterRPG.sistema.negocio.ControladorSistema;
-public class NovaContaDialogController {
+public class NovaCriaturaDialogController {
 	private MonsterRPG monsterRPG = new MonsterRPG();
 	private Criatura bicho;
 	private ControladorSistema controlador = ControladorSistema.GetInstance();

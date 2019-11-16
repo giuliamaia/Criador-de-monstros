@@ -157,10 +157,6 @@ public class MenuPrincipalPaneController {
 	public void ordenarPorFavoritos() {
 		//TODO ordenar
 	}
-	public boolean editCriatura() {
-		//TODO adicionar
-		return true;
-	}
 	public boolean removeCriatura() {
 		//TODO remover
 		return true;
@@ -171,6 +167,14 @@ public class MenuPrincipalPaneController {
 		listaLocal = controlador.getCriaturas();
 		Pesquisar();
 		criaturaSelecionada = null;
+	}
+	public void editCriatura() {
+		controlador.setCriaturaAux(criaturaSelecionada);
+		monsterRPG.abrirEditarMonstroDialog();
+		listaLocal = controlador.getCriaturas();
+		Pesquisar();
+		criaturaSelecionada = null;
+		controlador.setCriaturaAux(null);
 	}
 	public void atualizarLista() {
 		lvLista.setItems(FXCollections.observableList(listaLocal));

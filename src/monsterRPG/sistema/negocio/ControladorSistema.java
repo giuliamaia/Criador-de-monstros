@@ -12,7 +12,16 @@ import monsterRPG.sistema.dados.RepositorioMesas;
 public class ControladorSistema {
 	private RepositorioCriaturas repositCriaturas;
 	private RepositorioMesas repositMesa;
-	
+	private Criatura criaturaAux;
+	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException {
+		repositCriaturas.editarCriatura(antiga, nova);
+	}
+	public Criatura getCriaturaAux() {
+		return criaturaAux;
+	}
+	public void setCriaturaAux(Criatura criaturaAux) {
+		this.criaturaAux = criaturaAux;
+	}
 	public List<Criatura> getCriaturas() {
 		return repositCriaturas.getCriaturas();
 	}
