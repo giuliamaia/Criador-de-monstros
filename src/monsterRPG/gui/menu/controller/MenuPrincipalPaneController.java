@@ -170,6 +170,7 @@ public class MenuPrincipalPaneController {
 		monsterRPG.abrirNovoMonstroDialog();
 		listaLocal = controlador.getCriaturas();
 		Pesquisar();
+		criaturaSelecionada = null;
 	}
 	public void atualizarLista() {
 		lvLista.setItems(FXCollections.observableList(listaLocal));
