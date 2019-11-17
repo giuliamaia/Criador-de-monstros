@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,6 +37,7 @@ public class MonsterRPG extends Application{
 			
 			primaryStage.setTitle("MonsterRPG 1.0");
 			primaryStage.setScene(cenaMain);
+			primaryStage.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -61,7 +63,7 @@ public class MonsterRPG extends Application{
         dialogStageCriarJogador.initOwner(estagio);
         cenaCriarJogador = new Scene(conteudoDialog);
         dialogStageCriarJogador.setScene(cenaCriarJogador);
-
+        dialogStageCriarJogador.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
         dialogStageCriarJogador.showAndWait();
 	}
 	@FXML
@@ -76,7 +78,7 @@ public class MonsterRPG extends Application{
 	        dialogStageEditarJogador.initOwner(estagio);
 	        cenaEditarJogador = new Scene(conteudoDialog);
 	        dialogStageEditarJogador.setScene(cenaEditarJogador);
-
+	        dialogStageEditarJogador.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 	        dialogStageEditarJogador.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -99,7 +101,7 @@ public class MonsterRPG extends Application{
         dialogStageCriar.initOwner(estagio);
         cenaCriar = new Scene(conteudoDialog);
         dialogStageCriar.setScene(cenaCriar);
-
+        dialogStageCriar.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
         dialogStageCriar.showAndWait();
 	}
 	@FXML
@@ -114,7 +116,7 @@ public class MonsterRPG extends Application{
 	        dialogStageEditar.initOwner(estagio);
 	        cenaEditar = new Scene(conteudoDialog);
 	        dialogStageEditar.setScene(cenaEditar);
-
+	        dialogStageEditar.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 	        dialogStageEditar.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();

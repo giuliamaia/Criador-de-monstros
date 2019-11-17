@@ -329,8 +329,9 @@ public class MenuPrincipalPaneController {
 				buttonFavorito.setSelected(false);
 			}
 			setaFoto();
-			setaJogadoresQueMataram();
 			setaListaQuemMatou();
+			setaJogadoresQueMataram();
+			
 		}catch(Exception e) {		
 			labelCarisma.setText("");
 			labelConstituicao.setText("");
@@ -521,9 +522,15 @@ public class MenuPrincipalPaneController {
 	}
     @FXML
     void pesquisaJogadorQueMatou() {
-    	if(labelBarraDePesquisaJogadorQueMatou != null)
-    	listaLocalDeJogadores = criaturaSelecionada.listarJogadoresMortosComNome(labelBarraDePesquisaJogadorQueMatou.getText());
-    	atualizaListaJogadoresQueMataram();
+    	try{
+    		if(!labelBarraDePesquisaJogadorQueMatou.getText().isEmpty()) {
+    			listaLocalDeJogadores = criaturaSelecionada.listarJogadoresMortosComNome(labelBarraDePesquisaJogadorQueMatou.getText());
+            	atualizaListaJogadoresQueMataram();
+    		}
+    	}
+    	catch(Exception e) {
+    		
+    	}
     }
 
     @FXML

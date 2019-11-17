@@ -27,8 +27,11 @@ public class NovoJogadorDialogController {
 			alerta.showAndWait();
     	}
     	else {
-    		controlador.setJogadorParaAdd(tfNomeJogador.getText());
-    		cancelar();
+    		if (tfNomeJogador.getText()!=null) {
+    			controlador.setJogadorParaAdd(tfNomeJogador.getText());
+        		cancelar();
+    		}
+    		
     	}
     	
     }
