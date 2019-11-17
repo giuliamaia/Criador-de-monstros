@@ -153,4 +153,13 @@ public class Criatura extends Status implements Serializable{
 		jogadoresQueMataram.add(temp, jogadorNovo);
 		
 	}
+	public List<String> listarJogadoresMortosComNome(String nome) {
+		List<String> aux = new ArrayList<String>();
+		for(String auxiliar:this.jogadoresQueMataram) {
+			if (auxiliar.contains(nome)) {
+				aux.add(auxiliar);
+			}
+		}
+		return aux;
+	}
 }

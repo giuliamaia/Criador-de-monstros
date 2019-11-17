@@ -36,6 +36,7 @@ public class MenuPrincipalPaneController {
 	private MonsterRPG monsterRPG = new MonsterRPG();
 	private ControladorSistema controlador = ControladorSistema.GetInstance();
 	private List<Criatura> listaLocal = controlador.getCriaturas();
+	private List<String> listaLocalDeJogadores;
 	private String jogadorSelecionado;
     @FXML
     private Font x1;
@@ -328,7 +329,7 @@ public class MenuPrincipalPaneController {
 			}
 			setaFoto();
 			setaJogadoresQueMataram();
-			
+			setaListaQuemMatou();
 		}catch(Exception e) {		
 			labelCarisma.setText("");
 			labelConstituicao.setText("");
@@ -364,11 +365,13 @@ public class MenuPrincipalPaneController {
 		addJogadorQueMatou.setDisable(false);
 		editJogadorQueMatou.setDisable(false);
 		removeJogadorQueMatou.setDisable(false);
+		pesquisaJogadorQueMatou();
 		atualizaListaJogadoresQueMataram();
+		
 	}
 	@FXML
 	void atualizaListaJogadoresQueMataram() {
-		lvJogadoresQueJáMataram.setItems(FXCollections.observableList(criaturaSelecionada.getJogadoresQueMataram()));
+		lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
 	}
 	public void isBotaoFavoritoPressed() {
 		
@@ -493,6 +496,7 @@ public class MenuPrincipalPaneController {
 	}
     @FXML
     void pesquisaJogadorQueMatou() {
+    	listaLocalDeJogadores = criaturaSelecionada.listarJogadoresMortosComNome(labelBarraDePesquisaJogadorQueMatou.getText());
     	atualizaListaJogadoresQueMataram();
     }
 
@@ -509,7 +513,9 @@ public class MenuPrincipalPaneController {
 			else {
 				criaturaSelecionada.removerMortePeloJogador(jogadorSelecionado);
 				jogadorSelecionado = null;
+				pesquisaJogadorQueMatou();
 				atualizaListaJogadoresQueMataram();
+				
 			}
 			
 		}
@@ -538,6 +544,7 @@ public class MenuPrincipalPaneController {
     			if(controlador.getJogadorParaEditar() != null) {
     				criaturaSelecionada.editarMortePeloJogador(jogadorSelecionado, controlador.getJogadorParaEditar());
     			}
+    			pesquisaJogadorQueMatou();
             	atualizaListaJogadoresQueMataram();
             	jogadorSelecionado=null;
             	controlador.setJogadorAuxiliar(null);
@@ -556,7 +563,8 @@ public class MenuPrincipalPaneController {
     @FXML
     void addJogadorQueMatou() {
     	monsterRPG.abrirNovoJogadorDialog();
-    	criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());;
+    	criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());
+    	pesquisaJogadorQueMatou();
     	atualizaListaJogadoresQueMataram();
     	jogadorSelecionado=null;
     }
@@ -567,5 +575,9 @@ public class MenuPrincipalPaneController {
 		selecionaCriatura();
 		jogadorSelecionado = null;
 	}
-
+	void setaListaQuemMatou() {
+		if(criaturaSelecionada != null) {
+			listaLocalDeJogadores = criaturaSelecionada.getJogadoresQueMataram();
+		}
+	}
 }
