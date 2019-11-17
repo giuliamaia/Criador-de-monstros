@@ -19,7 +19,13 @@ public class ControladorSistema {
 	private Criatura criaturaAux;
 	private String jogadorParaAdd;
 	private String jogadorParaEditar;
-	
+	private String jogadorAuxiliar;
+	public String getJogadorAuxiliar() {
+		return jogadorAuxiliar;
+	}
+	public void setJogadorAuxiliar(String jogadorAuxiliar) {
+		this.jogadorAuxiliar = jogadorAuxiliar;
+	}
 	public String getJogadorParaAdd() {
 		return jogadorParaAdd;
 	}

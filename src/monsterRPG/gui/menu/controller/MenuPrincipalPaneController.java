@@ -346,6 +346,7 @@ public class MenuPrincipalPaneController {
 			labelDescrição.setText("");
 			buttonFavorito.setSelected(false);
 			setaFoto();
+			lvJogadoresQueJáMataram.setItems(null);
 			buttonPesquisaJogadorQueMatou.setDisable(true);
 			labelBarraDePesquisaJogadorQueMatou.setDisable(true);
 			lvJogadoresQueJáMataram.setDisable(true);
@@ -497,9 +498,28 @@ public class MenuPrincipalPaneController {
 
     @FXML
     void removeJogadorQueMatou() {
-		criaturaSelecionada.removerMortePeloJogador(jogadorSelecionado);
-		jogadorSelecionado = null;
-		atualizaListaJogadoresQueMataram();
+		try {
+			if (jogadorSelecionado == null) {
+    			Alert alerta = new Alert(Alert.AlertType.ERROR);
+    			alerta.setContentText("Você precisa selecionar algum jogador para editar");
+    			alerta.setHeaderText("Nenhum jogador selecionado");
+    			alerta.setTitle("Error 421: Jogador não encontrado");
+    			alerta.showAndWait();
+    		}
+			else {
+				criaturaSelecionada.removerMortePeloJogador(jogadorSelecionado);
+				jogadorSelecionado = null;
+				atualizaListaJogadoresQueMataram();
+			}
+			
+		}
+		catch(Exception e) {
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
+			alerta.setContentText("Você precisa selecionar algum jogador para remover");
+			alerta.setHeaderText("Nenhum jogador selecionado");
+			alerta.setTitle("Error 421: Jogador não encontrado");
+			alerta.showAndWait();
+		}
     }
 
     @FXML
@@ -513,10 +533,14 @@ public class MenuPrincipalPaneController {
     			alerta.showAndWait();
     		}
     		else {
+    			controlador.setJogadorAuxiliar(jogadorSelecionado);
     			monsterRPG.abrirEditarJogadorDialog();
-            	criaturaSelecionada.editarMortePeloJogador(jogadorSelecionado, controlador.getJogadorParaEditar());
+    			if(controlador.getJogadorParaEditar() != null) {
+    				criaturaSelecionada.editarMortePeloJogador(jogadorSelecionado, controlador.getJogadorParaEditar());
+    			}
             	atualizaListaJogadoresQueMataram();
             	jogadorSelecionado=null;
+            	controlador.setJogadorAuxiliar(null);
     		}
         	
     	}

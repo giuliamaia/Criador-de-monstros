@@ -31,8 +31,8 @@ public class EditJogadorDialogController {
     		cancelar();
     	}
     }
-    
+    @FXML
     void initialize() {
-    	
+    	tfNomeJogador.setText(controlador.getJogadorAuxiliar());
     }
 }
