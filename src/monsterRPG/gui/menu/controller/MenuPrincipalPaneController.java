@@ -36,6 +36,7 @@ public class MenuPrincipalPaneController {
 	private MonsterRPG monsterRPG = new MonsterRPG();
 	private ControladorSistema controlador = ControladorSistema.GetInstance();
 	private List<Criatura> listaLocal = controlador.getCriaturas();
+	private String jogadorSelecionado;
     @FXML
     private Font x1;
 
@@ -487,7 +488,7 @@ public class MenuPrincipalPaneController {
 	}
 	@FXML
 	void selecionaJogadorQueMatou() {
-		
+		jogadorSelecionado = lvJogadoresQueJáMataram.getSelectionModel().getSelectedItem();
 	}
     @FXML
     void pesquisaJogadorQueMatou() {
@@ -496,25 +497,51 @@ public class MenuPrincipalPaneController {
 
     @FXML
     void removeJogadorQueMatou() {
-    	atualizaListaJogadoresQueMataram();
+		criaturaSelecionada.removerMortePeloJogador(jogadorSelecionado);
+		jogadorSelecionado = null;
+		atualizaListaJogadoresQueMataram();
     }
 
     @FXML
     void editJogadorQueMatou() {
-    	atualizaListaJogadoresQueMataram();
+    	try {
+    		if (jogadorSelecionado == null) {
+    			Alert alerta = new Alert(Alert.AlertType.ERROR);
+    			alerta.setContentText("Você precisa selecionar algum jogador para editar");
+    			alerta.setHeaderText("Nenhum jogador selecionado");
+    			alerta.setTitle("Error 421: Jogador não encontrado");
+    			alerta.showAndWait();
+    		}
+    		else {
+    			monsterRPG.abrirEditarJogadorDialog();
+            	criaturaSelecionada.editarMortePeloJogador(jogadorSelecionado, controlador.getJogadorParaEditar());
+            	atualizaListaJogadoresQueMataram();
+            	jogadorSelecionado=null;
+    		}
+        	
+    	}
+    	catch(Exception e) {
+    		Alert alerta = new Alert(Alert.AlertType.ERROR);
+			alerta.setContentText("Você precisa selecionar algum jogador para editar");
+			alerta.setHeaderText("Nenhum jogador selecionado");
+			alerta.setTitle("Error 421: Jogador não encontrado");
+			alerta.showAndWait();
+    	}
     }
 
     @FXML
     void addJogadorQueMatou() {
     	monsterRPG.abrirNovoJogadorDialog();
-    	criaturaSelecionada.getJogadoresQueMataram().add(controlador.getJogadorAux());
+    	criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());;
     	atualizaListaJogadoresQueMataram();
+    	jogadorSelecionado=null;
     }
 	public void initialize() {
 		atualizarLista();
 		alterarBarraPesquisaParaNome();
 		setarComboBox();
 		selecionaCriatura();
+		jogadorSelecionado = null;
 	}
 
 }

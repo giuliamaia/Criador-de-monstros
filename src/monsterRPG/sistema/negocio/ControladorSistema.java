@@ -17,13 +17,21 @@ public class ControladorSistema {
 	private RepositorioCriaturas repositCriaturas;
 	private RepositorioMesas repositMesa;
 	private Criatura criaturaAux;
-	private String jogadorAux;
+	private String jogadorParaAdd;
+	private String jogadorParaEditar;
 	
-	public String getJogadorAux() {
-		return jogadorAux;
+	public String getJogadorParaAdd() {
+		return jogadorParaAdd;
 	}
-	public void setJogadorAux(String jogadorAux) {
-		this.jogadorAux = jogadorAux;
+	public void setJogadorParaAdd(String jogadorAux) {
+		this.jogadorParaAdd = jogadorAux;
+		repositCriaturas.salvar();
+	}
+	public String getJogadorParaEditar() {
+		return jogadorParaEditar;
+	}
+	public void setJogadorParaEditar(String jogadorAux) {
+		this.jogadorParaEditar = jogadorAux;
 		repositCriaturas.salvar();
 	}
 	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException {

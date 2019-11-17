@@ -147,5 +147,8 @@ public class Criatura extends Status implements Serializable{
 		}
 		return retorno;
 	}
-	
+	public void editarMortePeloJogador(String jogadorAntigo, String jogadorNovo) {
+		jogadoresQueMataram.add(jogadoresQueMataram.indexOf(jogadorAntigo), jogadorNovo);
+		jogadoresQueMataram.remove(jogadorAntigo);
+	}
 }

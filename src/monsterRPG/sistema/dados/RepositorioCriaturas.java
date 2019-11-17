@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 import java.io.*;
 
 import monsterRPG.sistema.ComparadorNomes;
@@ -196,7 +200,11 @@ public class RepositorioCriaturas {
 			this.criaturas = (List<Criatura>) ois.readObject();
 			ois.close();
 		} catch(Exception e) {
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Criando novo arquivo");
+			alert.setHeaderText("Novo arquivo de repositório criados!");
+			alert.setContentText("Como não foi possível encontrar um arquivo existente na sua máquina, um novo foi criado.");
+			alert.showAndWait();
 		}
 	}
 	

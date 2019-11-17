@@ -65,6 +65,25 @@ public class MonsterRPG extends Application{
         dialogStageCriarJogador.showAndWait();
 	}
 	@FXML
+	public void abrirEditarJogadorDialog() {
+        AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane)  FXMLLoader.load(getClass().getResource("menu/view/EditJogadorDialog.fxml"));
+
+			dialogStageEditarJogador = new Stage();
+	        dialogStageEditarJogador.setTitle("Editar Monstro");
+	        dialogStageEditarJogador.initModality(Modality.WINDOW_MODAL);
+	        dialogStageEditarJogador.initOwner(estagio);
+	        cenaEditarJogador = new Scene(conteudoDialog);
+	        dialogStageEditarJogador.setScene(cenaEditarJogador);
+
+	        dialogStageEditarJogador.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	@FXML
 	public void abrirNovoMonstroDialog() {
         AnchorPane conteudoDialog = null;
 		try {
@@ -110,5 +129,8 @@ public class MonsterRPG extends Application{
 	}
 	public void fecharEditarMonstroDialog() {
 		dialogStageEditar.close();
+	}
+	public void fecharEditarJogadorMonstroDialog() {
+		dialogStageEditarJogador.close();
 	}
 }

@@ -6,15 +6,15 @@ import javafx.scene.control.TextField;
 import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.negocio.ControladorSistema;
 
-public class NovoJogadorDialogController {
-	MonsterRPG monsterRPG = new MonsterRPG();
-	ControladorSistema controlador = ControladorSistema.GetInstance();
+public class EditJogadorDialogController {
+	private ControladorSistema controlador = ControladorSistema.GetInstance();
+	private MonsterRPG monsterRPG = new MonsterRPG();
     @FXML
     private TextField tfNomeJogador;
 
     @FXML
     void cancelar() {
-    	monsterRPG.fecharNovoJogadorDialog();
+    	monsterRPG.fecharEditarJogadorMonstroDialog();
     }
 
     @FXML
@@ -27,10 +27,12 @@ public class NovoJogadorDialogController {
 			alerta.showAndWait();
     	}
     	else {
-    		controlador.setJogadorParaAdd(tfNomeJogador.getText());
+    		controlador.setJogadorParaEditar(tfNomeJogador.getText());
     		cancelar();
     	}
+    }
+    
+    void initialize() {
     	
     }
-
 }
