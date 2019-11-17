@@ -122,7 +122,18 @@ public class Criatura extends Status {
 	public void adicionarMortePeloJogador(String jogador) {
 		this.jogadoresQueMataram.add(jogador);
 	}
-	
+	public void removerMortePeloJogador(String jogador) {
+		for(int i=0; i<this.getJogadoresQueMataram().size(); i++) {
+			if(this.jogadoresQueMataram.get(i).contains(jogador)) {
+				this.jogadoresQueMataram.remove(i);
+			}
+		}
+	}
+	public void printarJogadores() {
+		for(int i=0; i<this.getJogadoresQueMataram().size(); i++) {
+			System.out.print(this.jogadoresQueMataram.get(i).toString()+" ");
+		}
+	}
 	@Override
 	public String toString() {
 		String retorno = getNome();

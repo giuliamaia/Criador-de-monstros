@@ -1,10 +1,8 @@
 package monsterRPG.sistema.dados;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import monsterRPG.sistema.ComparadorNomes;

@@ -52,7 +52,21 @@ System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("
 		c5.setDataCriação(LocalDate.of(2018, 7, 2));
 		c6.setDataCriação(LocalDate.of(2015, 6, 6));
 		
-		System.out.println("Fav: " + controlador.filtrarFavoritos());
+		
+		c1.adicionarMortePeloJogador("Abigail");
+		c1.adicionarMortePeloJogador("Clodovico");
+		c1.adicionarMortePeloJogador("Gastrovil");
+		c1.adicionarMortePeloJogador("Normas");
+		c1.adicionarMortePeloJogador("Bariula");
+		c1.adicionarMortePeloJogador("Clovis");
+		
+		c1.removerMortePeloJogador("Abigail");
+		c1.removerMortePeloJogador("Clovis");
+		c1.removerMortePeloJogador("Normas");
+		c1.removerMortePeloJogador("Abigail");
+		
+		c1.printarJogadores();
+		System.out.println("\nFav: " + controlador.filtrarFavoritos());
 		System.out.println("Quem matou: " + controlador.filtrarPorQuemMatou("Ordnael"));
 		System.out.println("Nomes em ordem alfabetica: "+ controlador.ordenarNomesDoRepositorioPorOrdemAlfabetica());
 		System.out.println("Nomes em ordem alfabetica reverse: " + controlador.ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse());
