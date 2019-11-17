@@ -83,11 +83,23 @@ public class ControladorSistema {
 	public List<Criatura> filtrarPorNivel(double menor, double maior) {
 		return repositCriaturas.filtrarPorNivel(menor, maior);
 	}
-	public List<Criatura> filtrarFavoritos(){
-		return repositCriaturas.filtrarFavoritos();
+	public List<Criatura> filtrarFavoritos(List<Criatura> aux){
+		return repositCriaturas.filtrarFavoritos(aux);
 	}
 	public List<Criatura> filtrarPorQuemMatou(String j){
 		return repositCriaturas.filtrarPorQuemMatou(j);
+	}
+	public void carregar() {
+		repositCriaturas.carregar();
+	}
+	public void salvar() {
+		repositCriaturas.salvar();
+	}
+	public void carregar(String path) {
+		repositCriaturas.carregar(path);
+	}
+	public void salvar(String path) {
+		repositCriaturas.salvar(path);
 	}
 	public List<Criatura> filtrarPorData(LocalDate j){
 		return repositCriaturas.filtrarPorData(j);

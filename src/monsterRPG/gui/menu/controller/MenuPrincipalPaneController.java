@@ -121,7 +121,8 @@ public class MenuPrincipalPaneController {
     
     @FXML
     private Button buttonPesquisaNome;
-   
+    @FXML
+    private CheckBox checkQuerApenasFavoritos;
     @FXML
     private ListView<String> lvJogadoresQueJáMataram;
 
@@ -139,6 +140,7 @@ public class MenuPrincipalPaneController {
 
     @FXML
     private Button addJogadorQueMatou;
+    
     
     @FXML
     void PesquisarPorData() {
@@ -237,8 +239,7 @@ public class MenuPrincipalPaneController {
     }
     @FXML
     void filtrarListaFavoritos() {
-    	listaLocal = controlador.filtrarFavoritos();
-    	atualizarLista();
+    	listaLocal = controlador.filtrarFavoritos(listaLocal);
     }
     @FXML 
     void crimeOcorre(){
@@ -371,7 +372,10 @@ public class MenuPrincipalPaneController {
 	}
 	@FXML
 	void atualizaListaJogadoresQueMataram() {
-		lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
+		controlador.salvar();
+		if(listaLocalDeJogadores!=null){
+			lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
+		}
 	}
 	public void isBotaoFavoritoPressed() {
 		
@@ -467,7 +471,28 @@ public class MenuPrincipalPaneController {
 		}
 		
 	}
+    @FXML
+    void querApenarFavoritos() {
+    	if(checkQuerApenasFavoritos.isSelected()) {
+    		atualizarLista();
+    	}
+    	else {
+    		if(!buttonPesquisaNome.isDisabled()) {
+    			Pesquisar();
+    		}
+    		else if(!buttonPesquisarPorData.isDisabled()) {
+    			PesquisarPorData();
+    		}
+    		else if(!buttonPesquisarPorNivel.isDisabled()) {
+    			filtrarListaNivel();
+    		}
+    	}
+    }
+    @FXML
 	public void atualizarLista() {
+		if(checkQuerApenasFavoritos.isSelected()) {
+			filtrarListaFavoritos();
+		}
 		lvLista.setItems(FXCollections.observableList(listaLocal));
 		selecionaCriatura();
 	}
@@ -496,6 +521,7 @@ public class MenuPrincipalPaneController {
 	}
     @FXML
     void pesquisaJogadorQueMatou() {
+    	if(labelBarraDePesquisaJogadorQueMatou != null)
     	listaLocalDeJogadores = criaturaSelecionada.listarJogadoresMortosComNome(labelBarraDePesquisaJogadorQueMatou.getText());
     	atualizaListaJogadoresQueMataram();
     }
@@ -575,6 +601,24 @@ public class MenuPrincipalPaneController {
 		selecionaCriatura();
 		jogadorSelecionado = null;
 	}
+    @FXML
+    void carregarArquivoOutro() {
+    	controlador.carregar();
+    }
+
+    @FXML
+    void carregarArquivoPadrão() {
+    	//controlador.carregar(path);
+    }
+    @FXML
+    void salvarLista() {
+    	controlador.salvar();
+    }
+
+    @FXML
+    void salvarListaOutro() {
+    	//controlador.salvar(path);
+    }
 	void setaListaQuemMatou() {
 		if(criaturaSelecionada != null) {
 			listaLocalDeJogadores = criaturaSelecionada.getJogadoresQueMataram();

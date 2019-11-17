@@ -37,11 +37,25 @@
          <menus>
             <Menu mnemonicParsing="false" text="Arquivo">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#addCriatura" text="Novo" />
-                  <MenuItem mnemonicParsing="false" onAction="#editCriatura" text="Editar" />
-                  <MenuItem mnemonicParsing="false" onAction="#removeCriatura" text="Remover" />
+                  <Menu mnemonicParsing="false" text="Monstro...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#addCriatura" text="Novo" />
+                        <MenuItem mnemonicParsing="false" onAction="#editCriatura" text="Editar" />
+                        <MenuItem mnemonicParsing="false" onAction="#removeCriatura" text="Remover" />
+                     </items>
+                  </Menu>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#atualizarLista" text="Atualizar" />
+                  <MenuItem mnemonicParsing="false" onAction="#salvarLista" text="Salvar" />
+                  <MenuItem mnemonicParsing="false" onAction="#salvarListaOutro" text="Salvar como..." />
+                  <Menu mnemonicParsing="false" text="Carregar">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#carregarArquivoPadrão" text="Arquivo padrão" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#carregarArquivoOutro" text="Outro arquivo..." />
+                    </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#atualizarLista" text="Atualizar lista" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Ver">
@@ -49,12 +63,11 @@
                   <MenuItem mnemonicParsing="false" onAction="#crimeOcorre" text="Mesas" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Filtrar">
+            <Menu mnemonicParsing="false" text="Pesquisar">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#alterarBarraPesquisaParaNome" text="Por nome..." />
                   <MenuItem mnemonicParsing="false" onAction="#alterarBarraPesquisaParaData" text="Por data..." />
                   <MenuItem mnemonicParsing="false" onAction="#alterarBarraPesquisaParaTipo" text="Por tipo..." />
-                  <MenuItem mnemonicParsing="false" onAction="#filtrarListaFavoritos" text="Por favoritos..." />
                   <MenuItem mnemonicParsing="false" onAction="#alteraBarraDePesquisaParaNivel" text="Por nivel..." />
                </items>
             </Menu>
@@ -143,6 +156,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <CheckBox fx:id="checkQuerApenasFavoritos" layoutX="4.0" layoutY="52.0" mnemonicParsing="false" onAction="#querApenarFavoritos" text="Favoritos" />
                </children>
             </AnchorPane>
             <ScrollPane prefHeight="554.0" prefWidth="672.0">

@@ -66,7 +66,7 @@ System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("
 		c1.removerMortePeloJogador("Abigail");
 		
 		c1.printarJogadores();
-		System.out.println("\nFav: " + controlador.filtrarFavoritos());
+		System.out.println("\nFav: " + controlador.filtrarFavoritos(controlador.getCriaturas()));
 		System.out.println("Quem matou: " + controlador.filtrarPorQuemMatou("Ordnael"));
 		System.out.println("Nomes em ordem alfabetica: "+ controlador.ordenarNomesDoRepositorioPorOrdemAlfabetica());
 		System.out.println("Nomes em ordem alfabetica reverse: " + controlador.ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse());

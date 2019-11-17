@@ -58,12 +58,13 @@ public class RepositorioCriaturas {
 	}
 	
 	public List<Criatura> filtrarPorNome(String nome) {
+		nome = nome.toUpperCase();
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
 		if(nome == null) return null;
 		
 		for(Criatura c : this.criaturas) {
-			if(c.getNome().contains(nome)) {
+			if(c.getNome().toUpperCase().contains(nome)) {
 				ret.add(c);
 			}
 		}
@@ -114,11 +115,11 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
-	public List<Criatura> filtrarFavoritos(){
+	public List<Criatura> filtrarFavoritos(List<Criatura> aux){
 		List<Criatura> ret = new ArrayList<Criatura>();
-		for(int i=0; i<this.criaturas.size(); i++) {
-			if(this.criaturas.get(i).isFavorito()) {
-				ret.add(this.criaturas.get(i));
+		for(int i=0; i<aux.size(); i++) {
+			if(aux.get(i).isFavorito()) {
+				ret.add(aux.get(i));
 			}
 		}
 		return ret;
