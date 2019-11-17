@@ -6,9 +6,15 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
+import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
@@ -113,6 +119,25 @@ public class MenuPrincipalPaneController {
     
     @FXML
     private Button buttonPesquisaNome;
+   
+    @FXML
+    private ListView<String> lvJogadoresQueJáMataram;
+
+    @FXML
+    private Button buttonPesquisaJogadorQueMatou;
+    
+    @FXML
+    private TextField labelBarraDePesquisaJogadorQueMatou;
+    
+    @FXML
+    private Button removeJogadorQueMatou;
+
+    @FXML
+    private Button editJogadorQueMatou;
+
+    @FXML
+    private Button addJogadorQueMatou;
+    
     @FXML
     void PesquisarPorData() {
     	if(checkBoxDuasDatas.isSelected()) {
@@ -301,6 +326,8 @@ public class MenuPrincipalPaneController {
 				buttonFavorito.setSelected(false);
 			}
 			setaFoto();
+			setaJogadoresQueMataram();
+			
 		}catch(Exception e) {		
 			labelCarisma.setText("");
 			labelConstituicao.setText("");
@@ -318,8 +345,28 @@ public class MenuPrincipalPaneController {
 			labelDescrição.setText("");
 			buttonFavorito.setSelected(false);
 			setaFoto();
+			buttonPesquisaJogadorQueMatou.setDisable(true);
+			labelBarraDePesquisaJogadorQueMatou.setDisable(true);
+			lvJogadoresQueJáMataram.setDisable(true);
+			addJogadorQueMatou.setDisable(true);
+			editJogadorQueMatou.setDisable(true);
+			removeJogadorQueMatou.setDisable(true);
 		}
 		
+	}
+	@FXML
+	private void setaJogadoresQueMataram() {
+		buttonPesquisaJogadorQueMatou.setDisable(false);
+		labelBarraDePesquisaJogadorQueMatou.setDisable(false);
+		lvJogadoresQueJáMataram.setDisable(false);
+		addJogadorQueMatou.setDisable(false);
+		editJogadorQueMatou.setDisable(false);
+		removeJogadorQueMatou.setDisable(false);
+		atualizaListaJogadoresQueMataram();
+	}
+	@FXML
+	void atualizaListaJogadoresQueMataram() {
+		lvJogadoresQueJáMataram.setItems(FXCollections.observableList(criaturaSelecionada.getJogadoresQueMataram()));
 	}
 	public void isBotaoFavoritoPressed() {
 		
@@ -351,9 +398,6 @@ public class MenuPrincipalPaneController {
 		atualizarLista();
 	}
 	public void ordenarPorMortos() {
-		//TODO ordenar
-	}
-	public void ordenarPorFavoritos() {
 		//TODO ordenar
 	}
 	public boolean removeCriatura() {
@@ -441,10 +485,36 @@ public class MenuPrincipalPaneController {
 		
 		escolhaDeTipo.setItems(FXCollections.observableArrayList(tipos));
 	}
+	@FXML
+	void selecionaJogadorQueMatou() {
+		
+	}
+    @FXML
+    void pesquisaJogadorQueMatou() {
+    	atualizaListaJogadoresQueMataram();
+    }
+
+    @FXML
+    void removeJogadorQueMatou() {
+    	atualizaListaJogadoresQueMataram();
+    }
+
+    @FXML
+    void editJogadorQueMatou() {
+    	atualizaListaJogadoresQueMataram();
+    }
+
+    @FXML
+    void addJogadorQueMatou() {
+    	monsterRPG.abrirNovoJogadorDialog();
+    	criaturaSelecionada.getJogadoresQueMataram().add(controlador.getJogadorAux());
+    	atualizaListaJogadoresQueMataram();
+    }
 	public void initialize() {
 		atualizarLista();
 		alterarBarraPesquisaParaNome();
 		setarComboBox();
+		selecionaCriatura();
 	}
 
 }

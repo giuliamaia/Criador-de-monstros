@@ -22,6 +22,10 @@ public class MonsterRPG extends Application{
 	private static Scene cenaCriar;
 	private static Stage dialogStageCriar;
 	private static Stage dialogStageEditar;
+	private static Scene cenaEditarJogador;
+	private static Scene cenaCriarJogador;
+	private static Stage dialogStageCriarJogador;
+	private static Stage dialogStageEditarJogador;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -34,12 +38,31 @@ public class MonsterRPG extends Application{
 			primaryStage.setScene(cenaMain);
 			primaryStage.show();
 		} catch(Exception e) {
-			System.out.println("Erro na TELA MAIN");
+			e.printStackTrace();
 		}
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	@FXML
+	public void abrirNovoJogadorDialog() {
+        AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane)  FXMLLoader.load(getClass().getResource("menu/view/NovoJogadorDialog.fxml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		dialogStageCriarJogador = new Stage();
+        dialogStageCriarJogador.setTitle("Novo Jogador");
+        dialogStageCriarJogador.initModality(Modality.WINDOW_MODAL);
+        dialogStageCriarJogador.initOwner(estagio);
+        cenaCriarJogador = new Scene(conteudoDialog);
+        dialogStageCriarJogador.setScene(cenaCriarJogador);
+
+        dialogStageCriarJogador.showAndWait();
 	}
 	@FXML
 	public void abrirNovoMonstroDialog() {
@@ -60,6 +83,7 @@ public class MonsterRPG extends Application{
 
         dialogStageCriar.showAndWait();
 	}
+	@FXML
 	public void abrirEditarMonstroDialog() {
         AnchorPane conteudoDialog = null;
 		try {
@@ -80,6 +104,9 @@ public class MonsterRPG extends Application{
 	}
 	public void fecharNovoMonstroDialog() {
 		dialogStageCriar.close();
+	}
+	public void fecharNovoJogadorDialog() {
+		dialogStageCriarJogador.close();
 	}
 	public void fecharEditarMonstroDialog() {
 		dialogStageEditar.close();
