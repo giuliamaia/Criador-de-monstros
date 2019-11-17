@@ -18,9 +18,11 @@ public class Mesa {
 		this.monstros = monstros;
 		this.blocoNotas = blocoNotas;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
