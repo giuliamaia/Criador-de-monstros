@@ -31,46 +31,46 @@ public class Criatura extends Status {
 	}
 	private void setaFoto() throws IOException {
 		if(tipo == Types.BESTA) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/BESTA.jpg";
 		}
 		else if (tipo == Types.ABERRAÇAO) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/ABERRAÇAO.jpg";
 		}
 		else if (tipo == Types.CELESTIAL) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/CELESTIAL.jpg";
 		}
 		else if (tipo == Types.CONSTRUTO) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/CONSTRUTO.jpg";
 		}
 		else if (tipo == Types.DEMONIO) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/DEMONIO.jpg";
 		}
 		else if (tipo == Types.DRAGAO) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/DRAGAO.jpg";
 		}
 		else if (tipo == Types.ELEMENTAL) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/ELEMENTAL.jpg";
 		}
 		else if (tipo == Types.FADA) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/FADA.jpg";
 		}
 		else if (tipo == Types.GIGANTE) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/GIGANTE.png";
 		}
 		else if (tipo == Types.GOSMA) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/GOSMA.jpg";
 		}
 		else if (tipo == Types.HUMANOIDE) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/HUMANOIDE.jpeg";
 		}
 		else if (tipo == Types.MONSTRUOSIDADE) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/MONSTRUOSIDADE.jpg";
 		}
 		else if (tipo == Types.MORTOVIVO) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/MORTOVIVO.png";
 		}
 		else if (tipo == Types.PLANTA) {
-			UrlDaFotinha = "images/";
+			UrlDaFotinha = "images/PLANTA.png";
 		}
 		else {
 			UrlDaFotinha = "images/amem.jpeg";

@@ -110,8 +110,6 @@ public class EditCriaturaDialogController {
 		tipos.add(Types.CONSTRUTO);
 		tipos.add(Types.DEMONIO);
 		tipos.add(Types.DRAGAO);
-		tipos.add(Types.DEMONIO);
-		tipos.add(Types.DRAGAO);
 		tipos.add(Types.ELEMENTAL);
 		tipos.add(Types.FADA);
 		tipos.add(Types.GIGANTE);

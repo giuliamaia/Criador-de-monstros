@@ -273,7 +273,7 @@ public class MenuPrincipalPaneController {
 		try{
 			fotoDoBicho.setImage(new Image(getClass().getResource(criaturaSelecionada.getUrlDaFotinha()).toExternalForm()));
 		}catch(Exception e) {
-			e.printStackTrace();
+			fotoDoBicho.setImage(new Image(getClass().getResource("images/DEFAULT.png").toExternalForm()));
 		}
 		
 	}
@@ -317,6 +317,7 @@ public class MenuPrincipalPaneController {
 			labelDataCriacao.setText("");
 			labelDescrição.setText("");
 			buttonFavorito.setSelected(false);
+			setaFoto();
 		}
 		
 	}
@@ -360,7 +361,7 @@ public class MenuPrincipalPaneController {
 		try {
 			if (criaturaSelecionada==null) {
 				Alert alerta = new Alert(Alert.AlertType.ERROR);
-				alerta.setContentText("Você precisa selecionar algum monstro para editar");
+				alerta.setContentText("Você precisa selecionar algum monstro para remover");
 				alerta.setHeaderText("Nenhum monstro selecionado");
 				alerta.setTitle("Error 404: Monstro não encontrado");
 				alerta.showAndWait();
@@ -427,8 +428,6 @@ public class MenuPrincipalPaneController {
 		tipos.add(Types.BESTA);
 		tipos.add(Types.CELESTIAL);
 		tipos.add(Types.CONSTRUTO);
-		tipos.add(Types.DEMONIO);
-		tipos.add(Types.DRAGAO);
 		tipos.add(Types.DEMONIO);
 		tipos.add(Types.DRAGAO);
 		tipos.add(Types.ELEMENTAL);
