@@ -28,6 +28,7 @@ public class NovoJogadorDialogController {
     	}
     	else {
     		controlador.setJogadorAux(tfNomeJogador.getText());
+    		cancelar();
     	}
     	
     }
