@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.io.*;
 
 import monsterRPG.sistema.ComparadorNomes;
 import monsterRPG.sistema.Criatura;
@@ -188,4 +189,47 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
+	public void carregar() {
+		try {
+			FileInputStream fis = new FileInputStream("RepoCriaturas.hnf");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			this.criaturas = (List<Criatura>) ois.readObject();
+			ois.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void salvar() {
+		try {
+			FileOutputStream fos = new FileOutputStream("RepoCriaturas.hnf");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(this.criaturas);
+			oos.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void carregar(String path) {
+		try {
+			FileInputStream fis = new FileInputStream(path);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			this.criaturas = (List<Criatura>) ois.readObject();
+			ois.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void salvar(String path) {
+		try {
+			FileOutputStream fos = new FileOutputStream(path);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(this.criaturas);
+			oos.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

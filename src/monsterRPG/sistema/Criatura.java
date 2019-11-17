@@ -1,12 +1,14 @@
 package monsterRPG.sistema;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Criatura extends Status {
+public class Criatura extends Status implements Serializable{
+	private static final long serialVersionUID = 7584850659836730004L;
 	private String nome;
 	private String descrição;
 	private Types tipo;

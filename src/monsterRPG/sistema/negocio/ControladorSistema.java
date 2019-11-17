@@ -18,14 +18,17 @@ public class ControladorSistema {
 	private RepositorioMesas repositMesa;
 	private Criatura criaturaAux;
 	private String jogadorAux;
+	
 	public String getJogadorAux() {
 		return jogadorAux;
 	}
 	public void setJogadorAux(String jogadorAux) {
 		this.jogadorAux = jogadorAux;
+		repositCriaturas.salvar();
 	}
 	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException {
 		repositCriaturas.editarCriatura(antiga, nova);
+		repositCriaturas.salvar();
 	}
 	public Criatura getCriaturaAux() {
 		return criaturaAux;
@@ -38,6 +41,7 @@ public class ControladorSistema {
 	}
 	public void setCriaturas(List<Criatura> criaturas) {
 		repositCriaturas.setCriaturas(criaturas);
+		repositCriaturas.salvar();
 	}
 	public static ControladorSistema Instancia= new ControladorSistema();
 	public static ControladorSistema GetInstance() {
@@ -45,13 +49,16 @@ public class ControladorSistema {
 	}
 	private ControladorSistema() {
 		this.repositCriaturas = new RepositorioCriaturas();
+		this.repositCriaturas.carregar();
 		this.repositMesa = new RepositorioMesas();
 	}
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		repositCriaturas.adicionarCriatura(c);
+		repositCriaturas.salvar();
 	}
 	public void removerCriatura(Criatura c) throws CriaturaInvalidaException {
 		repositCriaturas.removerCriatura(c);
+		repositCriaturas.salvar();
 	}
 	public List<Criatura> filtrarPorNome(String nome) {
 		return repositCriaturas.filtrarPorNome(nome);
