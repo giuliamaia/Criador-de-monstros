@@ -3,6 +3,7 @@ package monsterRPG.gui.menu.controller;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,13 +116,34 @@ public class MenuPrincipalPaneController {
     @FXML
     void PesquisarPorData() {
     	if(checkBoxDuasDatas.isSelected()) {
-    		if (txData2.getValue()!=null) {
-    			//listaLocal 
+    		if (txData2.getValue()!=null && txData1.getValue()!=null) {
+    			try {
+    				if(txData1.getValue().isBefore(txData2.getValue())||txData1.getValue().isEqual(txData2.getValue())) {
+    					listaLocal = controlador.filtrarCriaturasCriadasEntreDuasDatas(txData1.getValue(), txData2.getValue());
+    					atualizarLista();
+    				}
+    				else {
+    					LocalDate aux;
+    					aux = txData1.getValue();
+    					txData1.setValue(txData2.getValue());
+    					txData2.setValue(aux);
+    					listaLocal = controlador.filtrarCriaturasCriadasEntreDuasDatas(txData2.getValue(), txData1.getValue());
+    					atualizarLista();
+    				}
+    			}catch(Exception e) {
+    				Alert alert = new Alert(Alert.AlertType.ERROR);
+    				alert.setContentText("Você está usando paramêtros inválidos na sua pesquisa.");
+            		alert.setHeaderText("Paramêtros invalidos para pesquisa");
+            		alert.setTitle("Error Feijo4d4");
+            		alert.showAndWait();
+    			}
     		}
     	}
     	else {
-    		listaLocal = controlador.filtrarPorData(txData1.getValue());
-    		atualizarLista();
+    		if(txData1 != null) {
+    			listaLocal = controlador.filtrarPorData(txData1.getValue());
+        		atualizarLista();
+    		}
     	}
     }
 

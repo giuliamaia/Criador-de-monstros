@@ -125,8 +125,8 @@
                      </graphic>
                   </Button>
                   <CheckBox fx:id="checkBoxDuasDatas" layoutX="156.0" layoutY="538.0" mnemonicParsing="false" onAction="#abrirData2" text="Inicio/fim" />
-                  <DatePicker fx:id="txData1" layoutX="4.0" layoutY="508.0" onAction="#PesquisarPorData" prefHeight="25.0" prefWidth="146.0" />
-                  <DatePicker fx:id="txData2" layoutX="4.0" layoutY="534.0" prefHeight="25.0" prefWidth="146.0" />
+                  <DatePicker fx:id="txData1" layoutX="4.0" layoutY="508.0" onAction="#PesquisarPorData" onInputMethodTextChanged="#PesquisarPorData" prefHeight="25.0" prefWidth="146.0" />
+                  <DatePicker fx:id="txData2" layoutX="4.0" layoutY="534.0" onAction="#PesquisarPorData" onInputMethodTextChanged="#PesquisarPorData" prefHeight="25.0" prefWidth="146.0" />
                   <ComboBox fx:id="escolhaDeTipo" layoutX="2.0" layoutY="508.0" onAction="#PesquisarPorTipo" prefHeight="25.0" prefWidth="216.0" promptText="Escolha">
                      <cursor>
                         <Cursor fx:constant="HAND" />

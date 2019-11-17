@@ -123,7 +123,7 @@ public class RepositorioCriaturas {
 	
 	public List<Criatura> filtrarPorData(LocalDate data){
 		List<Criatura> ret = new ArrayList<Criatura>();
-	
+		
 		for(int i=0; i<this.criaturas.size(); i++) {
 			if(this.criaturas.get(i).getDataCriação().isEqual(data)) {
 				ret.add(this.criaturas.get(i));
