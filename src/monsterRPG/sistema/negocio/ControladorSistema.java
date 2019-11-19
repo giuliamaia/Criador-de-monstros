@@ -1,15 +1,10 @@
 package monsterRPG.sistema.negocio;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import monsterRPG.sistema.ComparadorNomes;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
 import monsterRPG.sistema.Types;
-import monsterRPG.sistema.dados.ComparadorDatas;
 import monsterRPG.sistema.dados.RepositorioCriaturas;
 import monsterRPG.sistema.dados.RepositorioMesas;
 

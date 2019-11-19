@@ -194,6 +194,7 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void carregar() {
 		try {
 			FileInputStream fis = new FileInputStream("RepoCriaturas.hnf");
@@ -220,6 +221,7 @@ public class RepositorioCriaturas {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void carregar(String path) {
 		try {
 			FileInputStream fis = new FileInputStream(path);

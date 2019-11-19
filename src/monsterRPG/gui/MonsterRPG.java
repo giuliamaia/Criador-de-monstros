@@ -14,7 +14,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 public class MonsterRPG extends Application{
 	private static Stage estagio;
-	
 	private static Scene cenaMain;
 	private static Scene cenaEditar;
 	private static Scene cenaCriar;
