@@ -166,15 +166,13 @@ public class RepositorioCriaturas {
 		
 	}
 	public List<Criatura> ordenarDatasDecrescenteDoRepositorio(){
-		List<Criatura> ret = this.ordenarDatasCrescenteDoRepositorio();
-		Collections.reverse(ret);
-		return ret;
+		Collections.sort(this.criaturas, new ComparadorDatas().reversed());
+		return this.criaturas;
 		
 	}
 	public List<Criatura> ordenarDatasDecrescenteComParametro(List<Criatura> listaCriaturas){
-		List<Criatura> ret = ordenarDatasCrescenteComParametro(listaCriaturas);
-		Collections.reverse(ret);
-		return ret;
+		Collections.sort(listaCriaturas, new ComparadorDatas().reversed());
+		return listaCriaturas;
 	}
 	public Criatura procurarPorCriaturaPorUmNome(String nomeCriatura){
 		for(int i=0; i<this.criaturas.size(); i++) {
