@@ -53,6 +53,7 @@ public class RepositorioCriaturas {
 		removerCriatura(antiga);
 		this.criaturas.add(i, nova);
 		historico.adicionarNoHistoricoEditadas(nova);
+		historico.salvarArquivoHistoricoEditadas();
 	}
 	
 	private int getIndex(Criatura c) throws CriaturaInvalidaException{
@@ -74,6 +75,7 @@ public class RepositorioCriaturas {
 		try {
 			this.criaturas.add(c);
 			historico.adicionarNoHistoricoAdicionadas(c);
+			historico.salvarArquivoHistoricoAdicionadas();
 		} catch (NullPointerException e) {
 			throw new CriaturaInvalidaException("Criatura criada não pode ser vazia. SEU ANIMAL!");
 		}
@@ -83,6 +85,7 @@ public class RepositorioCriaturas {
 		try {
 			this.criaturas.remove(c);
 			historico.adicionarNoHistoricoRemovidas(c);
+			historico.carregarArquivoHistoricoRemovidas();
 		} catch (NullPointerException e) {
 			throw new CriaturaInvalidaException("Rapaz, n sei oq tu fez, mas fudeu!");
 		}
