@@ -307,6 +307,7 @@ public class MenuPrincipalPaneController {
 	}
 	public void selecionaCriatura() {
 		try{
+			jogadorSelecionado = null;
 			criaturaSelecionada = lvLista.getSelectionModel().getSelectedItem();
 			labelCarisma.setText("" + criaturaSelecionada.getCarisma());
 			labelConstituicao.setText("" + criaturaSelecionada.getConstituicao());
