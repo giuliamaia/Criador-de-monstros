@@ -140,8 +140,8 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ComboBox>
-                  <TextField fx:id="tfNivel1" layoutX="4.0" layoutY="507.0" onAction="#filtrarListaNivel" onKeyReleased="#filtrarListaNivel" prefHeight="25.0" prefWidth="72.0" />
-                  <TextField fx:id="tfNivel2" layoutX="97.0" layoutY="508.0" onAction="#filtrarListaNivel" onKeyReleased="#filtrarListaNivel" prefHeight="25.0" prefWidth="72.0" />
+                  <TextField fx:id="tfNivel1" layoutX="4.0" layoutY="507.0" onAction="#filtrarListaNivel" prefHeight="25.0" prefWidth="72.0" />
+                  <TextField fx:id="tfNivel2" layoutX="97.0" layoutY="508.0" onAction="#filtrarListaNivel" prefHeight="25.0" prefWidth="72.0" />
                   <Button fx:id="buttonPesquisarPorNivel" layoutX="191.0" layoutY="508.0" mnemonicParsing="false" onAction="#filtrarListaNivel" prefHeight="16.0" prefWidth="17.0">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">

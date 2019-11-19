@@ -72,6 +72,7 @@ public class NovaCriaturaDialogController {
     		}
     		else {
     			bicho = new Criatura(Integer.parseInt(txVida.getText()),Integer.parseInt(txDefesa.getText()),Double.parseDouble(txNivel.getText()),Integer.parseInt(txForca.getText()),Integer.parseInt(txDestreza.getText()),Integer.parseInt(txConstituicao.getText()),Integer.parseInt(txInteligencia.getText()),Integer.parseInt(txSabedoria.getText()),Integer.parseInt(txCarisma.getText()),txNome.getText(), txDescricao.getText(), escolhaDeTipo.getSelectionModel().getSelectedItem());
+    			bicho.setDataNow();
         		controlador.adicionarCriatura(bicho);
         		cancelar();
     		}

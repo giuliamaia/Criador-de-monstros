@@ -441,8 +441,16 @@ public class MenuPrincipalPaneController {
 	public void addCriatura() {
 		monsterRPG.abrirNovoMonstroDialog();
 		listaLocal = controlador.getCriaturas();
-		Pesquisar();
-		selecionaCriatura();
+		if (buttonPesquisaNome.isVisible())
+			Pesquisar();
+		if (buttonPesquisarPorData.isVisible())
+			PesquisarPorData();
+		if (buttonPesquisarPorNivel.isVisible())
+			filtrarListaNivel();
+		if (escolhaDeTipo.isVisible())
+			PesquisarPorTipo();
+		if (listaLocal != null) 
+			selecionaCriatura();
 		criaturaSelecionada = null;
 	}
 	public void editCriatura() {
@@ -470,13 +478,13 @@ public class MenuPrincipalPaneController {
     		atualizarLista();
     	}
     	else {
-    		if(!buttonPesquisaNome.isDisabled()) {
+    		if(buttonPesquisaNome.isVisible()) {
     			Pesquisar();
     		}
-    		else if(!buttonPesquisarPorData.isDisabled()) {
+    		else if(buttonPesquisarPorData.isVisible()) {
     			PesquisarPorData();
     		}
-    		else if(!buttonPesquisarPorNivel.isDisabled()) {
+    		else if(buttonPesquisarPorNivel.isDisable()) {
     			filtrarListaNivel();
     		}
     	}
@@ -588,6 +596,7 @@ public class MenuPrincipalPaneController {
     @FXML
     void addJogadorQueMatou() {
     	monsterRPG.abrirNovoJogadorDialog();
+    	if(controlador.getJogadorParaAdd()!=null)
     	criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());
     	pesquisaJogadorQueMatou();
     	atualizaListaJogadoresQueMataram();

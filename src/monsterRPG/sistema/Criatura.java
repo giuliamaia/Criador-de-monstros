@@ -22,12 +22,11 @@ public class Criatura extends Status implements Serializable{
 		this.nome = nome;
 		this.descrição = descrição;
 		this.tipo = tipo;
-		this.dataCriacao = LocalDate.now();
 		try {
 			this.setaFoto();
 		}
 		catch(IOException e) {
-			System.out.println("Deu merda");
+			System.out.println("Deu merda na fotinha:" + e.getMessage());
 		}
 		
 	}
@@ -90,6 +89,9 @@ public class Criatura extends Status implements Serializable{
 	}
 	public void setJogadoresQueMataram(List<String> jogadoresQueMataram) {
 		this.jogadoresQueMataram = jogadoresQueMataram;
+	}
+	public void setDataNow() {
+		this.dataCriacao = LocalDate.now();
 	}
 	public String getNome() {
 		return nome;
