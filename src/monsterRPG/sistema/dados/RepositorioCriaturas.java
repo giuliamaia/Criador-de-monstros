@@ -13,21 +13,33 @@ import java.io.*;
 import monsterRPG.sistema.ComparadorNomes;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
+import monsterRPG.sistema.Historico;
 import monsterRPG.sistema.Types;
 
 
 public class RepositorioCriaturas {
 	List<Criatura> criaturas;
+	Historico historico;
 	
 	public RepositorioCriaturas() {
 		this.criaturas = new ArrayList<Criatura>();
 	}
+	
+	public List<Criatura> getCriaturas() {
+		return criaturas;
+	}
+
+	public void setCriaturas(List<Criatura> criaturas) {
+		this.criaturas = criaturas;
+	}
+
 	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException{
 		nova.setFavorito(antiga.isFavorito());
 		int i = getIndex(antiga);
 		removerCriatura(antiga);
 		this.criaturas.add(i, nova);
 	}
+	
 	private int getIndex(Criatura c) throws CriaturaInvalidaException{
 		int retorno = -1;
 		for (int i = 0; i < this.criaturas.size() && retorno==-1; i++) {
@@ -42,6 +54,7 @@ public class RepositorioCriaturas {
 			return retorno;
 		}
 	}
+	
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.add(c);
@@ -49,6 +62,7 @@ public class RepositorioCriaturas {
 			throw new CriaturaInvalidaException("Criatura criada não pode ser vazia. SEU ANIMAL!");
 		}
 	}
+	
 	public void removerCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.remove(c);
@@ -71,14 +85,6 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
-	public List<Criatura> getCriaturas() {
-		return criaturas;
-	}
-
-	public void setCriaturas(List<Criatura> criaturas) {
-		this.criaturas = criaturas;
-	}
-
 	public List<Criatura> filtrarPorTipo(Types tipo) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
@@ -136,10 +142,21 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
+	public List<Criatura> filtrarCriaturasCriadasEntreDuasDatas(LocalDate inicio, LocalDate fim){
+		List<Criatura> ret = new ArrayList<Criatura>();
+		for(int i=0; i<this.criaturas.size(); i++) {
+			if(this.criaturas.get(i).getDataCriação().isAfter(inicio)&&this.criaturas.get(i).getDataCriação().isBefore(fim)) {
+				ret.add(this.criaturas.get(i));
+			}
+		}
+		return ret;
+	}
+	
 	public List<Criatura> ordenarNomesDoRepositorioPorOrdemAlfabetica(){
 		Collections.sort(this.criaturas, new ComparadorNomes());
 		return this.criaturas;
 	}
+	
 	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametro(List<Criatura> listaCriaturas){
 		Collections.sort(listaCriaturas, new ComparadorNomes());
 		return listaCriaturas;
@@ -150,30 +167,33 @@ public class RepositorioCriaturas {
 		Collections.reverse(ret);
 		return ret;
 	}
+	
 	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametroReverse(List<Criatura> listaCriaturas){
 		List<Criatura> ret = ordenarNomesPorOrdemAlfabeticaComParametro(listaCriaturas);
 		Collections.reverse(ret);
 		return ret;
 	}
+	
 	public List<Criatura> ordenarDatasCrescenteDoRepositorio(){
 		Collections.sort(this.criaturas, new ComparadorDatas());
 		return this.criaturas;
-		
 	}
+	
 	public List<Criatura> ordenarDatasCrescenteComParametro(List<Criatura> listaCriaturas){
 		Collections.sort(listaCriaturas, new ComparadorDatas());
 		return listaCriaturas;
-		
 	}
+	
 	public List<Criatura> ordenarDatasDecrescenteDoRepositorio(){
 		Collections.sort(this.criaturas, new ComparadorDatas().reversed());
 		return this.criaturas;
-		
 	}
+	
 	public List<Criatura> ordenarDatasDecrescenteComParametro(List<Criatura> listaCriaturas){
 		Collections.sort(listaCriaturas, new ComparadorDatas().reversed());
 		return listaCriaturas;
 	}
+	
 	public Criatura procurarPorCriaturaPorUmNome(String nomeCriatura){
 		for(int i=0; i<this.criaturas.size(); i++) {
 			if(this.criaturas.get(i).getNome().contains(nomeCriatura)) {
@@ -181,15 +201,6 @@ public class RepositorioCriaturas {
 			}
 		}
 		return null;
-	}
-	public List<Criatura> filtrarCriaturasCriadasEntreDuasDatas(LocalDate inicio, LocalDate fim){
-		List<Criatura> ret = new ArrayList<Criatura>();
-		for(int i=0; i<this.criaturas.size(); i++) {
-			if(this.criaturas.get(i).getDataCriação().isAfter(inicio)&&this.criaturas.get(i).getDataCriação().isBefore(fim)) {
-				ret.add(this.criaturas.get(i));
-			}
-		}
-		return ret;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -241,4 +252,5 @@ public class RepositorioCriaturas {
 			e.printStackTrace();
 		}
 	}
+	
 }

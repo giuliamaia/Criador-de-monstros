@@ -38,7 +38,7 @@ public class Testes {
 		
 		System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("Ordnael").size());
 		
-System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("Ordnael").size());
+		System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("Ordnael").size());
 		
 		c1.adicionarMortePeloJogador("Ordnael");
 		c5.adicionarMortePeloJogador("Ordnael");
@@ -73,5 +73,6 @@ System.out.println("Size do pesquisar por nome: " + controlador.filtrarPorNome("
 		System.out.println("Datas crescente: " + controlador.ordenarDatasDoRepositorioCrescente());
 		System.out.println("Datas decrescente: " + controlador.ordenarDatasDoRepositorioDecrescente());
 		System.out.println("Monstros criados entre 15/1/2001 e 3/12/2015: " + controlador.filtrarCriaturasCriadasEntreDuasDatas(LocalDate.of(2001, 1, 15), LocalDate.of(2015, 12, 3)));
+
 	}
 }
