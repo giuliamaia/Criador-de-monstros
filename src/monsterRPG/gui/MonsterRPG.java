@@ -23,6 +23,7 @@ public class MonsterRPG extends Application{
 	private static Scene cenaCriarJogador;
 	private static Stage dialogStageCriarJogador;
 	private static Stage dialogStageEditarJogador;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
