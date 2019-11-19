@@ -61,6 +61,7 @@
             <Menu mnemonicParsing="false" text="Ver">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#crimeOcorre" text="Mesas" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirHistoricoDialog" text="Histórico" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Pesquisar">

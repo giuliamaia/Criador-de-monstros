@@ -273,6 +273,10 @@ public class MenuPrincipalPaneController {
     	checkBoxDuasDatas.setVisible(false);
     	escolhaDeTipo.setVisible(false);
     }
+    @FXML
+    void abrirHistoricoDialog() {
+    	monsterRPG.abrirHistoricoDialog();
+    }
 	@FXML
 	public void Pesquisar() {
 		listaLocal = controlador.filtrarPorNome(barraDePesquisa.getText());

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -17,12 +18,14 @@ public class MonsterRPG extends Application{
 	private static Scene cenaMain;
 	private static Scene cenaEditar;
 	private static Scene cenaCriar;
+	private static Scene cenaHistorico;
 	private static Stage dialogStageCriar;
 	private static Stage dialogStageEditar;
 	private static Scene cenaEditarJogador;
 	private static Scene cenaCriarJogador;
 	private static Stage dialogStageCriarJogador;
 	private static Stage dialogStageEditarJogador;
+	private static Stage dialogStageHistorico;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -118,6 +121,30 @@ public class MonsterRPG extends Application{
 			e.printStackTrace();
 		}
 
+	}
+	@FXML
+	public void abrirHistoricoDialog() {
+		AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/HistoricoDialog.fxml"));
+			dialogStageHistorico = new Stage();
+			dialogStageHistorico.setTitle("Histórico");
+			dialogStageHistorico.initModality(Modality.WINDOW_MODAL);
+			dialogStageHistorico.initOwner(estagio);
+			cenaHistorico = new Scene(conteudoDialog);
+			dialogStageHistorico.setScene(cenaHistorico);
+			dialogStageHistorico.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageHistorico.showAndWait();
+		} catch (IOException e) {
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
+			alerta.setTitle("Localização não encontrada");
+			alerta.setHeaderText("Arquivo do histórico não foi encontrado");
+			alerta.setContentText("Não foi possivel encontrar o arquivo do histórico.");
+			alerta.showAndWait();
+		}
+	}
+	public void fecharHistoricoDialog() {
+		dialogStageHistorico.close();
 	}
 	public void fecharNovoMonstroDialog() {
 		dialogStageCriar.close();
