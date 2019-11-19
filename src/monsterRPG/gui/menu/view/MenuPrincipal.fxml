@@ -120,8 +120,8 @@
                   <TextField fx:id="barraDePesquisa" layoutX="4.0" layoutY="507.0" onAction="#Pesquisar" onKeyReleased="#Pesquisar" prefHeight="25.0" prefWidth="176.0" />
                   <MenuButton layoutX="3.0" layoutY="71.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Ordenar">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#ordenarPorDataDecrescente" text="Data ↓" />
-                      <MenuItem mnemonicParsing="false" onAction="#ordenarPorDataCrescente" text="Data ↑" />
+                        <MenuItem mnemonicParsing="false" onAction="#ordenarPorDataCrescente" text="Data ↓" />
+                      <MenuItem mnemonicParsing="false" onAction="#ordenarPorDataDecrescente" text="Data ↑" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                       <MenuItem mnemonicParsing="false" onAction="#ordenarPorNomeCrescente" text="Nome ↓" />
                         <MenuItem mnemonicParsing="false" onAction="#ordenarPorNomeDecrescente" text="Nome ↑" />

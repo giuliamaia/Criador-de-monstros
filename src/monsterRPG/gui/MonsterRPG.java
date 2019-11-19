@@ -1,7 +1,6 @@
 package monsterRPG.gui;
 
 import java.io.IOException;
-import java.net.URL;
 
 
 import javafx.application.Application;
@@ -13,8 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import monsterRPG.gui.menu.controller.MenuPrincipalPaneController;
-import monsterRPG.sistema.negocio.ControladorSistema;
 public class MonsterRPG extends Application{
 	private static Stage estagio;
 	

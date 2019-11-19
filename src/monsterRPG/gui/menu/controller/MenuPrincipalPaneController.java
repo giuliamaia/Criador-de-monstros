@@ -1,32 +1,18 @@
 package monsterRPG.gui.menu.controller;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
 import monsterRPG.sistema.Types;
 import monsterRPG.sistema.negocio.ControladorSistema;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -427,7 +413,8 @@ public class MenuPrincipalPaneController {
 				alerta.setHeaderText("Confirmação");
 				alerta.setTitle("REMOVER MONSTRO");
 				alerta.showAndWait();
-				if (alerta.getResult() == alerta.getResult().OK) {
+				alerta.getResult();
+				if (alerta.getResult() == ButtonType.OK) {
 					controlador.removerCriatura(criaturaSelecionada);
 					listaLocal = controlador.getCriaturas();
 					Pesquisar();
