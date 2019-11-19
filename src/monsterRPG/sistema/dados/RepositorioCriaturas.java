@@ -18,13 +18,27 @@ import monsterRPG.sistema.Types;
 
 
 public class RepositorioCriaturas {
-	List<Criatura> criaturas;
-	Historico historico;
+	private List<Criatura> criaturas;
+	private Historico historico;
 	
 	public RepositorioCriaturas() {
 		this.criaturas = new ArrayList<Criatura>();
+		historico = new Historico();
+		historico.carregarTodosArquivosHistorico();
 	}
 	
+	public List<String> pegarCriaturasAdicionadasHistorico() {
+		return historico.pegarCriaturasAdicionadasHistorico();
+	}
+
+	public List<String> pegarCriaturasRemovidasHistorico() {
+		return historico.pegarCriaturasRemovidasHistorico();
+	}
+
+	public List<String> pegarCriaturasEditadasHistorico() {
+		return historico.pegarCriaturasEditadasHistorico();
+	}
+
 	public List<Criatura> getCriaturas() {
 		return criaturas;
 	}
@@ -38,6 +52,7 @@ public class RepositorioCriaturas {
 		int i = getIndex(antiga);
 		removerCriatura(antiga);
 		this.criaturas.add(i, nova);
+		historico.adicionarNoHistoricoEditadas(nova);
 	}
 	
 	private int getIndex(Criatura c) throws CriaturaInvalidaException{
@@ -58,6 +73,7 @@ public class RepositorioCriaturas {
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.add(c);
+			historico.adicionarNoHistoricoAdicionadas(c);
 		} catch (NullPointerException e) {
 			throw new CriaturaInvalidaException("Criatura criada não pode ser vazia. SEU ANIMAL!");
 		}
@@ -66,6 +82,7 @@ public class RepositorioCriaturas {
 	public void removerCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.remove(c);
+			historico.adicionarNoHistoricoRemovidas(c);
 		} catch (NullPointerException e) {
 			throw new CriaturaInvalidaException("Rapaz, n sei oq tu fez, mas fudeu!");
 		}
@@ -85,6 +102,16 @@ public class RepositorioCriaturas {
 		return ret;
 	}
 	
+	
+
+	public void salvarTodosArquivosHistorico() {
+		historico.salvarTodosArquivosHistorico();
+	}
+
+	public void carregarTodosArquivosHistorico() {
+		historico.carregarTodosArquivosHistorico();
+	}
+
 	public List<Criatura> filtrarPorTipo(Types tipo) {
 		List<Criatura> ret = new ArrayList<Criatura>();
 		
@@ -218,6 +245,7 @@ public class RepositorioCriaturas {
 			alert.showAndWait();
 		}
 	}
+	
 	
 	public void salvar() {
 		try {

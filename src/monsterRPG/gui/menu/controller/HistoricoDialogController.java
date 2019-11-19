@@ -18,9 +18,9 @@ public class HistoricoDialogController {
     
     @FXML
     void initialize() {
-    	textAreaCriados.setText("ADICIONADOS");
-    	textAreaEditados.setText("EDITADOS");
-    	textAreaRemovidos.setText("REMOVIDOS");
+    	textAreaCriados.setText(controlador.pegarCriaturasAdicionadasHistorico().toString());
+    	textAreaEditados.setText(controlador.pegarCriaturasEditadasHistorico().toString());
+    	textAreaRemovidos.setText(controlador.pegarCriaturasRemovidasHistorico().toString());
     }
 
 }

@@ -1,9 +1,11 @@
 package monsterRPG.sistema.negocio;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
+import monsterRPG.sistema.Historico;
 import monsterRPG.sistema.Types;
 import monsterRPG.sistema.dados.RepositorioCriaturas;
 import monsterRPG.sistema.dados.RepositorioMesas;
@@ -15,6 +17,8 @@ public class ControladorSistema {
 	private String jogadorParaAdd;
 	private String jogadorParaEditar;
 	private String jogadorAuxiliar;
+	
+	
 	public String getJogadorAuxiliar() {
 		return jogadorAuxiliar;
 	}
@@ -60,6 +64,15 @@ public class ControladorSistema {
 		this.repositCriaturas = new RepositorioCriaturas();
 		this.repositCriaturas.carregar();
 		this.repositMesa = new RepositorioMesas();
+	}
+	public List<String> pegarCriaturasAdicionadasHistorico() {
+		return repositCriaturas.pegarCriaturasAdicionadasHistorico();
+	}
+	public List<String> pegarCriaturasRemovidasHistorico() {
+		return repositCriaturas.pegarCriaturasRemovidasHistorico();
+	}
+	public List<String> pegarCriaturasEditadasHistorico() {
+		return repositCriaturas.pegarCriaturasEditadasHistorico();
 	}
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		repositCriaturas.adicionarCriatura(c);
@@ -128,6 +141,12 @@ public class ControladorSistema {
 	}
 	public List<Criatura> filtrarCriaturasCriadasEntreDuasDatas(LocalDate inicio, LocalDate fim){
 		return repositCriaturas.filtrarCriaturasCriadasEntreDuasDatas(inicio, fim);
+	}
+	public void salvarTodosArquivosHistorico() {
+		repositCriaturas.salvarTodosArquivosHistorico();
+	}
+	public void carregarTodosArquivosHistorico() {
+		repositCriaturas.carregarTodosArquivosHistorico();
 	}
 	
 }

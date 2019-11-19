@@ -73,6 +73,6 @@ public class Testes {
 		System.out.println("Datas crescente: " + controlador.ordenarDatasDoRepositorioCrescente());
 		System.out.println("Datas decrescente: " + controlador.ordenarDatasDoRepositorioDecrescente());
 		System.out.println("Monstros criados entre 15/1/2001 e 3/12/2015: " + controlador.filtrarCriaturasCriadasEntreDuasDatas(LocalDate.of(2001, 1, 15), LocalDate.of(2015, 12, 3)));
-
+		
 	}
 }
