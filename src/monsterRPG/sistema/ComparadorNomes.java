@@ -9,6 +9,6 @@ public class ComparadorNomes implements Comparator<Criatura>{
 	}
 
 	public int compare(Criatura c1, Criatura c2) {
-		return c1.getNome().compareTo(c2.getNome());
+		return c1.getNome().toUpperCase().compareTo(c2.getNome().toUpperCase());
 	}
 }

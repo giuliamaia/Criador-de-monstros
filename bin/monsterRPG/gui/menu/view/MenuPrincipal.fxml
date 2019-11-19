@@ -29,7 +29,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.MenuPrincipalPaneController">
    <children>
@@ -78,11 +77,6 @@
          <items>
             <AnchorPane>
                <children>
-                  <Label alignment="CENTER" layoutX="65.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Monstros" textAlignment="CENTER" textFill="#12adccde" wrapText="false">
-                     <font>
-                        <Font size="18.0" fx:id="x1" />
-                     </font>
-                  </Label>
                   <Button fx:id="buttonPesquisaNome" layoutX="189.0" layoutY="507.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="16.0" prefWidth="17.0">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
@@ -158,19 +152,19 @@
                      </graphic>
                   </Button>
                   <CheckBox fx:id="checkQuerApenasFavoritos" layoutX="4.0" layoutY="52.0" mnemonicParsing="false" onAction="#querApenarFavoritos" text="Favoritos" />
+                  <ImageView fitHeight="51.0" fitWidth="160.0" layoutX="34.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/Monstros.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <ScrollPane prefHeight="554.0" prefWidth="672.0">
                <content>
                   <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="546.0" prefWidth="661.0">
                      <children>
-                        <Label alignment="CENTER" font="$x1" layoutX="239.0" layoutY="134.0" style="&#10;" text="Informações" textAlignment="CENTER" textFill="#12accede" wrapText="false" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#656c72" height="127.0" layoutX="57.0" layoutY="28.0" opacity="0.54" stroke="BLACK" strokeType="INSIDE" width="130.0" />
-                        <Text fill="#12acce" layoutX="452.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" textAlignment="JUSTIFY" wrappingWidth="82.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font></Text>
-                        <ImageView fx:id="fotoDoBicho" fitHeight="123.0" fitWidth="126.0" layoutX="59.0" layoutY="30.0" pickOnBounds="true" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#656c72" height="127.0" layoutX="57.0" layoutY="39.0" opacity="0.54" stroke="BLACK" strokeType="INSIDE" width="130.0" />
+                        <ImageView fx:id="fotoDoBicho" fitHeight="123.0" fitWidth="126.0" layoutX="59.0" layoutY="41.0" pickOnBounds="true" />
                         <ToggleButton fx:id="buttonFavorito" layoutX="597.0" layoutY="28.0" mnemonicParsing="false" onAction="#isBotaoFavoritoPressed" prefHeight="27.0" prefWidth="30.0" textFill="#21a42a">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
@@ -200,61 +194,6 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" textAlignment="JUSTIFY" wrappingWidth="49.99999999999997">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" textAlignment="JUSTIFY" wrappingWidth="39.947935938835144" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida" textAlignment="JUSTIFY" wrappingWidth="39.947935938835144" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Defesa" textAlignment="JUSTIFY" wrappingWidth="128.94793593883514" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Nivel" textAlignment="JUSTIFY" wrappingWidth="125.94793593883514" GridPane.rowIndex="4">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Força" textAlignment="JUSTIFY" wrappingWidth="122.94793593883514" GridPane.rowIndex="5">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Destreza" textAlignment="JUSTIFY" wrappingWidth="119.94793593883514" GridPane.rowIndex="6">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Constituição" textAlignment="JUSTIFY" wrappingWidth="122.94793593883514" GridPane.rowIndex="7">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Inteligência" textAlignment="JUSTIFY" wrappingWidth="124.94793593883514" GridPane.rowIndex="8">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Sabedoria" textAlignment="JUSTIFY" wrappingWidth="125.94793593883514" GridPane.rowIndex="9">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Carisma" textAlignment="JUSTIFY" wrappingWidth="123.94793593883514" GridPane.rowIndex="10">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
                               <Label fx:id="labelNomeMonstro" prefHeight="25.0" prefWidth="121.0" textFill="#128ea4" GridPane.columnIndex="1" />
                               <Label fx:id="labelTipo" prefHeight="25.0" prefWidth="121.0" textFill="#128ea4" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label fx:id="labelVida" prefHeight="25.0" prefWidth="121.0" textFill="#128ea4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -266,20 +205,70 @@
                               <Label fx:id="labelInteligencia" prefHeight="25.0" prefWidth="121.0" textFill="#128ea4" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                               <Label fx:id="labelSabedoria" prefHeight="25.0" prefWidth="121.0" textFill="#128ea4" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                               <Label fx:id="labelCarisma" prefHeight="25.0" prefWidth="121.0" textFill="#128ea4" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                              <Text fill="#9e9b9b" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de criação" textAlignment="JUSTIFY" wrappingWidth="128.94793593883514" GridPane.rowIndex="11">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Text>
                               <Label fx:id="labelDataCriacao" prefHeight="25.0" prefWidth="121.0" textFill="#12acce" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                              <ImageView fitHeight="46.0" fitWidth="57.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/Nome.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="29.0" fitWidth="44.0" preserveRatio="true" GridPane.rowIndex="1">
+                                 <image>
+                                    <Image url="@../../images/Tipo.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="38.0" fitWidth="52.0" preserveRatio="true" GridPane.rowIndex="2">
+                                 <image>
+                                    <Image url="@../../images/Vida.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="36.0" fitWidth="82.0" preserveRatio="true" GridPane.rowIndex="3">
+                                 <image>
+                                    <Image url="@../../images/defesa.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="35.0" fitWidth="70.0" preserveRatio="true" GridPane.rowIndex="4">
+                                 <image>
+                                    <Image url="@../../images/nivel.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="40.0" fitWidth="64.0" preserveRatio="true" GridPane.rowIndex="5">
+                                 <image>
+                                    <Image url="@../../images/Força.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="37.0" fitWidth="127.0" preserveRatio="true" GridPane.rowIndex="7">
+                                 <image>
+                                    <Image url="@../../images/Constituição.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="31.0" fitWidth="139.0" preserveRatio="true" GridPane.rowIndex="8">
+                                 <image>
+                                    <Image url="@../../images/inteligencia.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="41.0" fitWidth="107.0" preserveRatio="true" GridPane.rowIndex="6">
+                                 <image>
+                                    <Image url="@../../images/Destreza.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="28.0" fitWidth="137.0" preserveRatio="true" GridPane.rowIndex="9">
+                                 <image>
+                                    <Image url="@../../images/Sabedoria.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="35.0" fitWidth="78.0" preserveRatio="true" GridPane.rowIndex="10">
+                                 <image>
+                                    <Image url="@../../images/Carisma.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="25.0" fitWidth="181.0" preserveRatio="true" GridPane.rowIndex="11">
+                                 <image>
+                                    <Image url="@../../images/Data%20de%20criação.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </GridPane>
                         <Label fx:id="labelDescrição" alignment="TOP_LEFT" layoutX="344.0" layoutY="166.0" prefHeight="160.0" prefWidth="309.0" textFill="#128ea4" wrapText="true" />
-                        <Text fill="#9e9b9b" layoutX="344.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogadores que já mataram" textAlignment="JUSTIFY" wrappingWidth="215.99999999999997">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
                         <ListView fx:id="lvJogadoresQueJáMataram" layoutX="342.0" layoutY="356.0" onKeyReleased="#selecionaJogadorQueMatou" onMousePressed="#selecionaJogadorQueMatou" prefHeight="165.0" prefWidth="311.0" />
                         <Button fx:id="removeJogadorQueMatou" layoutX="590.0" layoutY="329.0" mnemonicParsing="false" onAction="#removeJogadorQueMatou" prefHeight="15.0" prefWidth="2.0">
                            <graphic>
@@ -321,6 +310,21 @@
                         <ImageView fitHeight="119.0" fitWidth="389.0" layoutX="199.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../images/Capinha.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="28.0" fitWidth="216.0" layoutX="342.0" layoutY="328.0">
+                           <image>
+                              <Image url="@../../images/Jogadores%20que%20mataram.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="398.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/descricao1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="33.0" fitWidth="208.0" layoutX="136.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/informacoes.png" />
                            </image>
                         </ImageView>
                      </children>
