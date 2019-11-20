@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="517.0" prefWidth="685.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane prefHeight="517.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="301.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRIAR MESA" />
       <TextField fx:id="txNomeJogador" layoutX="28.0" layoutY="417.0" />
@@ -24,7 +23,7 @@
          <graphic>
             <ImageView fitHeight="14.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/109526.png" />
+                  <Image url="@../../images/109526.png" />
                </image>
             </ImageView>
          </graphic>
@@ -35,7 +34,7 @@
          <graphic>
             <ImageView fitHeight="14.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/109526.png" />
+                  <Image url="@../../images/109526.png" />
                </image>
             </ImageView>
          </graphic>
@@ -49,7 +48,7 @@
          <graphic>
             <ImageView fitHeight="14.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/109526.png" />
+                  <Image url="@../../images/109526.png" />
                </image>
             </ImageView>
          </graphic>
