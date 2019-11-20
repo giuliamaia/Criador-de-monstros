@@ -1,5 +1,7 @@
 package monsterRPG.gui.menu.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -364,7 +366,6 @@ public class MenuPrincipalPaneController {
 	}
 	@FXML
 	void atualizaListaJogadoresQueMataram() {
-		controlador.salvar();
 		if(listaLocalDeJogadores!=null){
 			lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
 		}
@@ -611,21 +612,62 @@ public class MenuPrincipalPaneController {
 	}
     @FXML
     void carregarArquivoOutro() {
-    	controlador.carregar();
+    	try {
+    		File file = monsterRPG.abrirEscolhaDeDiretorio(false, controlador.getFileRepositorioAtual());
+    		if(file != null) {
+    			controlador.setFileRepositorioAtual(file);
+    			controlador.carregar(controlador.getFileRepositorioAtual());
+    		}
+			salvarLista();
+			if (buttonPesquisaNome.isVisible())
+				Pesquisar();
+			if (buttonPesquisarPorData.isVisible())
+				PesquisarPorData();
+			if (buttonPesquisarPorNivel.isVisible())
+				filtrarListaNivel();
+			if (escolhaDeTipo.isVisible())
+				PesquisarPorTipo();
+			if (listaLocal != null) 
+				selecionaCriatura();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
     void carregarArquivoPadrão() {
-    	//controlador.carregar(path);
+    	controlador.carregar();
+    	salvarLista();
+    	
+    	if (buttonPesquisaNome.isVisible())
+			Pesquisar();
+		if (buttonPesquisarPorData.isVisible())
+			PesquisarPorData();
+		if (buttonPesquisarPorNivel.isVisible())
+			filtrarListaNivel();
+		if (escolhaDeTipo.isVisible())
+			PesquisarPorTipo();
+		if (listaLocal != null) 
+			selecionaCriatura();
     }
     @FXML
     void salvarLista() {
     	controlador.salvar();
+    	
     }
 
     @FXML
     void salvarListaOutro() {
-    	//controlador.salvar(path);
+    	
+    	try {
+    		File file = monsterRPG.abrirEscolhaDeDiretorio(true, controlador.getFileRepositorioAtual());
+    		if (file != null)
+			controlador.salvar(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
     }
 	void setaListaQuemMatou() {
 		if(criaturaSelecionada != null) {

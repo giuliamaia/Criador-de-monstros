@@ -1,11 +1,10 @@
 package monsterRPG.sistema.negocio;
 
+import java.io.File;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
-import monsterRPG.sistema.Historico;
 import monsterRPG.sistema.Types;
 import monsterRPG.sistema.dados.RepositorioCriaturas;
 import monsterRPG.sistema.dados.RepositorioMesas;
@@ -19,6 +18,12 @@ public class ControladorSistema {
 	private String jogadorAuxiliar;
 	
 	
+	public File getFileRepositorioAtual() {
+		return this.repositCriaturas.getFileRepositorioAtual();
+	}
+	public void setFileRepositorioAtual(File fileRepositorioAtual) {
+		this.repositCriaturas.setFileRepositorioAtual(fileRepositorioAtual);
+	}
 	public String getJogadorAuxiliar() {
 		return jogadorAuxiliar;
 	}
@@ -30,18 +35,21 @@ public class ControladorSistema {
 	}
 	public void setJogadorParaAdd(String jogadorAux) {
 		this.jogadorParaAdd = jogadorAux;
-		repositCriaturas.salvar();
+		
 	}
 	public String getJogadorParaEditar() {
 		return jogadorParaEditar;
 	}
 	public void setJogadorParaEditar(String jogadorAux) {
 		this.jogadorParaEditar = jogadorAux;
-		repositCriaturas.salvar();
+		if (getFileRepositorioAtual() == null)repositCriaturas.salvar();
+		else repositCriaturas.salvar(getFileRepositorioAtual());
+		
 	}
 	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException {
 		repositCriaturas.editarCriatura(antiga, nova);
-		repositCriaturas.salvar();
+		if (getFileRepositorioAtual()==null)repositCriaturas.salvar();
+		else repositCriaturas.salvar(getFileRepositorioAtual());
 	}
 	public Criatura getCriaturaAux() {
 		return criaturaAux;
@@ -54,7 +62,8 @@ public class ControladorSistema {
 	}
 	public void setCriaturas(List<Criatura> criaturas) {
 		repositCriaturas.setCriaturas(criaturas);
-		repositCriaturas.salvar();
+		if (getFileRepositorioAtual() == null)repositCriaturas.salvar();
+		else repositCriaturas.salvar(getFileRepositorioAtual());
 	}
 	public static ControladorSistema Instancia= new ControladorSistema();
 	public static ControladorSistema GetInstance() {
@@ -62,7 +71,7 @@ public class ControladorSistema {
 	}
 	private ControladorSistema() {
 		this.repositCriaturas = new RepositorioCriaturas();
-		this.repositCriaturas.carregar();
+		carregar();
 		this.repositMesa = new RepositorioMesas();
 	}
 	public List<String> pegarCriaturasAdicionadasHistorico() {
@@ -76,11 +85,13 @@ public class ControladorSistema {
 	}
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		repositCriaturas.adicionarCriatura(c);
-		repositCriaturas.salvar();
+		if (getFileRepositorioAtual() == null)repositCriaturas.salvar();
+		else repositCriaturas.salvar(getFileRepositorioAtual());
 	}
 	public void removerCriatura(Criatura c) throws CriaturaInvalidaException {
 		repositCriaturas.removerCriatura(c);
-		repositCriaturas.salvar();
+		if (getFileRepositorioAtual() == null)repositCriaturas.salvar();
+		else repositCriaturas.salvar(getFileRepositorioAtual());
 	}
 	public List<Criatura> filtrarPorNome(String nome) {
 		return repositCriaturas.filtrarPorNome(nome);
@@ -98,15 +109,17 @@ public class ControladorSistema {
 		return repositCriaturas.filtrarPorQuemMatou(j);
 	}
 	public void carregar() {
-		repositCriaturas.carregar();
+		if (getFileRepositorioAtual() == null)repositCriaturas.carregar();
+		else repositCriaturas.salvar(getFileRepositorioAtual());
 	}
 	public void salvar() {
-		repositCriaturas.salvar();
+		if (getFileRepositorioAtual() == null)repositCriaturas.salvar();
+		else repositCriaturas.salvar(getFileRepositorioAtual());
 	}
-	public void carregar(String path) {
+	public void carregar(File path) {
 		repositCriaturas.carregar(path);
 	}
-	public void salvar(String path) {
+	public void salvar(File path) {
 		repositCriaturas.salvar(path);
 	}
 	public List<Criatura> filtrarPorData(LocalDate j){

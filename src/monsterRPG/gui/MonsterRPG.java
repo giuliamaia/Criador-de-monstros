@@ -1,8 +1,7 @@
 package monsterRPG.gui;
 
+import java.io.File;
 import java.io.IOException;
-
-
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter; 
 public class MonsterRPG extends Application{
 	private static Stage estagio;
 	private static Scene cenaMain;
@@ -47,6 +48,33 @@ public class MonsterRPG extends Application{
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	public File abrirEscolhaDeDiretorio(boolean isSave, File caminho) throws IOException {
+		
+		FileChooser fc = new FileChooser();
+		
+		
+		fc.getExtensionFilters().add(new ExtensionFilter("Arquivos HoNeFo", "*.hnf"));
+		File file = null;
+		
+		if(isSave) {
+			fc.setTitle("Salvar como...");
+			if(caminho != null) {
+				fc.setInitialDirectory(caminho.getParentFile());
+				fc.setInitialFileName(caminho.getName());
+			}
+			
+			file = fc.showSaveDialog(estagio);
+		}
+		else {
+			fc.setTitle("Abrir...");
+			if(caminho != null) {
+				fc.setInitialDirectory(caminho.getParentFile());
+			}
+			file = fc.showOpenDialog(estagio);
+		}
+		return file;
+				
 	}
 	@FXML
 	public void abrirNovoJogadorDialog() {

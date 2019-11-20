@@ -10,6 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 
 import java.io.*;
 
+import monsterRPG.sistema.ComparadorDatas;
 import monsterRPG.sistema.ComparadorNomes;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
@@ -20,11 +21,22 @@ import monsterRPG.sistema.Types;
 public class RepositorioCriaturas {
 	private List<Criatura> criaturas;
 	private Historico historico;
+	private File fileRepositorioAtual = null;
 	
+	public File getFileRepositorioAtual() {
+		return fileRepositorioAtual;
+	}
+
+	public void setFileRepositorioAtual(File fileRepositorioAtual) {
+		this.fileRepositorioAtual = fileRepositorioAtual;
+	}
+
 	public RepositorioCriaturas() {
 		this.criaturas = new ArrayList<Criatura>();
 		historico = new Historico();
 		historico.carregarTodosArquivosHistorico();
+		if(tentaCarregarFileAntigo());
+		carregar(fileRepositorioAtual);
 	}
 	
 	public List<String> pegarCriaturasAdicionadasHistorico() {
@@ -236,10 +248,12 @@ public class RepositorioCriaturas {
 	@SuppressWarnings("unchecked")
 	public void carregar() {
 		try {
+			
 			FileInputStream fis = new FileInputStream("RepoCriaturas.hnf");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			this.criaturas = (List<Criatura>) ois.readObject();
 			ois.close();
+			salvarFileAntigo();
 		} catch(Exception e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Criando novo arquivo");
@@ -252,6 +266,7 @@ public class RepositorioCriaturas {
 	
 	public void salvar() {
 		try {
+			salvarFileAntigo();
 			FileOutputStream fos = new FileOutputStream("RepoCriaturas.hnf");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this.criaturas);
@@ -262,19 +277,20 @@ public class RepositorioCriaturas {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void carregar(String path) {
+	public void carregar(File path) {
 		try {
 			FileInputStream fis = new FileInputStream(path);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			this.criaturas = (List<Criatura>) ois.readObject();
 			ois.close();
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("Deu merda d");
 		}
 	}
 	
-	public void salvar(String path) {
+	public void salvar(File path) {
 		try {
+			salvarFileAntigo();
 			FileOutputStream fos = new FileOutputStream(path);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this.criaturas);
@@ -284,4 +300,48 @@ public class RepositorioCriaturas {
 		}
 	}
 	
+	public boolean tentaCarregarFileAntigo() {
+		try {
+			carregarFileAntigo();
+		} catch (IOException e) {
+			return false;
+		}
+		if (this.fileRepositorioAtual != null && fileRepositorioAtual.exists() && fileRepositorioAtual.canRead()) {
+			salvarFileAntigo();
+			return true;
+		}
+		else {
+			fileRepositorioAtual = null;
+			return false;
+		}
+	}
+	private void carregarFileAntigo() throws IOException {
+		 
+		try {
+			FileInputStream fis = new FileInputStream("SalvadorPath.galonegro");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			this.fileRepositorioAtual = (File) ois.readObject();
+			ois.close();
+			
+		} catch(Exception e) {
+			salvarFileAntigo();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Criando novo arquivo");
+			alert.setHeaderText("Foi criado um novo arquivo para o funcionamento normal do programa");
+			alert.setContentText("Como não foi possível encontrar um arquivo necessario na sua máquina, um novo foi criado.");
+			alert.showAndWait();
+		}
+
+	}
+	
+	public void salvarFileAntigo() {
+		try {
+			FileOutputStream fos = new FileOutputStream("SalvadorPath.galonegro");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(this.fileRepositorioAtual);
+			oos.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
