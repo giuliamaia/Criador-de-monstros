@@ -1,5 +1,6 @@
 package monsterRPG.sistema.usuario;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,13 +10,10 @@ public class Mesa {
 	private List<String> jogadores;
 	private List<String> monstros;
 	private HashMap<String, String> blocoNotas = new HashMap<String, String>();
-	public Mesa(String nome, String descriçao, List<String> jogadores, List<String> monstros,
+	public Mesa(String nome, String descriçao,
 			HashMap<String, String> blocoNotas) {
-
 		this.nome = nome;
 		this.descriçao = descriçao;
-		this.jogadores = jogadores;
-		this.monstros = monstros;
 		this.blocoNotas = blocoNotas;
 	}
 	
@@ -50,6 +48,50 @@ public class Mesa {
 	public void setBlocoNotas(HashMap<String, String> blocoNotas) {
 		this.blocoNotas = blocoNotas;
 	}
-	
+	public void adicionarJogador(String jogador) {
+		this.jogadores.add(jogador);
+	}
+	public void removerJogador(String jogador) {
+		if (this.jogadores.contains(jogador)) {
+			this.jogadores.remove(jogador);
+		}
+		
+	}
+	public void editarJogador(String jogadorAntigo, String jogadorNovo) {
+		int temp = this.getJogadores().indexOf(jogadorAntigo);
+		removerJogador(jogadorAntigo);
+		this.jogadores.add(temp, jogadorNovo);
+	}
+	public List<String> pesquisarJogador(String jogador) {
+		List <String> retorno = new ArrayList<String>();
+		for (String a:this.jogadores) {
+			if (a.contains(jogador)) {
+				retorno.add(a);
+			}
+		}
+		return retorno;
+	}
+	public void adicionarMonstro(String monstro) {
+		this.monstros.add(monstro);
+	}
+	public void editarMonstro(String monstroAntigo, String monstroNovo) {
+		int temp = this.getMonstros().indexOf(monstroAntigo);
+		removerMonstro(monstroAntigo);
+		this.getMonstros().add(monstroNovo);
+	}
+	public void removerMonstro(String monstro) {
+		if(this.monstros.contains(monstro)) {
+			this.jogadores.remove(monstro);
+		}
+	}
+	public void adicionarNota(String titulo, String conteudo) {
+		this.blocoNotas.put(titulo, conteudo);
+	}
+	public void editarNova(String tituloAntigo, String conteudoAntigo, String conteudoNovo) {
+		this.blocoNotas.replace(tituloAntigo, conteudoAntigo, conteudoNovo);
+	}
+	public void removerNova(String titulo) {
+		this.blocoNotas.remove(titulo);
+	}
 	
 }

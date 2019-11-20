@@ -59,7 +59,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Ver">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#crimeOcorre" text="Mesas" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirMesaDialog" text="Mesas" />
                   <MenuItem mnemonicParsing="false" onAction="#abrirHistoricoDialog" text="Histórico" />
                </items>
             </Menu>
@@ -314,7 +314,7 @@
                         </ImageView>
                         <ImageView fitHeight="28.0" fitWidth="216.0" layoutX="342.0" layoutY="328.0">
                            <image>
-                              <Image url="@../../images/Jogadores%20que%20mataram.png" />
+                              <Image url="@../../images/Sem%20Título-1%20cópia.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="398.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">

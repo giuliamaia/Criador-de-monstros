@@ -5,9 +5,11 @@ import java.time.LocalDate;
 import java.util.List;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
+import monsterRPG.sistema.MesaInvalidaException;
 import monsterRPG.sistema.Types;
 import monsterRPG.sistema.dados.RepositorioCriaturas;
 import monsterRPG.sistema.dados.RepositorioMesas;
+import monsterRPG.sistema.usuario.Mesa;
 
 public class ControladorSistema {
 	private RepositorioCriaturas repositCriaturas;
@@ -111,6 +113,15 @@ public class ControladorSistema {
 	public void carregar() {
 		if (getFileRepositorioAtual() == null)repositCriaturas.carregar();
 		else repositCriaturas.salvar(getFileRepositorioAtual());
+	}
+	public void adicionarMesa(Mesa mesa) throws MesaInvalidaException {
+		repositMesa.adicionarMesa(mesa);
+	}
+	public void removerMesa(Mesa mesa) throws MesaInvalidaException {
+		repositMesa.removerMesa(mesa);
+	}
+	public void editarMesa(Mesa mesa, String novoNome, String novaDescrição) throws MesaInvalidaException {
+		repositMesa.editarMesa(mesa, novoNome, novaDescrição);
 	}
 	public void salvar() {
 		if (getFileRepositorioAtual() == null)repositCriaturas.salvar();

@@ -169,7 +169,8 @@ public class MenuPrincipalPaneController {
     	//Desabilita outros botões
     	barraDePesquisa.setVisible(false);
     	buttonPesquisaNome.setVisible(false);
-    	
+    	barraDePesquisa.setText("");
+    	Pesquisar();
     	//ativa esse botão
     	tfNivel1.setVisible(false);
     	tfNivel2.setVisible(false);
@@ -196,7 +197,8 @@ public class MenuPrincipalPaneController {
     void alterarBarraPesquisaParaTipo() {
 		//Abilita esse botões
 		escolhaDeTipo.setVisible(true);
-    	
+		barraDePesquisa.setText("");
+    	Pesquisar();
     	
     	//desativa esse botão
 		tfNivel1.setVisible(false);
@@ -214,7 +216,8 @@ public class MenuPrincipalPaneController {
     	//Abilita esse botões
     	barraDePesquisa.setVisible(true);
     	buttonPesquisaNome.setVisible(true);
-    	
+    	barraDePesquisa.setText("");
+    	Pesquisar();
     	//desativa esse botão
     	tfNivel1.setVisible(false);
     	tfNivel2.setVisible(false);
@@ -230,7 +233,7 @@ public class MenuPrincipalPaneController {
     	listaLocal = controlador.filtrarFavoritos(listaLocal);
     }
     @FXML 
-    void crimeOcorre(){
+    void abrirMesaDialog(){
     	
     }
     @FXML
@@ -264,8 +267,8 @@ public class MenuPrincipalPaneController {
     	tfNivel1.setVisible(true);
     	tfNivel2.setVisible(true);
     	buttonPesquisarPorNivel.setVisible(true);
-    	
-    	
+    	barraDePesquisa.setText("");
+    	Pesquisar();
     	//desativa esse botão
     	barraDePesquisa.setVisible(false);
     	buttonPesquisaNome.setVisible(false);
