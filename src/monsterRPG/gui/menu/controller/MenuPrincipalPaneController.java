@@ -653,7 +653,7 @@ public class MenuPrincipalPaneController {
     @FXML
     void salvarLista() {
     	controlador.salvar();
-    	
+    	controlador.carregar();
     }
 
     @FXML
@@ -661,8 +661,11 @@ public class MenuPrincipalPaneController {
     	
     	try {
     		File file = monsterRPG.abrirEscolhaDeDiretorio(true, controlador.getFileRepositorioAtual());
-    		if (file != null)
-			controlador.salvar(file);
+    		if (file != null) {
+    			controlador.salvar(file);
+        		controlador.carregar(file);
+    		}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			
