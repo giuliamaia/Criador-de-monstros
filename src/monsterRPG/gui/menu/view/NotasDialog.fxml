@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="382.0" prefWidth="582.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane prefHeight="382.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="263.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VER NOTAS" />
       <ListView fx:id="listNotas" layoutX="19.0" layoutY="52.0" prefHeight="254.0" prefWidth="200.0" />
@@ -21,7 +20,7 @@
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/f9bb81e576c1a361c61a8c08945b2c48---cone-de-pesquisa-by-vexels.png" />
+                  <Image url="@../../images/109526.png" />
                </image>
             </ImageView>
          </graphic>
