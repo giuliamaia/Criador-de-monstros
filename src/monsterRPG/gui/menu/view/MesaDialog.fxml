@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="506.0" prefWidth="684.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <Button layoutX="35.0" layoutY="441.0" mnemonicParsing="false" onAction="#addCriatura" prefHeight="25.0" prefWidth="30.0">
+         <graphic>
+            <ImageView fitHeight="14.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/109526.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="70.0" layoutY="441.0" mnemonicParsing="false" onAction="#removeCriatura" prefHeight="15.0" prefWidth="2.0">
+         <graphic>
+            <ImageView fitHeight="14.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/remove-01-128.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="103.0" layoutY="441.0" mnemonicParsing="false" onAction="#editCriatura" prefHeight="15.0" prefWidth="2.0">
+         <graphic>
+            <ImageView fitHeight="14.0" fitWidth="281.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/Files-Edit-File-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ListView fx:id="listMesas" layoutX="35.0" layoutY="94.0" prefHeight="301.0" prefWidth="191.0" />
+      <TextField fx:id="pesquisarNomeMesa" layoutX="37.0" layoutY="407.0" onKeyTyped="#Pesquisar" prefHeight="25.0" prefWidth="157.0" />
+      <Button layoutX="199.0" layoutY="407.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="16.0" prefWidth="17.0">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/f9bb81e576c1a361c61a8c08945b2c48---cone-de-pesquisa-by-vexels.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <MenuButton layoutX="140.0" layoutY="441.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Ordenar">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#ordenarPorDataDecrescente" text="Data ↓" />
+            <MenuItem mnemonicParsing="false" onAction="#ordenarPorDataCrescente" text="Data ↑" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#ordenarPorNomeCrescente" text="Nome ↓" />
+            <MenuItem mnemonicParsing="false" onAction="#ordenarPorNomeDecrescente" text="Nome ↑" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#ordenarPorMortos" text="Mortos" />
+            <MenuItem mnemonicParsing="false" onAction="#ordenarPorFavoritos" text="Favoritos" />
+         </items>
+      </MenuButton>
+      <Text layoutX="245.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JOGADORES DA MESA SELECIONADA" wrappingWidth="120.076171875" />
+      <Text layoutX="537.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOTAS DA MESA SELECIONADA" wrappingWidth="96.107421875" />
+      <Text layoutX="386.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MONSTROS DA MESA SELECIONADA" wrappingWidth="120.0761756747961" />
+      <TextArea fx:id="listNotasMesa" layoutX="520.0" layoutY="202.0" prefHeight="252.0" prefWidth="130.0" />
+      <TextArea fx:id="listMonstroMesa" layoutX="381.0" layoutY="202.0" prefHeight="252.0" prefWidth="130.0" />
+      <TextArea fx:id="listJogadoresMesa" layoutX="240.0" layoutY="202.0" prefHeight="252.0" prefWidth="130.0" />
+      <Text layoutX="35.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;MESAS&quot; BEM GRANDE E BONITO" wrappingWidth="190.9999926686287" />
+      <Text layoutX="254.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME DA MESA SELECIONADA" />
+      <TextArea fx:id="txNomeMesa" layoutX="263.0" layoutY="67.0" prefHeight="17.0" prefWidth="150.0" />
+      <TextArea fx:id="txDescricaoMesa" layoutX="468.0" layoutY="67.0" prefHeight="72.0" prefWidth="165.0" />
+      <Text layoutX="452.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIÇAO DA MESA SELECIONADA" />
+   </children>
+</AnchorPane>
