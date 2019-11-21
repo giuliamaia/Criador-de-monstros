@@ -20,15 +20,21 @@ public class MonsterRPG extends Application{
 	private static Scene cenaEditar;
 	private static Scene cenaCriar;
 	private static Scene cenaMesas;
-	private static Scene cenaHistorico;
-	private static Stage dialogStageCriar;
-	private static Stage dialogStageEditar;
 	private static Scene cenaEditarJogador;
 	private static Scene cenaCriarJogador;
+	private static Scene cenaHistorico;
+	private static Scene cenaCriarMesas;
+	private static Scene cenaVerNotas;
+	private static Scene cenaEditarMesas;
+	private static Stage dialogStageCriar;
+	private static Stage dialogStageEditar;
 	private static Stage dialogStageCriarJogador;
 	private static Stage dialogStageEditarJogador;
 	private static Stage dialogStageHistorico;
 	private static Stage dialogStageMesas;
+	private static Stage dialogStageCriarMesas;
+	private static Stage dialogStageEditarMesas;
+	private static Stage dialogStageVerNotas;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -187,11 +193,58 @@ public class MonsterRPG extends Application{
 			dialogStageMesas.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 			dialogStageMesas.showAndWait();
 		} catch (IOException e) {
-			Alert alerta = new Alert(Alert.AlertType.ERROR);
-			alerta.setTitle("Localização não encontrada");
-			alerta.setHeaderText("Arquivo do histórico não foi encontrado");
-			alerta.setContentText("Não foi possivel encontrar o arquivo do histórico.");
-			alerta.showAndWait();
+			e.printStackTrace();
+		}
+	}
+	public void abrirCriarMesasDialog() {
+		AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/CriarMesaDialog.fxml"));
+			dialogStageCriarMesas = new Stage();
+			dialogStageCriarMesas.setTitle("Criar Mesas");
+			dialogStageCriarMesas.initModality(Modality.WINDOW_MODAL);
+			dialogStageCriarMesas.initOwner(dialogStageMesas);
+			cenaCriarMesas = new Scene(conteudoDialog);
+			dialogStageCriarMesas.setScene(cenaCriarMesas);
+			dialogStageCriarMesas.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageCriarMesas.showAndWait();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void abrirEditarMesasDialog() {
+		AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/EditarMesaDialog.fxml"));
+			dialogStageEditarMesas = new Stage();
+			dialogStageEditarMesas.setTitle("Editar Mesas");
+			dialogStageEditarMesas.initModality(Modality.WINDOW_MODAL);
+			dialogStageEditarMesas.initOwner(dialogStageMesas);
+			cenaEditarMesas = new Scene(conteudoDialog);
+			dialogStageEditarMesas.setScene(cenaEditarMesas);
+			dialogStageEditarMesas.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageEditarMesas.showAndWait();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void abrirNotasDialog() {
+		AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/NotasDialog.fxml"));
+			dialogStageVerNotas = new Stage();
+			dialogStageVerNotas.setTitle("Ver Notas");
+			dialogStageVerNotas.initModality(Modality.WINDOW_MODAL);
+			dialogStageVerNotas.initOwner(dialogStageMesas);
+			cenaVerNotas = new Scene(conteudoDialog);
+			dialogStageVerNotas.setScene(cenaVerNotas);
+			dialogStageVerNotas.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageVerNotas.showAndWait();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	public void fecharHistoricoDialog() {

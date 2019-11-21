@@ -369,7 +369,7 @@ public class MenuPrincipalPaneController {
 	}
 	@FXML
 	void atualizaListaJogadoresQueMataram() {
-		if(listaLocalDeJogadores!=null){
+		if(criaturaSelecionada!=null){
 			lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
 		}
 	}

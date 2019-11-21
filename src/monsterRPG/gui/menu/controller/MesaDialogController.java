@@ -7,12 +7,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import monsterRPG.gui.MonsterRPG;
-import monsterRPG.sistema.negocio.ControladorSistema;
 
 public class MesaDialogController {
-	ControladorSistema controlador = ControladorSistema.GetInstance();
 	MonsterRPG monsterRPG = new MonsterRPG();
-	
     @FXML
     private Button buttonRemoverMesa;
 
@@ -47,18 +44,26 @@ public class MesaDialogController {
     private Button buttonAddMesa;
 
     @FXML
+    private Button verNotas;
+
+    @FXML
     void Pesquisar() {
 
     }
 
     @FXML
-    void addMesa() {
-
+    void abrirAddMesa() {
+    	monsterRPG.abrirEditarJogadorDialog();
     }
 
     @FXML
-    void editMesa() {
+    void abrirEditMesa() {
+    	monsterRPG.abrirEditarJogadorDialog();
+    }
 
+    @FXML
+    void abrirVerNotasDialog() {
+    	monsterRPG.abrirNotasDialog();
     }
 
     @FXML
