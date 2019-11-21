@@ -62,8 +62,24 @@ public class RepositorioCriaturas {
 	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException{
 		nova.setFavorito(antiga.isFavorito());
 		int i = getIndex(antiga);
-		removerCriatura(antiga);
-		this.criaturas.add(i, nova);
+		/*removerCriatura(antiga);
+		this.criaturas.add(i, nova);*/
+		
+		antiga.setNome(nova.getNome());
+		antiga.setDescrição(nova.getDescrição());
+		antiga.setTipo(nova.getTipo());
+		antiga.setFavorito(nova.isFavorito());
+		antiga.setJogadoresQueMataram(nova.getJogadoresQueMataram());
+		antiga.setUrlDaFotinha(nova.getUrlDaFotinha());
+		antiga.setVida(nova.getVida());
+		antiga.setDefesa(nova.getDefesa());
+		antiga.setForca(nova.getForca());
+		antiga.setDestreza(nova.getDestreza());
+		antiga.setConstituicao(nova.getConstituicao());
+		antiga.setSabedoria(nova.getSabedoria());
+		antiga.setInteligencia(nova.getInteligencia());
+		antiga.setCarisma(nova.getCarisma());
+		
 		historico.adicionarNoHistoricoEditadas(nova);
 		historico.salvarArquivoHistoricoEditadas();
 	}
@@ -97,7 +113,7 @@ public class RepositorioCriaturas {
 		try {
 			this.criaturas.remove(c);
 			historico.adicionarNoHistoricoRemovidas(c);
-			historico.carregarArquivoHistoricoRemovidas();
+			historico.salvarArquivoHistoricoRemovidas();
 		} catch (NullPointerException e) {
 			throw new CriaturaInvalidaException("Rapaz, n sei oq tu fez, mas fudeu!");
 		}
