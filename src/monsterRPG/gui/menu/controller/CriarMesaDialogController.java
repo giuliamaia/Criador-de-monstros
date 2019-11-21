@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
@@ -28,7 +29,7 @@ public class CriarMesaDialogController {
     private TextField txNomeJogador;
 
     @FXML
-    private TextField txDescricao;
+    private TextArea txDescricao;
 
     @FXML
     private ListView<String> listJogadoresAdicionados;
@@ -49,7 +50,7 @@ public class CriarMesaDialogController {
     private TextField txNomeMesa;
 
     @FXML
-    private TextField txConteudoNota;
+    private TextArea txConteudoNota;
 
     @FXML
     void addCriatura() {
