@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="382.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.EditarMesaDialogController">
+<AnchorPane prefHeight="382.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.NotasDialogController">
    <children>
       <Text layoutX="263.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VER NOTAS" />
       <ListView fx:id="listNotas" layoutX="19.0" layoutY="52.0" prefHeight="254.0" prefWidth="200.0" />
