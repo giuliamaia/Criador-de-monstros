@@ -25,5 +25,9 @@ public class Nota implements Serializable {
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
 	}
+	
+	public String toString() {
+		return titulo;
+	}
 
 }
