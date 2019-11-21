@@ -211,4 +211,5 @@ public class Historico {
 		this.carregarArquivoHistoricoEditadas();
 		this.carregarArquivoHistoricoRemovidas();
 	}
+	
 }
