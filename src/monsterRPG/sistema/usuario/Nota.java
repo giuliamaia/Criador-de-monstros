@@ -1,12 +1,12 @@
 package monsterRPG.sistema.usuario;
 
-public class Notas {
+public class Nota {
 	
 	private String titulo;
 	private String conteudo;
 	
 	
-	public Notas(String titulo, String conteudo) {
+	public Nota(String titulo, String conteudo) {
 		this.titulo = titulo;
 		this.conteudo = conteudo;
 	}
