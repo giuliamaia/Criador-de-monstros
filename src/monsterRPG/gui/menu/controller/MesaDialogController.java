@@ -53,12 +53,12 @@ public class MesaDialogController {
 
     @FXML
     void abrirAddMesa() {
-    	monsterRPG.abrirEditarJogadorDialog();
+    	monsterRPG.abrirCriarMesasDialog();
     }
 
     @FXML
     void abrirEditMesa() {
-    	monsterRPG.abrirEditarJogadorDialog();
+    	monsterRPG.abrirEditarMesasDialog();
     }
 
     @FXML
