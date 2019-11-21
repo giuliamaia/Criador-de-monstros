@@ -109,9 +109,11 @@ public class CriarMesaDialogController {
     		alerta.showAndWait();
     	}
     	else {
-    		if(mesaAux.getBlocoNotas().get(txNomeNota.getText()) == null)
-    		mesaAux.adicionarNota(txNomeNota.getText(), txConteudoNota.getText());
-    		atualizarListaNotas();
+    		if(mesaAux.getBlocoNotas().get(txNomeNota.getText()) == null) {
+    			mesaAux.adicionarNota(txNomeNota.getText(), txConteudoNota.getText());
+        		atualizarListaNotas();
+    		}
+    		
     	}
     }
     

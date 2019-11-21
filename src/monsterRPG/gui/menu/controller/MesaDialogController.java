@@ -48,9 +48,6 @@ public class MesaDialogController {
     private ListView<String> listMonstros;
 
     @FXML
-    private ListView<String> listNotas;
-
-    @FXML
     private ComboBox<String> cbOrdenar;
 
     @FXML
@@ -109,10 +106,6 @@ public class MesaDialogController {
     void setarListaJogadores() {
     	listJogadores.setItems(FXCollections.observableList(mesaSelecionada.getJogadores()));
     }
-    void setarListaNotas() {
-    	List<String> aux = new ArrayList<String>(mesaSelecionada.getBlocoNotas().keySet());
-    	listNotas.setItems(FXCollections.observableList(aux));
-    }
     void setarListaMonstros() {
     	listMonstros.setItems(FXCollections.observableList(mesaSelecionada.getMonstros()));
     }
@@ -124,15 +117,16 @@ public class MesaDialogController {
     }
     @FXML
     void selecionarMesa() {
-    	if(listMesas.getSelectionModel().getSelectedItem()!=null)
-    	mesaSelecionada = listMesas.getSelectionModel().getSelectedItem();
-    	resetarListaLocal();
-    	setarListaJogadores();
-    	setarListaMonstros();
-    	setarListaNotas();
-    	setarDescrição();
-    	setarNomeDaMesa();
-    	pesquisar();
+    	if(listMesas.getSelectionModel().getSelectedItem()!=null) {
+    		mesaSelecionada = listMesas.getSelectionModel().getSelectedItem();
+        	resetarListaLocal();
+        	setarListaJogadores();
+        	setarListaMonstros();
+        	setarDescrição();
+        	setarNomeDaMesa();
+        	pesquisar();
+    	}
+    	
     }
     void resetarListaLocal() {
     	listaLocalDeMesas = controlador.getMesas();
