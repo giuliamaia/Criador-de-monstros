@@ -13,7 +13,7 @@
 <AnchorPane prefHeight="382.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.NotasDialogController">
    <children>
       <Text layoutX="263.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VER NOTAS" />
-      <ListView fx:id="listNotas" layoutX="19.0" layoutY="52.0" prefHeight="254.0" prefWidth="200.0" />
+      <ListView fx:id="listNotas" layoutX="19.0" layoutY="52.0" onMouseClicked="#selecionarNota" prefHeight="254.0" prefWidth="200.0" />
       <ComboBox layoutX="19.0" layoutY="314.0" prefHeight="25.0" prefWidth="200.0" promptText="Ordenar" />
       <TextField fx:id="procurarNomeNota" layoutX="19.0" layoutY="345.0" onKeyTyped="#Pesquisar" prefHeight="25.0" prefWidth="167.0" />
       <Button layoutX="192.0" layoutY="346.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="16.0" prefWidth="17.0">

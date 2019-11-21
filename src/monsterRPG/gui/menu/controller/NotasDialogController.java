@@ -4,9 +4,11 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.negocio.ControladorSistema;
 import monsterRPG.sistema.usuario.Nota;
@@ -38,21 +40,22 @@ public class NotasDialogController {
     @FXML
     public void selecionarNota() {
     	notaSelecionada = listNotas.getSelectionModel().getSelectedItem();
-    	txConteudoNota.setText("" + notaSelecionada.getConteudo());
-    	txTituloNota.setText("" + notaSelecionada.getTitulo());
+    	if(notaSelecionada != null) {
+        	txConteudoNota.setText(notaSelecionada.getConteudo());
+        	txTituloNota.setText(notaSelecionada.getTitulo());
+        	atualizarLista();
+    	}
+    		
     }
     
     @FXML
     public void atualizarLista() {
     	listNotas.setItems(FXCollections.observableList(listaLocalNotas));
-    	selecionarNota();
     }
-    
+    @FXML
     public void initialize() {
-    	//controlador.carregarNotas();
-    	//atualizarLista();
-    	//selecionarNota();
-    	//notaSelecionada = null;
+    	controlador.carregarNotas();
+    	atualizarLista();
     }
     
 

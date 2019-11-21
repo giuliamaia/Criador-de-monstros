@@ -42,7 +42,6 @@
          </graphic>
       </Button>
       <Text layoutX="243.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JOGADORES DA MESA SELECIONADA" wrappingWidth="120.076171875" />
-      <Text layoutX="537.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOTAS DA MESA SELECIONADA" wrappingWidth="96.107421875" />
       <Text layoutX="392.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MONSTROS DA MESA SELECIONADA" wrappingWidth="120.0761756747961" />
       <Text layoutX="38.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;MESAS&quot; BEM GRANDE E BONITO" wrappingWidth="184.9999926686287" />
       <Text layoutX="254.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME DA MESA SELECIONADA" />
@@ -51,7 +50,6 @@
       <Text layoutX="452.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIÇAO DA MESA SELECIONADA" />
       <ListView fx:id="listJogadores" layoutX="242.0" layoutY="207.0" prefHeight="229.0" prefWidth="134.0" />
       <ListView fx:id="listMonstros" layoutX="390.0" layoutY="207.0" prefHeight="229.0" prefWidth="134.0" />
-      <ListView fx:id="listNotas" layoutX="537.0" layoutY="207.0" prefHeight="229.0" prefWidth="134.0" />
       <ComboBox fx:id="cbOrdenar" layoutX="144.0" layoutY="441.0" prefHeight="25.0" prefWidth="82.0" />
       <Button fx:id="buttonAddMesa" layoutX="35.0" layoutY="441.0" mnemonicParsing="false" onAction="#abrirAddMesa" prefHeight="25.0" prefWidth="30.0">
          <graphic>
@@ -62,6 +60,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="verNotas" layoutX="571.0" layoutY="441.0" mnemonicParsing="false" onAction="#abrirVerNotasDialog" text="Ver notas" />
+      <Button fx:id="verNotas" layoutX="566.0" layoutY="309.0" mnemonicParsing="false" onAction="#abrirVerNotasDialog" text="Ver notas" />
    </children>
 </AnchorPane>
