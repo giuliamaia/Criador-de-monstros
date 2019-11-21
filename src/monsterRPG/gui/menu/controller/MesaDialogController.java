@@ -90,7 +90,7 @@ public class MesaDialogController {
     		try {
 				controlador.removerMesa(listMesas.getSelectionModel().getSelectedItem());
 			} catch (MesaInvalidaException e) {
-				e.printStackTrace();
+				System.out.println("Error");
 			}
     	}
     	else {
