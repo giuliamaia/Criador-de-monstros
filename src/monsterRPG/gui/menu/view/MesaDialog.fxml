@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="506.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.MesaDialogController">
+<AnchorPane prefHeight="506.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.MesaDialogController">
    <children>
       <Button fx:id="buttonRemoverMesa" layoutX="70.0" layoutY="441.0" mnemonicParsing="false" onAction="#removeMesa" prefHeight="15.0" prefWidth="2.0">
          <graphic>
             <ImageView fitHeight="14.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/remove-01-128.png" />
+                  <Image url="@../../images/remove-01-128.png" />
                </image>
             </ImageView>
          </graphic>
@@ -25,7 +25,7 @@
          <graphic>
             <ImageView fitHeight="14.0" fitWidth="281.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/Files-Edit-File-icon.png" />
+                  <Image url="@../../images/Files-Edit-File-icon.png" />
                </image>
             </ImageView>
          </graphic>
@@ -36,7 +36,7 @@
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Esperoqdecerto/MonsterRPG2/src/monsterRPG/gui/images/f9bb81e576c1a361c61a8c08945b2c48---cone-de-pesquisa-by-vexels.png" />
+                  <Image url="@../../images/f9bb81e576c1a361c61a8c08945b2c48---cone-de-pesquisa-by-vexels.png" />
                </image>
             </ImageView>
          </graphic>

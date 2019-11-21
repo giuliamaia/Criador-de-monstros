@@ -234,7 +234,7 @@ public class MenuPrincipalPaneController {
     }
     @FXML 
     void abrirMesaDialog(){
-    	
+    	monsterRPG.abrirMesasDialog();
     }
     @FXML
     void filtrarListaNivel() {

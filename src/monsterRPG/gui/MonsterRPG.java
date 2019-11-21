@@ -19,6 +19,7 @@ public class MonsterRPG extends Application{
 	private static Scene cenaMain;
 	private static Scene cenaEditar;
 	private static Scene cenaCriar;
+	private static Scene cenaMesas;
 	private static Scene cenaHistorico;
 	private static Stage dialogStageCriar;
 	private static Stage dialogStageEditar;
@@ -27,7 +28,7 @@ public class MonsterRPG extends Application{
 	private static Stage dialogStageCriarJogador;
 	private static Stage dialogStageEditarJogador;
 	private static Stage dialogStageHistorico;
-	
+	private static Stage dialogStageMesas;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -165,6 +166,26 @@ public class MonsterRPG extends Application{
 			dialogStageHistorico.setScene(cenaHistorico);
 			dialogStageHistorico.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 			dialogStageHistorico.showAndWait();
+		} catch (IOException e) {
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
+			alerta.setTitle("Localização não encontrada");
+			alerta.setHeaderText("Arquivo do histórico não foi encontrado");
+			alerta.setContentText("Não foi possivel encontrar o arquivo do histórico.");
+			alerta.showAndWait();
+		}
+	}
+	public void abrirMesasDialog() {
+		AnchorPane conteudoDialog = null;
+		try {
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/MesaDialog.fxml"));
+			dialogStageMesas = new Stage();
+			dialogStageMesas.setTitle("Mesas");
+			dialogStageMesas.initModality(Modality.WINDOW_MODAL);
+			dialogStageMesas.initOwner(estagio);
+			cenaMesas = new Scene(conteudoDialog);
+			dialogStageMesas.setScene(cenaMesas);
+			dialogStageMesas.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageMesas.showAndWait();
 		} catch (IOException e) {
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setTitle("Localização não encontrada");

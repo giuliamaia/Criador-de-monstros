@@ -1,8 +1,7 @@
 package monsterRPG.gui.menu.controller;
 
-import java.awt.Button;
-
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -11,8 +10,8 @@ import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.negocio.ControladorSistema;
 
 public class MesaDialogController {
-	private MonsterRPG monsterRPG = new MonsterRPG();
-	private ControladorSistema controlador = ControladorSistema.GetInstance();
+	ControladorSistema controlador = ControladorSistema.GetInstance();
+	MonsterRPG monsterRPG = new MonsterRPG();
 	
     @FXML
     private Button buttonRemoverMesa;
@@ -46,6 +45,7 @@ public class MesaDialogController {
 
     @FXML
     private Button buttonAddMesa;
+
     @FXML
     void Pesquisar() {
 
@@ -71,5 +71,4 @@ public class MesaDialogController {
 
     }
 
-    
 }
