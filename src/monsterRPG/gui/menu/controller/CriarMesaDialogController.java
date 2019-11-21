@@ -53,8 +53,8 @@ public class CriarMesaDialogController {
     	if(cbEscolhaMonstro.getSelectionModel().getSelectedItem().isEmpty()) {
     		Alert alerta = new Alert(AlertType.ERROR);
     		alerta.setTitle("Monstro não selecionado!");
-    		alerta.setHeaderText("Não pode adicionar");
-    		alerta.setContentText("Coloque um nome no jogador.");
+    		alerta.setHeaderText("Não pode adicionar um monstro vazio.");
+    		alerta.setContentText("Selecione um monstro.");
     		alerta.showAndWait();
     	}
     	else {
@@ -128,5 +128,23 @@ public class CriarMesaDialogController {
     @FXML
     void selecionarNota() {
     	notaSelecionada = listNotasAdicionadas.getSelectionModel().getSelectedItem();
+    }
+    @FXML
+    void removerJogador() {
+    	
+    }
+
+    @FXML
+    void removerMonstro() {
+
+    }
+
+    @FXML
+    void removerNota() {
+
+    }
+    @FXML
+    void salvarMesa() {
+    	//botao de confirmar
     }
 }
