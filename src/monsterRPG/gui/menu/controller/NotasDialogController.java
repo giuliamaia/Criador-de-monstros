@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 public class NotasDialogController {
 
     @FXML
-    private ListView<?> listNotas;
+    private ListView<String> listNotas;
 
     @FXML
     private TextField procurarNomeNota;

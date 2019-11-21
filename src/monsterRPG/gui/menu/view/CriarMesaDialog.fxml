@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="517.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.CriarMesaDialogController">
+<AnchorPane prefHeight="517.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.CriarMesaDialogController">
    <children>
       <Text layoutX="301.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRIAR MESA" />
       <TextField fx:id="txNomeJogador" layoutX="28.0" layoutY="417.0" onAction="#addJogador" />
@@ -55,5 +55,7 @@
       </Button>
       <Text layoutX="465.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
       <Text layoutX="445.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conteúdo" />
+      <Button layoutX="24.0" layoutY="461.0" mnemonicParsing="false" text="Confirmar" />
+      <Button cancelButton="true" layoutX="116.0" layoutY="461.0" mnemonicParsing="false" text="Cancelar" />
    </children>
 </AnchorPane>

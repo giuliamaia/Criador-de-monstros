@@ -26,6 +26,9 @@ public class ControladorSistema {
 	public void setFileRepositorioAtual(File fileRepositorioAtual) {
 		this.repositCriaturas.setFileRepositorioAtual(fileRepositorioAtual);
 	}
+	public List<Mesa> getMesas() {
+		return repositMesa.getMesas();
+	}
 	public String getJogadorAuxiliar() {
 		return jogadorAuxiliar;
 	}
@@ -75,6 +78,9 @@ public class ControladorSistema {
 		this.repositCriaturas = new RepositorioCriaturas();
 		carregar();
 		this.repositMesa = new RepositorioMesas();
+	}
+	public List<String> getJogadoresMesa(String mesa) {
+		return repositMesa.getJogadoresMesa(mesa);
 	}
 	public List<String> pegarCriaturasAdicionadasHistorico() {
 		return repositCriaturas.pegarCriaturasAdicionadasHistorico();

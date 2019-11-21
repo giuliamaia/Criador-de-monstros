@@ -1,5 +1,7 @@
 package monsterRPG.gui.menu.controller;
 
+import java.util.HashMap;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
@@ -11,16 +13,16 @@ public class EditarMesaDialogController {
     private TextField txDescricao;
 
     @FXML
-    private ListView<?> listJogadores;
+    private ListView<String> listJogadores;
 
     @FXML
-    private ListView<?> listMonstros;
+    private ListView<String> listMonstros;
 
     @FXML
-    private ListView<?> listNotas;
+    private ListView<HashMap<String, String>> listNotas;
 
     @FXML
-    private ComboBox<?> cbEscolherMonstro;
+    private ComboBox<String> cbEscolherMonstro;
 
     @FXML
     private TextField txNomeMesa;

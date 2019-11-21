@@ -17,7 +17,15 @@ public class RepositorioMesas {
 	public void setMesas(List<Mesa> mesas) {
 		this.mesas = mesas;
 	}
-	
+	public List<String> getJogadoresMesa(String mesa){
+		List<String> ret = new ArrayList<String>();
+		for(int i=0; i<this.mesas.size(); i++) {
+			if(this.mesas.get(i).getNome().equals(mesa)) {
+				ret = this.mesas.get(i).getJogadores();
+			}
+		}
+		return ret;
+	}
 	public void adicionarMesa(Mesa mesa) throws MesaInvalidaException {
 		try {
 			this.mesas.add(mesa);

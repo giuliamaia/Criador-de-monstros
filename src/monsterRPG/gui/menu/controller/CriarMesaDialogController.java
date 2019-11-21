@@ -1,9 +1,14 @@
 package monsterRPG.gui.menu.controller;
 
+import java.util.HashMap;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import monsterRPG.sistema.Criatura;
 
 public class CriarMesaDialogController {
 
@@ -14,16 +19,16 @@ public class CriarMesaDialogController {
     private TextField txDescricao;
 
     @FXML
-    private ListView<?> listJogadoresAdicionados;
+    private ListView<String> listJogadoresAdicionados;
 
     @FXML
-    private ListView<?> ListMonstrosAdicionados;
+    private ListView<Criatura> ListMonstrosAdicionados;
 
     @FXML
-    private ListView<?> listNotasAdicionadas;
+    private ListView<HashMap<String, String>> listNotasAdicionadas;
 
     @FXML
-    private ComboBox<?> cbEscolhaMonstro;
+    private ComboBox<Criatura> cbEscolhaMonstro;
 
     @FXML
     private TextField txNomeNota;
@@ -46,7 +51,16 @@ public class CriarMesaDialogController {
 
     @FXML
     void addNota() {
-
+    	if(txNomeNota.getText().isEmpty()) {
+    		Alert alerta = new Alert(AlertType.ERROR);
+    		alerta.setTitle("Nota não pode ser adicionada!");
+    		alerta.setHeaderText("Notas sem título não podem ser adicionadas.");
+    		alerta.setContentText("Coloque um título na nota.");
+    		alerta.showAndWait();
+    	}
+    	else {
+    		
+    	}
     }
 
 }
