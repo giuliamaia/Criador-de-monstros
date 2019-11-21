@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,42 +13,42 @@ import javafx.scene.control.Alert.AlertType;
 
 
 public class Historico {
-	private List<Criatura> adicionadas = new ArrayList<Criatura>();
-	private List<Criatura> removidas = new ArrayList<Criatura>();
-	private List<Criatura> editadas = new ArrayList<Criatura>();
+	private List<String> adicionadas = new ArrayList<String>();
+	private List<String> removidas = new ArrayList<String>();
+	private List<String> editadas = new ArrayList<String>();
 	
 	public Historico() {
 		
 	}
 
-	public Historico(List<Criatura> adicionadas, List<Criatura> removidas, List<Criatura> editadas) {
+	public Historico(List<String> adicionadas, List<String> removidas, List<String> editadas) {
 		this.adicionadas = adicionadas;
 		this.removidas = removidas;
 		this.editadas = editadas;
 	}
 	
 	
-	public List<Criatura> getAdicionadas() {
+	public List<String> getAdicionadas() {
 		return adicionadas;
 	}
 
-	public void setAdicionadas(List<Criatura> adicionadas) {
+	public void setAdicionadas(List<String> adicionadas) {
 		this.adicionadas = adicionadas;
 	}
 
-	public List<Criatura> getRemovidas() {
+	public List<String> getRemovidas() {
 		return removidas;
 	}
 
-	public void setRemovidas(List<Criatura> removidas) {
+	public void setRemovidas(List<String> removidas) {
 		this.removidas = removidas;
 	}
 
-	public List<Criatura> getEditadas() {
+	public List<String> getEditadas() {
 		return editadas;
 	}
 
-	public void setEditadas(List<Criatura> editadas) {
+	public void setEditadas(List<String> editadas) {
 		this.editadas = editadas;
 	}
 
@@ -57,7 +58,7 @@ public class Historico {
 		try {
 			FileInputStream f = new FileInputStream("HistoricoMonstrosAdd.galonegro");
 			ObjectInputStream o = new ObjectInputStream(f);
-			this.setAdicionadas((List<Criatura>)o.readObject());
+			this.setAdicionadas((List<String>)o.readObject());
 			o.close();
 			
 		}catch(Exception e) {
@@ -74,7 +75,7 @@ public class Historico {
 
 			FileInputStream f = new FileInputStream("HistoricoMonstrosEdit.galonegro");
 			ObjectInputStream o = new ObjectInputStream(f);
-			this.setEditadas((List<Criatura>)o.readObject());
+			this.setEditadas((List<String>)o.readObject());
 			o.close();
 			
 		}catch(Exception e) {
@@ -90,7 +91,7 @@ public class Historico {
 		try {
 			FileInputStream f = new FileInputStream("HistoricoMonstrosRem.galonegro");
 			ObjectInputStream o = new ObjectInputStream(f);
-			this.setRemovidas((List<Criatura>)o.readObject());
+			this.setRemovidas((List<String>)o.readObject());
 			o.close();
 
 		}catch(Exception e) {
@@ -150,19 +151,25 @@ public class Historico {
 	}
 	public void adicionarNoHistoricoAdicionadas(Criatura c) {
 		if(c != null) {
-			this.getAdicionadas().add(c);
+			
+			String galonegro = c.getNome() + " - " + LocalDate.now().toString();
+			this.getAdicionadas().add(galonegro);
 		}
 		
 	}
 	public void adicionarNoHistoricoRemovidas(Criatura c) {
 		if(c != null) {
-			this.getRemovidas().add(c);
+			
+			String galonegro = c.getNome() + " - " + LocalDate.now().toString();
+			this.getRemovidas().add(galonegro);
 		}
 		
 	}
 	public void adicionarNoHistoricoEditadas(Criatura c) {
 		if(c != null) {
-			this.getEditadas().add(c);
+			
+			String galonegro = c.getNome() + " - " + LocalDate.now().toString();
+			this.getEditadas().add(galonegro);
 		}
 		
 	}
@@ -170,7 +177,7 @@ public class Historico {
 		List<String> ret = new ArrayList<String>();
 		for(int i=0; i<this.getAdicionadas().size(); i++) {
 			try {
-				ret.add(this.getAdicionadas().get(i).getNome());
+				ret.add(this.getAdicionadas().get(i));
 			}catch(NullPointerException e) {
 				System.out.println("aaaa");
 			}
@@ -181,7 +188,7 @@ public class Historico {
 		List<String> ret = new ArrayList<String>();
 		for(int i=0; i<this.getRemovidas().size(); i++) {
 			try {
-				ret.add(this.getRemovidas().get(i).getNome());
+				ret.add(this.getRemovidas().get(i));
 			}catch(NullPointerException e) {
 				System.out.println("aaaa");
 			}
@@ -192,7 +199,7 @@ public class Historico {
 		List<String> ret = new ArrayList<String>();
 		for(int i=0; i<this.getEditadas().size(); i++) {
 			try {
-				ret.add(this.getEditadas().get(i).getNome());
+				ret.add(this.getEditadas().get(i));
 			}catch(NullPointerException e) {
 				System.out.println("aaaa");
 			}
