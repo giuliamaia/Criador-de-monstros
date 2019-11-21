@@ -40,6 +40,20 @@ public class RepositorioNotas {
 	
 	}
 	
+	public void adicionarNota(Nota nota) {
+		
+		if (nota != null) {
+			this.notas.add(nota);
+		}
+	}
+	
+	public void imprimirNota() {
+		for (Nota n : notas) {
+			System.out.println(n.getTitulo());
+			System.out.println(n.getConteudo());
+		}
+	}
+	
 	
 	
 	
