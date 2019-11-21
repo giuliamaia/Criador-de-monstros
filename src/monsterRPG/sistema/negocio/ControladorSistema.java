@@ -1,6 +1,7 @@
 package monsterRPG.sistema.negocio;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import monsterRPG.sistema.Criatura;
@@ -9,11 +10,14 @@ import monsterRPG.sistema.MesaInvalidaException;
 import monsterRPG.sistema.Types;
 import monsterRPG.sistema.dados.RepositorioCriaturas;
 import monsterRPG.sistema.dados.RepositorioMesas;
+import monsterRPG.sistema.dados.RepositorioNotas;
 import monsterRPG.sistema.usuario.Mesa;
+import monsterRPG.sistema.usuario.Nota;
 
 public class ControladorSistema {
 	private RepositorioCriaturas repositCriaturas;
 	private RepositorioMesas repositMesa;
+	private RepositorioNotas repositNotas;
 	private Criatura criaturaAux;
 	private String jogadorParaAdd;
 	private String jogadorParaEditar;
@@ -78,6 +82,14 @@ public class ControladorSistema {
 		this.repositCriaturas = new RepositorioCriaturas();
 		carregar();
 		this.repositMesa = new RepositorioMesas();
+		this.repositNotas = new RepositorioNotas();
+		try {
+			this.repositNotas.carregarNotas();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public List<String> getJogadoresMesa(String mesa) {
 		return repositMesa.getJogadoresMesa(mesa);
@@ -177,6 +189,25 @@ public class ControladorSistema {
 	}
 	public void carregarTodosArquivosHistorico() {
 		repositCriaturas.carregarTodosArquivosHistorico();
+	}
+	public List<Nota> getNotas() {
+		return repositNotas.getNotas();
+	}
+	public void salvarNotas() {
+		try {
+			this.repositNotas.salvarNotas();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void carregarNotas() {
+		try {
+			this.repositNotas.carregarNotas();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
