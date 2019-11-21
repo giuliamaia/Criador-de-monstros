@@ -284,7 +284,7 @@ public class RepositorioCriaturas {
 			this.criaturas = (List<Criatura>) ois.readObject();
 			ois.close();
 		} catch(Exception e) {
-			System.out.println("Deu merda d");
+			e.printStackTrace();
 		}
 	}
 	
