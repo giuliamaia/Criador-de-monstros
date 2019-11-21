@@ -310,6 +310,7 @@ public class RepositorioCriaturas {
 			FileOutputStream fos = new FileOutputStream(path);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this.criaturas);
+			carregar(path);
 			oos.close();
 		} catch(Exception e) {
 			e.printStackTrace();

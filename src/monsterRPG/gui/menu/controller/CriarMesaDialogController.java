@@ -11,12 +11,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import monsterRPG.gui.MonsterRPG;
 import monsterRPG.sistema.Criatura;
+import monsterRPG.sistema.MesaInvalidaException;
 import monsterRPG.sistema.negocio.ControladorSistema;
 import monsterRPG.sistema.usuario.Mesa;
 
 public class CriarMesaDialogController {
 	private Mesa mesaAux = new Mesa();
+	private MonsterRPG monsterRPG = new MonsterRPG();
 	private String jogadorSelecionado;
 	private String monstroSelecionado;
 	private String notaSelecionada;
@@ -50,7 +53,7 @@ public class CriarMesaDialogController {
 
     @FXML
     void addCriatura() {
-    	if(cbEscolhaMonstro.getSelectionModel().getSelectedItem().isEmpty()) {
+    	if(cbEscolhaMonstro.getSelectionModel().getSelectedItem() == null) {
     		Alert alerta = new Alert(AlertType.ERROR);
     		alerta.setTitle("Monstro não selecionado!");
     		alerta.setHeaderText("Não pode adicionar um monstro vazio.");
@@ -58,6 +61,7 @@ public class CriarMesaDialogController {
     		alerta.showAndWait();
     	}
     	else {
+    		if(!mesaAux.getMonstros().contains(cbEscolhaMonstro.getSelectionModel().getSelectedItem()))
     		mesaAux.adicionarMonstro(cbEscolhaMonstro.getSelectionModel().getSelectedItem());
     		atualizarListaMonstro();
     	}
@@ -84,6 +88,7 @@ public class CriarMesaDialogController {
     		alerta.showAndWait();
     	}
     	else {
+    		if(!mesaAux.getJogadores().contains(txNomeJogador.getText()))
     		mesaAux.adicionarJogador(txNomeJogador.getText());
     		atualizarListaJogadores();
     	}
@@ -103,6 +108,7 @@ public class CriarMesaDialogController {
     		alerta.showAndWait();
     	}
     	else {
+    		if(mesaAux.getBlocoNotas().get(txNomeNota.getText()) == null)
     		mesaAux.adicionarNota(txNomeNota.getText(), txConteudoNota.getText());
     		atualizarListaNotas();
     	}
@@ -112,7 +118,7 @@ public class CriarMesaDialogController {
     	List<String> lista = new ArrayList<String>(mesaAux.getBlocoNotas().keySet());
     	listNotasAdicionadas.setItems(FXCollections.observableList(lista));
     }
-  
+    @FXML
     void  initialize() {
     	mesaAux = new Mesa();
     	setarComboBox();
@@ -131,20 +137,65 @@ public class CriarMesaDialogController {
     }
     @FXML
     void removerJogador() {
-    	
+    	if(jogadorSelecionado != null) {
+    		mesaAux.removerJogador(jogadorSelecionado);
+    		jogadorSelecionado = null;
+    		atualizarListaJogadores();
+    	}
+    	else {
+    		Alert alerta = new Alert(AlertType.ERROR);
+    		alerta.setTitle("Remover não é válido");
+    		alerta.setHeaderText("Selecione um item para remover");
+    		alerta.setContentText("Não foi selecionado nenhum item para remover");
+    		alerta.showAndWait();
+    	}
     }
 
     @FXML
     void removerMonstro() {
-
+    	if(monstroSelecionado != null) {
+    		mesaAux.removerMonstro(monstroSelecionado);
+    		monstroSelecionado = null;
+    		atualizarListaMonstro();
+    	}
+    	else {
+    		Alert alerta = new Alert(AlertType.ERROR);
+    		alerta.setTitle("Remover não é válido");
+    		alerta.setHeaderText("Selecione um item para remover");
+    		alerta.setContentText("Não foi selecionado nenhum item para remover");
+    		alerta.showAndWait();
+    	}
     }
 
     @FXML
     void removerNota() {
-
+    	if(notaSelecionada != null) {
+    		mesaAux.removerNova(notaSelecionada);
+    		notaSelecionada = null;
+    		atualizarListaNotas();
+    	}
+    	else {
+    		Alert alerta = new Alert(AlertType.ERROR);
+    		alerta.setTitle("Remover não é válido");
+    		alerta.setHeaderText("Selecione um item para remover");
+    		alerta.setContentText("Não foi selecionado nenhum item para remover");
+    		alerta.showAndWait();
+    	}
+    	
     }
     @FXML
     void salvarMesa() {
-    	//botao de confirmar
+    	if(!txNomeMesa.getText().isEmpty()) {
+    		try {
+				controlador.adicionarMesa(mesaAux);
+				monsterRPG.fecharCriarMesasDialog();
+			} catch (MesaInvalidaException e) {
+				Alert alerta = new Alert(AlertType.ERROR);
+	    		alerta.setTitle("Mesa sem nome");
+	    		alerta.setHeaderText("Mesa precisa de um nome");
+	    		alerta.setContentText("Escolha um nome para sua mesa");
+	    		alerta.showAndWait();
+			}
+    	}
     }
 }

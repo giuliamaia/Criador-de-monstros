@@ -247,8 +247,17 @@ public class MonsterRPG extends Application{
 			e.printStackTrace();
 		}
 	}
-	public void fecharHistoricoDialog() {
-		dialogStageHistorico.close();
+	public void fecharCriarMesasDialog() {
+		dialogStageCriarMesas.close();
+	}
+	public void fecharEditarMesasDialog() {
+		dialogStageEditarMesas.close();
+	}
+	public void fecharVerNotasDialog() {
+		dialogStageVerNotas.close();
+	}
+	public void fecharMesasDialog() {
+		dialogStageMesas.close();
 	}
 	public void fecharNovoMonstroDialog() {
 		dialogStageCriar.close();
