@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Mesa {
+	
 	private String nome;
 	private String descriçao;
 	private List<String> jogadores;
@@ -101,5 +102,8 @@ public class Mesa {
 	public void removerNova(String titulo) {
 		this.blocoNotas.remove(titulo);
 	}
-	
+	@Override
+	public String toString() {
+		return this.getNome();
+	}
 }

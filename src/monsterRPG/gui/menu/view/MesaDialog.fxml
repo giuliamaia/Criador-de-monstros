@@ -30,8 +30,8 @@
             </ImageView>
          </graphic>
       </Button>
-      <ListView fx:id="listMesas" layoutX="35.0" layoutY="94.0" prefHeight="301.0" prefWidth="191.0" />
-      <TextField fx:id="tfPesquisarNomeMesa" layoutX="37.0" layoutY="407.0" onKeyTyped="#Pesquisar" prefHeight="25.0" prefWidth="157.0" />
+      <ListView fx:id="listMesas" layoutX="35.0" layoutY="94.0" onMouseClicked="#selecionarMesa" prefHeight="301.0" prefWidth="191.0" />
+      <TextField fx:id="tfPesquisarNomeMesa" layoutX="37.0" layoutY="407.0" onAction="#pesquisar" onKeyReleased="#pesquisar" onMouseReleased="#pesquisar" prefHeight="25.0" prefWidth="157.0" />
       <Button layoutX="199.0" layoutY="407.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="16.0" prefWidth="17.0">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
@@ -46,8 +46,8 @@
       <Text layoutX="392.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MONSTROS DA MESA SELECIONADA" wrappingWidth="120.0761756747961" />
       <Text layoutX="38.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;MESAS&quot; BEM GRANDE E BONITO" wrappingWidth="184.9999926686287" />
       <Text layoutX="254.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME DA MESA SELECIONADA" />
-      <TextArea fx:id="taNomeMesa" layoutX="263.0" layoutY="67.0" prefHeight="17.0" prefWidth="150.0" />
-      <TextArea fx:id="taDescricaoMesa" layoutX="468.0" layoutY="67.0" prefHeight="72.0" prefWidth="165.0" />
+      <TextArea fx:id="taNomeMesa" editable="false" layoutX="263.0" layoutY="67.0" prefHeight="17.0" prefWidth="150.0" />
+      <TextArea fx:id="taDescricaoMesa" editable="false" layoutX="452.0" layoutY="68.0" prefHeight="98.0" prefWidth="197.0" />
       <Text layoutX="452.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIÇAO DA MESA SELECIONADA" />
       <ListView fx:id="listJogadores" layoutX="242.0" layoutY="207.0" prefHeight="229.0" prefWidth="134.0" />
       <ListView fx:id="listMonstros" layoutX="390.0" layoutY="207.0" prefHeight="229.0" prefWidth="134.0" />

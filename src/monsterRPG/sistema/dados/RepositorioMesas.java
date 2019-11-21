@@ -26,6 +26,15 @@ public class RepositorioMesas {
 		}
 		return ret;
 	}
+	public List<Mesa> pesquisarMesasComNome(String nome){
+		List<Mesa> ret = new ArrayList<Mesa>();
+		for(int i=0; i<this.mesas.size(); i++) {
+			if(this.mesas.get(i).getNome().toUpperCase().contains(nome.toUpperCase())) {
+				ret.add(this.mesas.get(i));
+			}
+		}
+		return ret;
+	}
 	public void adicionarMesa(Mesa mesa) throws MesaInvalidaException {
 		try {
 			this.mesas.add(mesa);

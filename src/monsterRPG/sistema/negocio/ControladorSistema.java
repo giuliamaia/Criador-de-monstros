@@ -26,6 +26,9 @@ public class ControladorSistema {
 	public void setFileRepositorioAtual(File fileRepositorioAtual) {
 		this.repositCriaturas.setFileRepositorioAtual(fileRepositorioAtual);
 	}
+	public List<Mesa> pesquisarMesasComNome(String nome) {
+		return repositMesa.pesquisarMesasComNome(nome);
+	}
 	public List<Mesa> getMesas() {
 		return repositMesa.getMesas();
 	}

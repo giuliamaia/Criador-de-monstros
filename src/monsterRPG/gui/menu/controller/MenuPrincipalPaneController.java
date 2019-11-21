@@ -369,8 +369,16 @@ public class MenuPrincipalPaneController {
 	}
 	@FXML
 	void atualizaListaJogadoresQueMataram() {
-		if(criaturaSelecionada!=null){
+		if(criaturaSelecionada != null){
 			lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
+		}
+		else {
+			buttonPesquisaJogadorQueMatou.setDisable(true);
+			labelBarraDePesquisaJogadorQueMatou.setDisable(true);
+			lvJogadoresQueJáMataram.setDisable(true);
+			addJogadorQueMatou.setDisable(true);
+			editJogadorQueMatou.setDisable(true);
+			removeJogadorQueMatou.setDisable(true);
 		}
 	}
 	public void isBotaoFavoritoPressed() {
@@ -558,9 +566,9 @@ public class MenuPrincipalPaneController {
 		}
 		catch(Exception e) {
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
-			alerta.setContentText("Você precisa selecionar algum jogador para remover");
-			alerta.setHeaderText("Nenhum jogador selecionado");
-			alerta.setTitle("Error 421: Jogador não encontrado");
+			alerta.setContentText("Você precisa selecionar algum jogador/criatura para remover");
+			alerta.setHeaderText("Nenhum jogador/criatura selecionado");
+			alerta.setTitle("Error 421: Jogador/criatura não encontrado");
 			alerta.showAndWait();
 		}
     }
@@ -568,24 +576,34 @@ public class MenuPrincipalPaneController {
     @FXML
     void editJogadorQueMatou() {
     	try {
-    		if (jogadorSelecionado == null) {
-    			Alert alerta = new Alert(Alert.AlertType.ERROR);
-    			alerta.setContentText("Você precisa selecionar algum jogador para editar");
-    			alerta.setHeaderText("Nenhum jogador selecionado");
-    			alerta.setTitle("Error 421: Jogador não encontrado");
-    			alerta.showAndWait();
+    		if(criaturaSelecionada != null) {
+    			if (jogadorSelecionado == null) {
+        			Alert alerta = new Alert(Alert.AlertType.ERROR);
+        			alerta.setContentText("Você precisa selecionar algum jogador para editar");
+        			alerta.setHeaderText("Nenhum jogador selecionado");
+        			alerta.setTitle("Error 421: Jogador não encontrado");
+        			alerta.showAndWait();
+        		}
+        		else {
+        			controlador.setJogadorAuxiliar(jogadorSelecionado);
+        			monsterRPG.abrirEditarJogadorDialog();
+        			if(controlador.getJogadorParaEditar() != null) {
+        				criaturaSelecionada.editarMortePeloJogador(jogadorSelecionado, controlador.getJogadorParaEditar());
+        			}
+        			pesquisaJogadorQueMatou();
+                	atualizaListaJogadoresQueMataram();
+                	jogadorSelecionado=null;
+                	controlador.setJogadorAuxiliar(null);
+        		}
     		}
     		else {
-    			controlador.setJogadorAuxiliar(jogadorSelecionado);
-    			monsterRPG.abrirEditarJogadorDialog();
-    			if(controlador.getJogadorParaEditar() != null) {
-    				criaturaSelecionada.editarMortePeloJogador(jogadorSelecionado, controlador.getJogadorParaEditar());
-    			}
-    			pesquisaJogadorQueMatou();
-            	atualizaListaJogadoresQueMataram();
-            	jogadorSelecionado=null;
-            	controlador.setJogadorAuxiliar(null);
-    		}
+        		Alert alerta = new Alert(Alert.AlertType.ERROR);
+    			alerta.setContentText("Você precisa selecionar alguma criatura e jogador para criar");
+    			alerta.setHeaderText("Nenhum jogador/criatura selecionado");
+    			alerta.setTitle("Error 421: Jogador/criatura não encontrado");
+    			alerta.showAndWait();
+        	}
+    		
         	
     	}
     	catch(Exception e) {
@@ -599,12 +617,21 @@ public class MenuPrincipalPaneController {
 
     @FXML
     void addJogadorQueMatou() {
-    	monsterRPG.abrirNovoJogadorDialog();
-    	if(controlador.getJogadorParaAdd()!=null)
-    	criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());
-    	pesquisaJogadorQueMatou();
-    	atualizaListaJogadoresQueMataram();
-    	jogadorSelecionado=null;
+    	if(criaturaSelecionada != null) {
+    		monsterRPG.abrirNovoJogadorDialog();
+        	if(controlador.getJogadorParaAdd()!=null)
+        	criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());
+        	pesquisaJogadorQueMatou();
+        	atualizaListaJogadoresQueMataram();
+        	jogadorSelecionado=null;
+    	}
+    	else {
+    		Alert alerta = new Alert(Alert.AlertType.ERROR);
+			alerta.setContentText("Você precisa selecionar alguma criatura e jogador para criar");
+			alerta.setHeaderText("Nenhum jogador/criatura selecionado");
+			alerta.setTitle("Error 421: Jogador/criatura não encontrado");
+			alerta.showAndWait();
+    	}
     }
 	public void initialize() {
 		atualizarLista();
@@ -679,5 +706,14 @@ public class MenuPrincipalPaneController {
 		if(criaturaSelecionada != null) {
 			listaLocalDeJogadores = criaturaSelecionada.getJogadoresQueMataram();
 		}
+		else {
+			buttonPesquisaJogadorQueMatou.setDisable(true);
+			labelBarraDePesquisaJogadorQueMatou.setDisable(true);
+			lvJogadoresQueJáMataram.setDisable(true);
+			addJogadorQueMatou.setDisable(true);
+			editJogadorQueMatou.setDisable(true);
+			removeJogadorQueMatou.setDisable(true);
+		}
+		
 	}
 }

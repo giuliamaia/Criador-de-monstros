@@ -188,6 +188,8 @@ public class CriarMesaDialogController {
     void salvarMesa() {
     	if(!txNomeMesa.getText().isEmpty()) {
     		try {
+    			mesaAux.setNome(txNomeMesa.getText());
+    			mesaAux.setDescriçao(txDescricao.getText());
 				controlador.adicionarMesa(mesaAux);
 				monsterRPG.fecharCriarMesasDialog();
 			} catch (MesaInvalidaException e) {
