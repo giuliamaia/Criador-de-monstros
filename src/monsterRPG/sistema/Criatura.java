@@ -133,11 +133,7 @@ public class Criatura extends Status implements Serializable{
 			}
 		}
 	}
-	public void printarJogadores() {
-		for(int i=0; i<this.getJogadoresQueMataram().size(); i++) {
-			System.out.print(this.jogadoresQueMataram.get(i).toString()+" ");
-		}
-	}
+	
 	@Override
 	public String toString() {
 		String retorno = getNome();
