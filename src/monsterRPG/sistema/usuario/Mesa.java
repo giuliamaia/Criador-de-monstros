@@ -10,13 +10,21 @@ public class Mesa {
 	private List<String> jogadores;
 	private List<String> monstros;
 	private HashMap<String, String> blocoNotas = new HashMap<String, String>();
-	public Mesa(String nome, String descriçao,
+	
+	public Mesa(String nome, String descriçao, List<String> jogadores, List<String> monstros,
 			HashMap<String, String> blocoNotas) {
+	
 		this.nome = nome;
 		this.descriçao = descriçao;
+		this.jogadores = jogadores;
+		this.monstros = monstros;
 		this.blocoNotas = blocoNotas;
 	}
-	
+	public Mesa() {
+		this.jogadores = new ArrayList<String>();
+		this.monstros = new ArrayList<String>();
+		this.blocoNotas = new HashMap<String, String>();
+	}
 	public String getNome() {
 		return nome;
 	}

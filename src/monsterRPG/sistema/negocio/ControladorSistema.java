@@ -126,8 +126,8 @@ public class ControladorSistema {
 	public void removerMesa(Mesa mesa) throws MesaInvalidaException {
 		repositMesa.removerMesa(mesa);
 	}
-	public void editarMesa(Mesa mesa, String novoNome, String novaDescrição) throws MesaInvalidaException {
-		repositMesa.editarMesa(mesa, novoNome, novaDescrição);
+	public void editarMesa(Mesa mesa, Mesa nova) throws MesaInvalidaException {
+		repositMesa.editarMesa(mesa, nova);
 	}
 	public void salvar() {
 		if (getFileRepositorioAtual() == null)repositCriaturas.salvar();

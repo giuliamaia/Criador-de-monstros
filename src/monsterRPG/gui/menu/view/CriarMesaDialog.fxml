@@ -16,9 +16,9 @@
       <TextField fx:id="txDescricao" layoutX="396.0" layoutY="76.0" prefHeight="49.0" prefWidth="262.0" />
       <Text layoutX="28.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME" />
       <Text layoutX="314.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIÇAO" />
-      <ListView fx:id="listJogadoresAdicionados" layoutX="28.0" layoutY="189.0" prefHeight="209.0" prefWidth="176.0" />
-      <ListView fx:id="ListMonstrosAdicionados" layoutX="257.0" layoutY="189.0" prefHeight="209.0" prefWidth="176.0" />
-      <ListView fx:id="listNotasAdicionadas" layoutX="481.0" layoutY="189.0" prefHeight="209.0" prefWidth="176.0" />
+      <ListView fx:id="listJogadoresAdicionados" layoutX="28.0" layoutY="189.0" onMouseClicked="#selecionarJogador" prefHeight="209.0" prefWidth="176.0" />
+      <ListView fx:id="ListMonstrosAdicionados" layoutX="257.0" layoutY="189.0" onMouseClicked="#selecionarMonstro" prefHeight="209.0" prefWidth="176.0" />
+      <ListView fx:id="listNotasAdicionadas" layoutX="481.0" layoutY="189.0" onMouseClicked="#selecionarNota" prefHeight="209.0" prefWidth="176.0" />
       <Button layoutX="177.0" layoutY="417.0" mnemonicParsing="false" onAction="#addJogador" prefHeight="25.0" prefWidth="30.0">
          <graphic>
             <ImageView fitHeight="14.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
@@ -28,7 +28,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text layoutX="50.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADICIONAR JOGADORES" />
+      <Text layoutX="27.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADICIONAR JOGADORES" />
       <ComboBox fx:id="cbEscolhaMonstro" layoutX="257.0" layoutY="417.0" prefHeight="25.0" prefWidth="149.0" promptText="Escolher monstro" />
       <Button layoutX="406.0" layoutY="417.0" mnemonicParsing="false" onAction="#addCriatura" prefHeight="25.0" prefWidth="30.0">
          <graphic>
@@ -42,7 +42,7 @@
       <TextField fx:id="txNomeNota" layoutX="509.0" layoutY="405.0" />
       <TextField fx:id="txNomeMesa" layoutX="81.0" layoutY="88.0" />
       <TextField fx:id="txConteudoNota" layoutX="509.0" layoutY="442.0" prefHeight="62.0" prefWidth="149.0" />
-      <Text layoutX="266.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADICIONAR MONSTROS" />
+      <Text layoutX="257.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADICIONAR MONSTROS" />
       <Text layoutX="481.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADICIONAR NOTAS" />
       <Button layoutX="627.0" layoutY="158.0" mnemonicParsing="false" onAction="#addNota" prefHeight="25.0" prefWidth="30.0">
          <graphic>
@@ -57,5 +57,23 @@
       <Text layoutX="445.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conteúdo" />
       <Button layoutX="24.0" layoutY="461.0" mnemonicParsing="false" text="Confirmar" />
       <Button cancelButton="true" layoutX="116.0" layoutY="461.0" mnemonicParsing="false" text="Cancelar" />
+      <Button layoutX="166.0" layoutY="158.0" mnemonicParsing="false">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/remove-01-128.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="405.0" layoutY="158.0" mnemonicParsing="false">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/remove-01-128.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

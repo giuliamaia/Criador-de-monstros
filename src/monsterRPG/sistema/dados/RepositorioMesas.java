@@ -41,13 +41,12 @@ public class RepositorioMesas {
 			throw new MesaInvalidaException("Deu alguma merda!");
 		}
 	}
-	public void editarMesa(Mesa mesa, String novoNome, String novaDescrição) throws MesaInvalidaException {
-		int temp = this.mesas.indexOf(mesa);
-		Mesa mesaNova = new Mesa(novoNome, novaDescrição, mesa.getBlocoNotas());
-		mesaNova.setJogadores(mesa.getJogadores());
-		mesaNova.setMonstros(mesa.getMonstros());
-		this.removerMesa(mesa);
-		this.mesas.add(temp, mesaNova);
+	public void editarMesa(Mesa mesa, Mesa mesaNova) throws MesaInvalidaException {
+		mesa.setBlocoNotas(mesaNova.getBlocoNotas());
+		mesa.setDescriçao(mesaNova.getDescriçao());
+		mesa.setJogadores(mesaNova.getJogadores());
+		mesa.setMonstros(mesaNova.getMonstros());
+		mesa.setNome(mesaNova.getNome());
 	}
 	
 	
