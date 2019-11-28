@@ -2,7 +2,7 @@ package monsterRPG.sistema;
 
 import java.util.Comparator;
 
-public class ComparadorNomes implements Comparator<Criatura>{
+public class ComparadorNomes implements Comparator<Criatura> {
 
 	public ComparadorNomes() {
 		// TODO Auto-generated constructor stub

@@ -1,7 +1,7 @@
 package monsterRPG.sistema;
 
 public class CriaturaInvalidaException extends Exception {
-	
+
 	private static final long serialVersionUID = 221509112019l;
 
 	public CriaturaInvalidaException() {

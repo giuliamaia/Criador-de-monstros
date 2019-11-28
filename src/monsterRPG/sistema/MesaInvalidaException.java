@@ -1,6 +1,6 @@
 package monsterRPG.sistema;
 
-public class MesaInvalidaException extends Exception{
+public class MesaInvalidaException extends Exception {
 	private static final long serialVersionUID = 220620010988l;
 
 	public MesaInvalidaException() {

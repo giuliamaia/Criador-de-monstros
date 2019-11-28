@@ -13,8 +13,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter; 
-public class MonsterRPG extends Application{
+import javafx.stage.FileChooser.ExtensionFilter;
+
+public class MonsterRPG extends Application {
 	private static Stage estagio;
 	private static Scene cenaMain;
 	private static Scene cenaEditar;
@@ -35,130 +36,135 @@ public class MonsterRPG extends Application{
 	private static Stage dialogStageCriarMesas;
 	private static Stage dialogStageEditarMesas;
 	private static Stage dialogStageVerNotas;
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			estagio = primaryStage;
 			Parent rootMain = FXMLLoader.load(getClass().getResource("menu/view/MenuPrincipal.fxml"));
 			cenaMain = new Scene(rootMain);
-			
-			
+
 			primaryStage.setTitle("MonsterRPG 1.0");
 			primaryStage.setScene(cenaMain);
 			primaryStage.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 			primaryStage.show();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 	public File abrirEscolhaDeDiretorio(boolean isSave, File caminho) throws IOException {
-		
+
 		FileChooser fc = new FileChooser();
-		
-		
+
 		fc.getExtensionFilters().add(new ExtensionFilter("Arquivos HoNeFo", "*.hnf"));
 		File file = null;
-		
-		if(isSave) {
+
+		if (isSave) {
 			fc.setTitle("Salvar como...");
-			if(caminho != null) {
+			if (caminho != null) {
 				fc.setInitialDirectory(caminho.getParentFile());
 				fc.setInitialFileName(caminho.getName());
 			}
-			
+
 			file = fc.showSaveDialog(estagio);
-		}
-		else {
+		} else {
 			fc.setTitle("Abrir...");
-			if(caminho != null) {
+			if (caminho != null) {
 				fc.setInitialDirectory(caminho.getParentFile());
 			}
 			file = fc.showOpenDialog(estagio);
 		}
 		return file;
-				
+
 	}
+
 	@FXML
 	public void abrirNovoJogadorDialog() {
-        AnchorPane conteudoDialog = null;
+		AnchorPane conteudoDialog = null;
 		try {
-			conteudoDialog = (AnchorPane)  FXMLLoader.load(getClass().getResource("menu/view/NovoJogadorDialog.fxml"));
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/NovoJogadorDialog.fxml"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		dialogStageCriarJogador = new Stage();
-        dialogStageCriarJogador.setTitle("Novo Jogador");
-        dialogStageCriarJogador.initModality(Modality.WINDOW_MODAL);
-        dialogStageCriarJogador.initOwner(estagio);
-        cenaCriarJogador = new Scene(conteudoDialog);
-        dialogStageCriarJogador.setScene(cenaCriarJogador);
-        dialogStageCriarJogador.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
-        dialogStageCriarJogador.showAndWait();
+		dialogStageCriarJogador.setTitle("Novo Jogador");
+		dialogStageCriarJogador.initModality(Modality.WINDOW_MODAL);
+		dialogStageCriarJogador.initOwner(estagio);
+		cenaCriarJogador = new Scene(conteudoDialog);
+		dialogStageCriarJogador.setScene(cenaCriarJogador);
+		dialogStageCriarJogador.getIcons()
+				.add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+		dialogStageCriarJogador.showAndWait();
 	}
+
 	@FXML
 	public void abrirEditarJogadorDialog() {
-        AnchorPane conteudoDialog = null;
+		AnchorPane conteudoDialog = null;
 		try {
-			conteudoDialog = (AnchorPane)  FXMLLoader.load(getClass().getResource("menu/view/EditJogadorDialog.fxml"));
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/EditJogadorDialog.fxml"));
 
 			dialogStageEditarJogador = new Stage();
-	        dialogStageEditarJogador.setTitle("Editar Monstro");
-	        dialogStageEditarJogador.initModality(Modality.WINDOW_MODAL);
-	        dialogStageEditarJogador.initOwner(estagio);
-	        cenaEditarJogador = new Scene(conteudoDialog);
-	        dialogStageEditarJogador.setScene(cenaEditarJogador);
-	        dialogStageEditarJogador.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
-	        dialogStageEditarJogador.showAndWait();
+			dialogStageEditarJogador.setTitle("Editar Monstro");
+			dialogStageEditarJogador.initModality(Modality.WINDOW_MODAL);
+			dialogStageEditarJogador.initOwner(estagio);
+			cenaEditarJogador = new Scene(conteudoDialog);
+			dialogStageEditarJogador.setScene(cenaEditarJogador);
+			dialogStageEditarJogador.getIcons()
+					.add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageEditarJogador.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
+
 	@FXML
 	public void abrirNovoMonstroDialog() {
-        AnchorPane conteudoDialog = null;
+		AnchorPane conteudoDialog = null;
 		try {
-			conteudoDialog = (AnchorPane)  FXMLLoader.load(getClass().getResource("menu/view/NovaDialog.fxml"));
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/NovaDialog.fxml"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		dialogStageCriar = new Stage();
-        dialogStageCriar.setTitle("Novo Monstro");
-        dialogStageCriar.initModality(Modality.WINDOW_MODAL);
-        dialogStageCriar.initOwner(estagio);
-        cenaCriar = new Scene(conteudoDialog);
-        dialogStageCriar.setScene(cenaCriar);
-        dialogStageCriar.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
-        dialogStageCriar.showAndWait();
+		dialogStageCriar.setTitle("Novo Monstro");
+		dialogStageCriar.initModality(Modality.WINDOW_MODAL);
+		dialogStageCriar.initOwner(estagio);
+		cenaCriar = new Scene(conteudoDialog);
+		dialogStageCriar.setScene(cenaCriar);
+		dialogStageCriar.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+		dialogStageCriar.showAndWait();
 	}
+
 	@FXML
 	public void abrirEditarMonstroDialog() {
-        AnchorPane conteudoDialog = null;
+		AnchorPane conteudoDialog = null;
 		try {
-			conteudoDialog = (AnchorPane)  FXMLLoader.load(getClass().getResource("menu/view/EditDialog.fxml"));
+			conteudoDialog = (AnchorPane) FXMLLoader.load(getClass().getResource("menu/view/EditDialog.fxml"));
 
 			dialogStageEditar = new Stage();
-	        dialogStageEditar.setTitle("Editar Monstro");
-	        dialogStageEditar.initModality(Modality.WINDOW_MODAL);
-	        dialogStageEditar.initOwner(estagio);
-	        cenaEditar = new Scene(conteudoDialog);
-	        dialogStageEditar.setScene(cenaEditar);
-	        dialogStageEditar.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
-	        dialogStageEditar.showAndWait();
+			dialogStageEditar.setTitle("Editar Monstro");
+			dialogStageEditar.initModality(Modality.WINDOW_MODAL);
+			dialogStageEditar.initOwner(estagio);
+			cenaEditar = new Scene(conteudoDialog);
+			dialogStageEditar.setScene(cenaEditar);
+			dialogStageEditar.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageEditar.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
+
 	@FXML
 	public void abrirHistoricoDialog() {
 		AnchorPane conteudoDialog = null;
@@ -170,7 +176,8 @@ public class MonsterRPG extends Application{
 			dialogStageHistorico.initOwner(estagio);
 			cenaHistorico = new Scene(conteudoDialog);
 			dialogStageHistorico.setScene(cenaHistorico);
-			dialogStageHistorico.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageHistorico.getIcons()
+					.add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 			dialogStageHistorico.showAndWait();
 		} catch (IOException e) {
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -180,6 +187,7 @@ public class MonsterRPG extends Application{
 			alerta.showAndWait();
 		}
 	}
+
 	public void abrirMesasDialog() {
 		AnchorPane conteudoDialog = null;
 		try {
@@ -196,6 +204,7 @@ public class MonsterRPG extends Application{
 			e.printStackTrace();
 		}
 	}
+
 	public void abrirCriarMesasDialog() {
 		AnchorPane conteudoDialog = null;
 		try {
@@ -206,13 +215,14 @@ public class MonsterRPG extends Application{
 			dialogStageCriarMesas.initOwner(dialogStageMesas);
 			cenaCriarMesas = new Scene(conteudoDialog);
 			dialogStageCriarMesas.setScene(cenaCriarMesas);
-			dialogStageCriarMesas.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageCriarMesas.getIcons()
+					.add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 			dialogStageCriarMesas.showAndWait();
-		} 
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 	public void abrirEditarMesasDialog() {
 		AnchorPane conteudoDialog = null;
 		try {
@@ -223,13 +233,14 @@ public class MonsterRPG extends Application{
 			dialogStageEditarMesas.initOwner(dialogStageMesas);
 			cenaEditarMesas = new Scene(conteudoDialog);
 			dialogStageEditarMesas.setScene(cenaEditarMesas);
-			dialogStageEditarMesas.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageEditarMesas.getIcons()
+					.add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 			dialogStageEditarMesas.showAndWait();
-		} 
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 	public void abrirNotasDialog() {
 		AnchorPane conteudoDialog = null;
 		try {
@@ -240,34 +251,42 @@ public class MonsterRPG extends Application{
 			dialogStageVerNotas.initOwner(dialogStageMesas);
 			cenaVerNotas = new Scene(conteudoDialog);
 			dialogStageVerNotas.setScene(cenaVerNotas);
-			dialogStageVerNotas.getIcons().add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
+			dialogStageVerNotas.getIcons()
+					.add(new Image(getClass().getResource("images/1492528.png").toExternalForm()));
 			dialogStageVerNotas.showAndWait();
-		} 
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 	public void fecharCriarMesasDialog() {
 		dialogStageCriarMesas.close();
 	}
+
 	public void fecharEditarMesasDialog() {
 		dialogStageEditarMesas.close();
 	}
+
 	public void fecharVerNotasDialog() {
 		dialogStageVerNotas.close();
 	}
+
 	public void fecharMesasDialog() {
 		dialogStageMesas.close();
 	}
+
 	public void fecharNovoMonstroDialog() {
 		dialogStageCriar.close();
 	}
+
 	public void fecharNovoJogadorDialog() {
 		dialogStageCriarJogador.close();
 	}
+
 	public void fecharEditarMonstroDialog() {
 		dialogStageEditar.close();
 	}
+
 	public void fecharEditarJogadorMonstroDialog() {
 		dialogStageEditarJogador.close();
 	}

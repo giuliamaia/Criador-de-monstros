@@ -17,5 +17,5 @@ public class Mestre {
 	public void setMesas(List<Mesa> mesas) {
 		this.mesas = mesas;
 	}
-	
+
 }

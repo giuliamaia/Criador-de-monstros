@@ -9,30 +9,30 @@ import monsterRPG.sistema.negocio.ControladorSistema;
 public class EditJogadorDialogController {
 	private ControladorSistema controlador = ControladorSistema.GetInstance();
 	private MonsterRPG monsterRPG = new MonsterRPG();
-    @FXML
-    private TextField tfNomeJogador;
+	@FXML
+	private TextField tfNomeJogador;
 
-    @FXML
-    void cancelar() {
-    	monsterRPG.fecharEditarJogadorMonstroDialog();
-    }
+	@FXML
+	void cancelar() {
+		monsterRPG.fecharEditarJogadorMonstroDialog();
+	}
 
-    @FXML
-    void submeter() {
-    	if (tfNomeJogador.getText().isEmpty()) {
-    		Alert alerta = new Alert(Alert.AlertType.ERROR);
+	@FXML
+	void submeter() {
+		if (tfNomeJogador.getText().isEmpty()) {
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setContentText("Você precisa digitar algum nome");
 			alerta.setHeaderText("Nenhum nome selecionado");
 			alerta.setTitle("Error 403: Nome não encontrado");
 			alerta.showAndWait();
-    	}
-    	else {
-    		controlador.setJogadorParaEditar(tfNomeJogador.getText());
-    		cancelar();
-    	}
-    }
-    @FXML
-    void initialize() {
-    	tfNomeJogador.setText(controlador.getJogadorAuxiliar());
-    }
+		} else {
+			controlador.setJogadorParaEditar(tfNomeJogador.getText());
+			cancelar();
+		}
+	}
+
+	@FXML
+	void initialize() {
+		tfNomeJogador.setText(controlador.getJogadorAuxiliar());
+	}
 }

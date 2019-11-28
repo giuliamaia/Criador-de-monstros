@@ -19,38 +19,37 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-
 public class MenuPrincipalPaneController {
 	private MonsterRPG monsterRPG = new MonsterRPG();
 	private ControladorSistema controlador = ControladorSistema.GetInstance();
 	private List<Criatura> listaLocal = controlador.getCriaturas();
 	private List<String> listaLocalDeJogadores;
 	private String jogadorSelecionado;
-    @FXML
-    private Font x1;
+	@FXML
+	private Font x1;
 
-    @FXML
-    private TextField barraDePesquisa;
+	@FXML
+	private TextField barraDePesquisa;
 
-    @FXML
-    private ListView<Criatura> lvLista;
-    @FXML
-    private TextField tfNivel1;
+	@FXML
+	private ListView<Criatura> lvLista;
+	@FXML
+	private TextField tfNivel1;
 
-    @FXML
-    private TextField tfNivel2;
-    @FXML
-    private Button buttonPesquisarPorNivel;
+	@FXML
+	private TextField tfNivel2;
+	@FXML
+	private Button buttonPesquisarPorNivel;
 
-    @FXML
-    private ImageView fotoDoBicho;
-    @FXML
-    private ComboBox<Types> escolhaDeTipo;
-    @FXML
-    private Font x3;
+	@FXML
+	private ImageView fotoDoBicho;
+	@FXML
+	private ComboBox<Types> escolhaDeTipo;
+	@FXML
+	private Font x3;
 
-    @FXML
-    private Color x4;
+	@FXML
+	private Color x4;
 	private Criatura criaturaSelecionada;
 	@FXML
 	private Label labelNomeMonstro;
@@ -59,249 +58,258 @@ public class MenuPrincipalPaneController {
 	@FXML
 	private Image imagem;
 
-    @FXML
-    private Label labelTipo;
+	@FXML
+	private Label labelTipo;
 
-    @FXML
-    private Label labelVida;
+	@FXML
+	private Label labelVida;
 
-    @FXML
-    private Label labelDefesa;
+	@FXML
+	private Label labelDefesa;
 
-    @FXML
-    private Label labelNivel;
+	@FXML
+	private Label labelNivel;
 
-    @FXML
-    private Label labelForca;
+	@FXML
+	private Label labelForca;
 
-    @FXML
-    private Label labelDestreza;
+	@FXML
+	private Label labelDestreza;
 
-    @FXML
-    private Label labelConstituicao;
+	@FXML
+	private Label labelConstituicao;
 
-    @FXML
-    private Label labelInteligencia;
+	@FXML
+	private Label labelInteligencia;
 
-    @FXML
-    private Label labelSabedoria;
+	@FXML
+	private Label labelSabedoria;
 
-    @FXML
-    private Label labelCarisma;
+	@FXML
+	private Label labelCarisma;
 
-    @FXML
-    private Label labelDataCriacao;
-    
-    @FXML
-    private Label labelDescrição;
-    
-    @FXML
-    private DatePicker txData1;
+	@FXML
+	private Label labelDataCriacao;
 
-    @FXML
-    private DatePicker txData2;
+	@FXML
+	private Label labelDescrição;
 
-    @FXML
-    private Button buttonPesquisarPorData;
+	@FXML
+	private DatePicker txData1;
 
-    @FXML
-    private CheckBox checkBoxDuasDatas;
-    
-    @FXML
-    private Button buttonPesquisaNome;
-    @FXML
-    private CheckBox checkQuerApenasFavoritos;
-    @FXML
-    private ListView<String> lvJogadoresQueJáMataram;
+	@FXML
+	private DatePicker txData2;
 
-    @FXML
-    private Button buttonPesquisaJogadorQueMatou;
-    
-    @FXML
-    private TextField labelBarraDePesquisaJogadorQueMatou;
-    
-    @FXML
-    private Button removeJogadorQueMatou;
+	@FXML
+	private Button buttonPesquisarPorData;
 
-    @FXML
-    private Button editJogadorQueMatou;
+	@FXML
+	private CheckBox checkBoxDuasDatas;
 
-    @FXML
-    private Button addJogadorQueMatou;
-    
-    
-    @FXML
-    void PesquisarPorData() {
-    	if(checkBoxDuasDatas.isSelected()) {
-    		if (txData2.getValue()!=null && txData1.getValue()!=null) {
-    			try {
-    				if(txData1.getValue().isBefore(txData2.getValue())||txData1.getValue().isEqual(txData2.getValue())) {
-    					listaLocal = controlador.filtrarCriaturasCriadasEntreDuasDatas(txData1.getValue(), txData2.getValue());
-    					atualizarLista();
-    				}
-    				else {
-    					LocalDate aux;
-    					aux = txData1.getValue();
-    					txData1.setValue(txData2.getValue());
-    					txData2.setValue(aux);
-    					listaLocal = controlador.filtrarCriaturasCriadasEntreDuasDatas(txData2.getValue(), txData1.getValue());
-    					atualizarLista();
-    				}
-    			}catch(Exception e) {
-    				Alert alert = new Alert(Alert.AlertType.ERROR);
-    				alert.setContentText("Você está usando paramêtros inválidos na sua pesquisa.");
-            		alert.setHeaderText("Paramêtros invalidos para pesquisa");
-            		alert.setTitle("Error Feijo4d4");
-            		alert.showAndWait();
-    			}
-    		}
-    	}
-    	else {
-    		if(txData1 != null) {
-    			listaLocal = controlador.filtrarPorData(txData1.getValue());
-        		atualizarLista();
-    		}
-    	}
-    }
+	@FXML
+	private Button buttonPesquisaNome;
+	@FXML
+	private CheckBox checkQuerApenasFavoritos;
+	@FXML
+	private ListView<String> lvJogadoresQueJáMataram;
 
-    @FXML
-    void alterarBarraPesquisaParaData() {
-    	//Desabilita outros botões
-    	barraDePesquisa.setVisible(false);
-    	buttonPesquisaNome.setVisible(false);
-    	barraDePesquisa.setText("");
-    	Pesquisar();
-    	//ativa esse botão
-    	tfNivel1.setVisible(false);
-    	tfNivel2.setVisible(false);
-    	buttonPesquisarPorNivel.setVisible(false);
-    	escolhaDeTipo.setVisible(false);
-    	buttonPesquisarPorData.setVisible(true);
-    	checkBoxDuasDatas.setVisible(true);
-    	txData1.setVisible(true);
-    	txData2.setVisible(true);
-    	abrirData2();
-    	
-    }
-    @FXML
-    private void abrirData2() {
-		if(!checkBoxDuasDatas.isSelected()) {
-			txData2.setDisable(true);
+	@FXML
+	private Button buttonPesquisaJogadorQueMatou;
+
+	@FXML
+	private TextField labelBarraDePesquisaJogadorQueMatou;
+
+	@FXML
+	private Button removeJogadorQueMatou;
+
+	@FXML
+	private Button editJogadorQueMatou;
+
+	@FXML
+	private Button addJogadorQueMatou;
+
+	@FXML
+	void PesquisarPorData() {
+		if (checkBoxDuasDatas.isSelected()) {
+			if (txData2.getValue() != null && txData1.getValue() != null) {
+				try {
+					if (txData1.getValue().isBefore(txData2.getValue())
+							|| txData1.getValue().isEqual(txData2.getValue())) {
+						listaLocal = controlador.filtrarCriaturasCriadasEntreDuasDatas(txData1.getValue(),
+								txData2.getValue());
+						atualizarLista();
+					} else {
+						LocalDate aux;
+						aux = txData1.getValue();
+						txData1.setValue(txData2.getValue());
+						txData2.setValue(aux);
+						listaLocal = controlador.filtrarCriaturasCriadasEntreDuasDatas(txData2.getValue(),
+								txData1.getValue());
+						atualizarLista();
+					}
+				} catch (Exception e) {
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+					alert.setContentText("Você está usando paramêtros inválidos na sua pesquisa.");
+					alert.setHeaderText("Paramêtros invalidos para pesquisa");
+					alert.setTitle("Error Feijo4d4");
+					alert.showAndWait();
+				}
+			}
+		} else {
+			if (txData1 != null) {
+				listaLocal = controlador.filtrarPorData(txData1.getValue());
+				atualizarLista();
+			}
 		}
-		else {
+	}
+
+	@FXML
+	void alterarBarraPesquisaParaData() {
+		// Desabilita outros botões
+		barraDePesquisa.setVisible(false);
+		buttonPesquisaNome.setVisible(false);
+		barraDePesquisa.setText("");
+		Pesquisar();
+		// ativa esse botão
+		tfNivel1.setVisible(false);
+		tfNivel2.setVisible(false);
+		buttonPesquisarPorNivel.setVisible(false);
+		escolhaDeTipo.setVisible(false);
+		buttonPesquisarPorData.setVisible(true);
+		checkBoxDuasDatas.setVisible(true);
+		txData1.setVisible(true);
+		txData2.setVisible(true);
+		abrirData2();
+
+	}
+
+	@FXML
+	private void abrirData2() {
+		if (!checkBoxDuasDatas.isSelected()) {
+			txData2.setDisable(true);
+		} else {
 			txData2.setDisable(false);
 		}
 	}
 
 	@FXML
-    void alterarBarraPesquisaParaTipo() {
-		//Abilita esse botões
+	void alterarBarraPesquisaParaTipo() {
+		// Abilita esse botões
 		escolhaDeTipo.setVisible(true);
 		barraDePesquisa.setText("");
-    	Pesquisar();
-    	
-    	//desativa esse botão
-		tfNivel1.setVisible(false);
-    	tfNivel2.setVisible(false);
-    	buttonPesquisarPorNivel.setVisible(false);
-    	buttonPesquisarPorData.setVisible(false);
-    	txData1.setVisible(false);
-    	txData2.setVisible(false);
-    	checkBoxDuasDatas.setVisible(false);
-    	barraDePesquisa.setVisible(false);
-    	buttonPesquisaNome.setVisible(false);
-    }
-    @FXML
-    void alterarBarraPesquisaParaNome() {
-    	//Abilita esse botões
-    	barraDePesquisa.setVisible(true);
-    	buttonPesquisaNome.setVisible(true);
-    	barraDePesquisa.setText("");
-    	Pesquisar();
-    	//desativa esse botão
-    	tfNivel1.setVisible(false);
-    	tfNivel2.setVisible(false);
-    	buttonPesquisarPorNivel.setVisible(false);
-    	buttonPesquisarPorData.setVisible(false);
-    	txData1.setVisible(false);
-    	txData2.setVisible(false);
-    	checkBoxDuasDatas.setVisible(false);
-    	escolhaDeTipo.setVisible(false);
-    }
-    @FXML
-    void filtrarListaFavoritos() {
-    	listaLocal = controlador.filtrarFavoritos(listaLocal);
-    }
-    @FXML 
-    void abrirMesaDialog(){
-    	monsterRPG.abrirMesasDialog();
-    }
-    @FXML
-    void filtrarListaNivel() {
-    	if(!tfNivel1.getText().isEmpty() && !tfNivel2.getText().isEmpty()) {
-    		try {
-        		double a = Double.parseDouble(tfNivel1.getText());
-        		double b = Double.parseDouble(tfNivel2.getText());
-        		if(b<a) {
-        			tfNivel1.setText(""+b);
-        			tfNivel2.setText(""+a);
-        			listaLocal = controlador.filtrarPorNivel(b, a);
-        		}
-        		else {
-        			listaLocal = controlador.filtrarPorNivel(a, b);
-        		}
-        		atualizarLista();
-        	}catch(Exception e) {
-        		Alert alert = new Alert(Alert.AlertType.ERROR);
-        		alert.setContentText("Você está usando paramêtros inválidos na sua pesquisa.");
-        		alert.setHeaderText("Paramêtros invalidos para pesquisa");
-        		alert.setTitle("Error 4002-8922");
-        		alert.showAndWait();
-        	}
-    	}
-    }
+		Pesquisar();
 
-    @FXML
-    void alteraBarraDePesquisaParaNivel() {
-    	//Abilita esse botões
-    	tfNivel1.setVisible(true);
-    	tfNivel2.setVisible(true);
-    	buttonPesquisarPorNivel.setVisible(true);
-    	barraDePesquisa.setText("");
-    	Pesquisar();
-    	//desativa esse botão
-    	barraDePesquisa.setVisible(false);
-    	buttonPesquisaNome.setVisible(false);
-    	buttonPesquisarPorData.setVisible(false);
-    	txData1.setVisible(false);
-    	txData2.setVisible(false);
-    	checkBoxDuasDatas.setVisible(false);
-    	escolhaDeTipo.setVisible(false);
-    }
-    @FXML
-    void abrirHistoricoDialog() {
-    	monsterRPG.abrirHistoricoDialog();
-    }
+		// desativa esse botão
+		tfNivel1.setVisible(false);
+		tfNivel2.setVisible(false);
+		buttonPesquisarPorNivel.setVisible(false);
+		buttonPesquisarPorData.setVisible(false);
+		txData1.setVisible(false);
+		txData2.setVisible(false);
+		checkBoxDuasDatas.setVisible(false);
+		barraDePesquisa.setVisible(false);
+		buttonPesquisaNome.setVisible(false);
+	}
+
+	@FXML
+	void alterarBarraPesquisaParaNome() {
+		// Abilita esse botões
+		barraDePesquisa.setVisible(true);
+		buttonPesquisaNome.setVisible(true);
+		barraDePesquisa.setText("");
+		Pesquisar();
+		// desativa esse botão
+		tfNivel1.setVisible(false);
+		tfNivel2.setVisible(false);
+		buttonPesquisarPorNivel.setVisible(false);
+		buttonPesquisarPorData.setVisible(false);
+		txData1.setVisible(false);
+		txData2.setVisible(false);
+		checkBoxDuasDatas.setVisible(false);
+		escolhaDeTipo.setVisible(false);
+	}
+
+	@FXML
+	void filtrarListaFavoritos() {
+		listaLocal = controlador.filtrarFavoritos(listaLocal);
+	}
+
+	@FXML
+	void abrirMesaDialog() {
+		monsterRPG.abrirMesasDialog();
+	}
+
+	@FXML
+	void filtrarListaNivel() {
+		if (!tfNivel1.getText().isEmpty() && !tfNivel2.getText().isEmpty()) {
+			try {
+				double a = Double.parseDouble(tfNivel1.getText());
+				double b = Double.parseDouble(tfNivel2.getText());
+				if (b < a) {
+					tfNivel1.setText("" + b);
+					tfNivel2.setText("" + a);
+					listaLocal = controlador.filtrarPorNivel(b, a);
+				} else {
+					listaLocal = controlador.filtrarPorNivel(a, b);
+				}
+				atualizarLista();
+			} catch (Exception e) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setContentText("Você está usando paramêtros inválidos na sua pesquisa.");
+				alert.setHeaderText("Paramêtros invalidos para pesquisa");
+				alert.setTitle("Error 4002-8922");
+				alert.showAndWait();
+			}
+		}
+	}
+
+	@FXML
+	void alteraBarraDePesquisaParaNivel() {
+		// Abilita esse botões
+		tfNivel1.setVisible(true);
+		tfNivel2.setVisible(true);
+		buttonPesquisarPorNivel.setVisible(true);
+		barraDePesquisa.setText("");
+		Pesquisar();
+		// desativa esse botão
+		barraDePesquisa.setVisible(false);
+		buttonPesquisaNome.setVisible(false);
+		buttonPesquisarPorData.setVisible(false);
+		txData1.setVisible(false);
+		txData2.setVisible(false);
+		checkBoxDuasDatas.setVisible(false);
+		escolhaDeTipo.setVisible(false);
+	}
+
+	@FXML
+	void abrirHistoricoDialog() {
+		monsterRPG.abrirHistoricoDialog();
+	}
+
 	@FXML
 	public void Pesquisar() {
 		listaLocal = controlador.filtrarPorNome(barraDePesquisa.getText());
 		atualizarLista();
 	}
+
 	@FXML
 	public void PesquisarPorTipo() {
 		listaLocal = controlador.filtrarPorTipo(escolhaDeTipo.getSelectionModel().getSelectedItem());
 		atualizarLista();
 	}
+
 	public void setaFoto() {
-		try{
-			fotoDoBicho.setImage(new Image(getClass().getResource(criaturaSelecionada.getUrlDaFotinha()).toExternalForm()));
-		}catch(Exception e) {
+		try {
+			fotoDoBicho.setImage(
+					new Image(getClass().getResource(criaturaSelecionada.getUrlDaFotinha()).toExternalForm()));
+		} catch (Exception e) {
 			fotoDoBicho.setImage(new Image(getClass().getResource("images/DEFAULT.png").toExternalForm()));
 		}
-		
+
 	}
+
 	public void selecionaCriatura() {
-		try{
+		try {
 			jogadorSelecionado = null;
 			criaturaSelecionada = lvLista.getSelectionModel().getSelectedItem();
 			labelCarisma.setText("" + criaturaSelecionada.getCarisma());
@@ -316,19 +324,19 @@ public class MenuPrincipalPaneController {
 			labelTipo.setText("" + criaturaSelecionada.getTipo().toString());
 			labelVida.setText("" + criaturaSelecionada.getVida());
 			labelCarisma.setText("" + criaturaSelecionada.getCarisma());
-			labelDataCriacao.setText(criaturaSelecionada.getDataCriação().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+			labelDataCriacao
+					.setText(criaturaSelecionada.getDataCriação().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 			labelDescrição.setText(criaturaSelecionada.getDescrição());
-			if(criaturaSelecionada.isFavorito()) {
+			if (criaturaSelecionada.isFavorito()) {
 				buttonFavorito.setSelected(true);
-			}
-			else {
+			} else {
 				buttonFavorito.setSelected(false);
 			}
 			setaFoto();
 			setaListaQuemMatou();
 			setaJogadoresQueMataram();
-			
-		}catch(Exception e) {		
+
+		} catch (Exception e) {
 			labelCarisma.setText("");
 			labelConstituicao.setText("");
 			labelDefesa.setText("");
@@ -353,8 +361,9 @@ public class MenuPrincipalPaneController {
 			editJogadorQueMatou.setDisable(true);
 			removeJogadorQueMatou.setDisable(true);
 		}
-		
+
 	}
+
 	@FXML
 	private void setaJogadoresQueMataram() {
 		buttonPesquisaJogadorQueMatou.setDisable(false);
@@ -365,17 +374,19 @@ public class MenuPrincipalPaneController {
 		removeJogadorQueMatou.setDisable(false);
 		pesquisaJogadorQueMatou();
 		atualizaListaJogadoresQueMataram();
-		
+
 	}
+
 	@FXML
 	void atualizaListaJogadoresQueMataram() {
 		lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
 	}
+
 	public void isBotaoFavoritoPressed() {
-		
-		try{
+
+		try {
 			criaturaSelecionada.setFavorito(buttonFavorito.isSelected());
-		}catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			buttonFavorito.setSelected(false);
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setContentText("Você precisa selecionar algum monstro para favoritar");
@@ -384,36 +395,41 @@ public class MenuPrincipalPaneController {
 			alerta.showAndWait();
 		}
 	}
+
 	public void ordenarPorDataCrescente() {
 		controlador.ordenarDatasCrescenteComParametro(listaLocal);
 		atualizarLista();
 	}
+
 	public void ordenarPorDataDecrescente() {
 		controlador.ordenarDatasDecrescenteComParametro(listaLocal);
 		atualizarLista();
 	}
+
 	public void ordenarPorNomeCrescente() {
 		controlador.ordenarNomesPorOrdemAlfabeticaComParametro(listaLocal);
 		atualizarLista();
 	}
+
 	public void ordenarPorNomeDecrescente() {
 		controlador.ordenarNomesPorOrdemAlfabeticaComParametroReverse(listaLocal);
 		atualizarLista();
 	}
+
 	public void ordenarPorMortos() {
-		//TODO ordenar
+		// TODO ordenar
 	}
+
 	public boolean removeCriatura() {
-		
+
 		try {
-			if (criaturaSelecionada==null) {
+			if (criaturaSelecionada == null) {
 				Alert alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setContentText("Você precisa selecionar algum monstro para remover");
 				alerta.setHeaderText("Nenhum monstro selecionado");
 				alerta.setTitle("Error 404: Monstro não encontrado");
 				alerta.showAndWait();
-			}
-			else {
+			} else {
 				Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
 				alerta.setContentText("Você deseja confirmar a remoção?");
 				alerta.setHeaderText("Confirmação");
@@ -427,7 +443,7 @@ public class MenuPrincipalPaneController {
 					criaturaSelecionada = null;
 				}
 			}
-			
+
 		} catch (CriaturaInvalidaException e) {
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setContentText("Você precisa selecionar algum monstro para editar");
@@ -435,10 +451,10 @@ public class MenuPrincipalPaneController {
 			alerta.setTitle("Error 404: Monstro não encontrado");
 			alerta.showAndWait();
 		}
-		
-		
+
 		return true;
 	}
+
 	@FXML
 	public void addCriatura() {
 		monsterRPG.abrirNovoMonstroDialog();
@@ -451,19 +467,19 @@ public class MenuPrincipalPaneController {
 			filtrarListaNivel();
 		if (escolhaDeTipo.isVisible())
 			PesquisarPorTipo();
-		if (listaLocal != null) 
+		if (listaLocal != null)
 			selecionaCriatura();
 		criaturaSelecionada = null;
 	}
+
 	public void editCriatura() {
-		if(criaturaSelecionada == null) {
+		if (criaturaSelecionada == null) {
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setContentText("Você precisa selecionar algum monstro para editar");
 			alerta.setHeaderText("Nenhum monstro selecionado");
 			alerta.setTitle("Error 404: Monstro não encontrado");
 			alerta.showAndWait();
-		}
-		else {
+		} else {
 			controlador.setCriaturaAux(criaturaSelecionada);
 			monsterRPG.abrirEditarMonstroDialog();
 			listaLocal = controlador.getCriaturas();
@@ -472,33 +488,33 @@ public class MenuPrincipalPaneController {
 			selecionaCriatura();
 			controlador.setCriaturaAux(null);
 		}
-		
+
 	}
-    @FXML
-    void querApenarFavoritos() {
-    	if(checkQuerApenasFavoritos.isSelected()) {
-    		atualizarLista();
-    	}
-    	else {
-    		if(buttonPesquisaNome.isVisible()) {
-    			Pesquisar();
-    		}
-    		else if(buttonPesquisarPorData.isVisible()) {
-    			PesquisarPorData();
-    		}
-    		else if(buttonPesquisarPorNivel.isDisable()) {
-    			filtrarListaNivel();
-    		}
-    	}
-    }
-    @FXML
+
+	@FXML
+	void querApenarFavoritos() {
+		if (checkQuerApenasFavoritos.isSelected()) {
+			atualizarLista();
+		} else {
+			if (buttonPesquisaNome.isVisible()) {
+				Pesquisar();
+			} else if (buttonPesquisarPorData.isVisible()) {
+				PesquisarPorData();
+			} else if (buttonPesquisarPorNivel.isDisable()) {
+				filtrarListaNivel();
+			}
+		}
+	}
+
+	@FXML
 	public void atualizarLista() {
-		if(checkQuerApenasFavoritos.isSelected()) {
+		if (checkQuerApenasFavoritos.isSelected()) {
 			filtrarListaFavoritos();
 		}
 		lvLista.setItems(FXCollections.observableList(listaLocal));
 		selecionaCriatura();
 	}
+
 	private void setarComboBox() {
 		List<Types> tipos = new ArrayList<Types>();
 		tipos.add(Types.ABERRAÇAO);
@@ -515,111 +531,108 @@ public class MenuPrincipalPaneController {
 		tipos.add(Types.MONSTRUOSIDADE);
 		tipos.add(Types.MORTOVIVO);
 		tipos.add(Types.PLANTA);
-		
+
 		escolhaDeTipo.setItems(FXCollections.observableArrayList(tipos));
 	}
+
 	@FXML
 	void selecionaJogadorQueMatou() {
 		jogadorSelecionado = lvJogadoresQueJáMataram.getSelectionModel().getSelectedItem();
 	}
-    @FXML
-    void pesquisaJogadorQueMatou() {
-    	
-   		listaLocalDeJogadores = criaturaSelecionada.listarJogadoresMortosComNome(labelBarraDePesquisaJogadorQueMatou.getText());
-     	atualizaListaJogadoresQueMataram();
-    	
 
-    }
+	@FXML
+	void pesquisaJogadorQueMatou() {
 
-    @FXML
-    void removeJogadorQueMatou() {
+		listaLocalDeJogadores = criaturaSelecionada
+				.listarJogadoresMortosComNome(labelBarraDePesquisaJogadorQueMatou.getText());
+		atualizaListaJogadoresQueMataram();
+
+	}
+
+	@FXML
+	void removeJogadorQueMatou() {
 		try {
 			if (jogadorSelecionado == null) {
-    			Alert alerta = new Alert(Alert.AlertType.ERROR);
-    			alerta.setContentText("Você precisa selecionar algum jogador para editar");
-    			alerta.setHeaderText("Nenhum jogador selecionado");
-    			alerta.setTitle("Error 421: Jogador não encontrado");
-    			alerta.showAndWait();
-    		}
-			else {
+				Alert alerta = new Alert(Alert.AlertType.ERROR);
+				alerta.setContentText("Você precisa selecionar algum jogador para editar");
+				alerta.setHeaderText("Nenhum jogador selecionado");
+				alerta.setTitle("Error 421: Jogador não encontrado");
+				alerta.showAndWait();
+			} else {
 				criaturaSelecionada.removerMortePeloJogador(jogadorSelecionado);
 				jogadorSelecionado = null;
 				pesquisaJogadorQueMatou();
 				atualizaListaJogadoresQueMataram();
-				
+
 			}
-			
-		}
-		catch(Exception e) {
+
+		} catch (Exception e) {
 			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setContentText("Você precisa selecionar algum jogador/criatura para remover");
 			alerta.setHeaderText("Nenhum jogador/criatura selecionado");
 			alerta.setTitle("Error 421: Jogador/criatura não encontrado");
 			alerta.showAndWait();
 		}
-    }
+	}
 
-    @FXML
-    void editJogadorQueMatou() {
-    	try {
-    		if(criaturaSelecionada != null) {
-    			if (jogadorSelecionado == null) {
-        			Alert alerta = new Alert(Alert.AlertType.ERROR);
-        			alerta.setContentText("Você precisa selecionar algum jogador para editar");
-        			alerta.setHeaderText("Nenhum jogador selecionado");
-        			alerta.setTitle("Error 421: Jogador não encontrado");
-        			alerta.showAndWait();
-        		}
-        		else {
-        			controlador.setJogadorAuxiliar(jogadorSelecionado);
-        			monsterRPG.abrirEditarJogadorDialog();
-        			if(controlador.getJogadorParaEditar() != null) {
-        				criaturaSelecionada.editarMortePeloJogador(jogadorSelecionado, controlador.getJogadorParaEditar());
-        			}
-        			pesquisaJogadorQueMatou();
-                	atualizaListaJogadoresQueMataram();
-                	jogadorSelecionado=null;
-                	controlador.setJogadorAuxiliar(null);
-        		}
-    		}
-    		else {
-        		Alert alerta = new Alert(Alert.AlertType.ERROR);
-    			alerta.setContentText("Você precisa selecionar alguma criatura e jogador para criar");
-    			alerta.setHeaderText("Nenhum jogador/criatura selecionado");
-    			alerta.setTitle("Error 421: Jogador/criatura não encontrado");
-    			alerta.showAndWait();
-        	}
-    		
-        	
-    	}
-    	catch(Exception e) {
-    		Alert alerta = new Alert(Alert.AlertType.ERROR);
+	@FXML
+	void editJogadorQueMatou() {
+		try {
+			if (criaturaSelecionada != null) {
+				if (jogadorSelecionado == null) {
+					Alert alerta = new Alert(Alert.AlertType.ERROR);
+					alerta.setContentText("Você precisa selecionar algum jogador para editar");
+					alerta.setHeaderText("Nenhum jogador selecionado");
+					alerta.setTitle("Error 421: Jogador não encontrado");
+					alerta.showAndWait();
+				} else {
+					controlador.setJogadorAuxiliar(jogadorSelecionado);
+					monsterRPG.abrirEditarJogadorDialog();
+					if (controlador.getJogadorParaEditar() != null) {
+						criaturaSelecionada.editarMortePeloJogador(jogadorSelecionado,
+								controlador.getJogadorParaEditar());
+					}
+					pesquisaJogadorQueMatou();
+					atualizaListaJogadoresQueMataram();
+					jogadorSelecionado = null;
+					controlador.setJogadorAuxiliar(null);
+				}
+			} else {
+				Alert alerta = new Alert(Alert.AlertType.ERROR);
+				alerta.setContentText("Você precisa selecionar alguma criatura e jogador para criar");
+				alerta.setHeaderText("Nenhum jogador/criatura selecionado");
+				alerta.setTitle("Error 421: Jogador/criatura não encontrado");
+				alerta.showAndWait();
+			}
+
+		} catch (Exception e) {
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setContentText("Você precisa selecionar algum jogador para editar");
 			alerta.setHeaderText("Nenhum jogador selecionado");
 			alerta.setTitle("Error 421: Jogador não encontrado");
 			alerta.showAndWait();
-    	}
-    }
+		}
+	}
 
-    @FXML
-    void addJogadorQueMatou() {
-    	if(criaturaSelecionada != null) {
-    		monsterRPG.abrirNovoJogadorDialog();
-        	if(controlador.getJogadorParaAdd()!=null) {
-        		criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());
-            	pesquisaJogadorQueMatou();
-            	controlador.setJogadorParaAdd(null);
-            	atualizaListaJogadoresQueMataram();
-        	}
-    	}
-    	else {
-    		Alert alerta = new Alert(Alert.AlertType.ERROR);
+	@FXML
+	void addJogadorQueMatou() {
+		if (criaturaSelecionada != null) {
+			monsterRPG.abrirNovoJogadorDialog();
+			if (controlador.getJogadorParaAdd() != null) {
+				criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());
+				pesquisaJogadorQueMatou();
+				controlador.setJogadorParaAdd(null);
+				atualizaListaJogadoresQueMataram();
+			}
+		} else {
+			Alert alerta = new Alert(Alert.AlertType.ERROR);
 			alerta.setContentText("Você precisa selecionar alguma criatura e jogador para criar");
 			alerta.setHeaderText("Nenhum jogador/criatura selecionado");
 			alerta.setTitle("Error 421: Jogador/criatura não encontrado");
 			alerta.showAndWait();
-    	}
-    }
+		}
+	}
+
 	public void initialize() {
 		atualizarLista();
 		alterarBarraPesquisaParaNome();
@@ -627,14 +640,15 @@ public class MenuPrincipalPaneController {
 		selecionaCriatura();
 		jogadorSelecionado = null;
 	}
-    @FXML
-    void carregarArquivoOutro() {
-    	try {
-    		File file = monsterRPG.abrirEscolhaDeDiretorio(false, controlador.getFileRepositorioAtual());
-    		if(file != null) {
-    			controlador.setFileRepositorioAtual(file);
-    			controlador.carregar(controlador.getFileRepositorioAtual());
-    		}
+
+	@FXML
+	void carregarArquivoOutro() {
+		try {
+			File file = monsterRPG.abrirEscolhaDeDiretorio(false, controlador.getFileRepositorioAtual());
+			if (file != null) {
+				controlador.setFileRepositorioAtual(file);
+				controlador.carregar(controlador.getFileRepositorioAtual());
+			}
 			salvarLista();
 			if (buttonPesquisaNome.isVisible())
 				Pesquisar();
@@ -644,19 +658,19 @@ public class MenuPrincipalPaneController {
 				filtrarListaNivel();
 			if (escolhaDeTipo.isVisible())
 				PesquisarPorTipo();
-			if (listaLocal != null) 
+			if (listaLocal != null)
 				selecionaCriatura();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 
-    @FXML
-    void carregarArquivoPadrão() {
-    	controlador.carregar();
-    	salvarLista();
-    	
-    	if (buttonPesquisaNome.isVisible())
+	@FXML
+	void carregarArquivoPadrão() {
+		controlador.carregar();
+		salvarLista();
+
+		if (buttonPesquisaNome.isVisible())
 			Pesquisar();
 		if (buttonPesquisarPorData.isVisible())
 			PesquisarPorData();
@@ -664,14 +678,15 @@ public class MenuPrincipalPaneController {
 			filtrarListaNivel();
 		if (escolhaDeTipo.isVisible())
 			PesquisarPorTipo();
-		if (listaLocal != null) 
+		if (listaLocal != null)
 			selecionaCriatura();
-    }
-    @FXML
-    void salvarLista() {
-    	controlador.salvar();
-    	controlador.carregar();
-    	try {
+	}
+
+	@FXML
+	void salvarLista() {
+		controlador.salvar();
+		controlador.carregar();
+		try {
 			controlador.salvarMesas();
 			controlador.salvarTodosArquivosHistorico();
 			controlador.salvarNotas();
@@ -679,38 +694,38 @@ public class MenuPrincipalPaneController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-    }
 
-    @FXML
-    void salvarListaOutro() {
-    	
-    	try {
-    		File file = monsterRPG.abrirEscolhaDeDiretorio(true, controlador.getFileRepositorioAtual());
-    		if (file != null) {
-    			controlador.salvar(file);
-        		controlador.carregar(file);
-        		try {
-        			controlador.salvarMesas();
-        			controlador.salvarTodosArquivosHistorico();
-        			controlador.salvarNotas();
-        		} catch (IOException e) {
-        			// TODO Auto-generated catch block
-        			e.printStackTrace();
-        		}
-    		}
-			
+	}
+
+	@FXML
+	void salvarListaOutro() {
+
+		try {
+			File file = monsterRPG.abrirEscolhaDeDiretorio(true, controlador.getFileRepositorioAtual());
+			if (file != null) {
+				controlador.salvar(file);
+				controlador.carregar(file);
+				try {
+					controlador.salvarMesas();
+					controlador.salvarTodosArquivosHistorico();
+					controlador.salvarNotas();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			
+
 			e.printStackTrace();
 		}
-    }
+	}
+
 	void setaListaQuemMatou() {
-		if(criaturaSelecionada != null) {
+		if (criaturaSelecionada != null) {
 			listaLocalDeJogadores = criaturaSelecionada.getJogadoresQueMataram();
-		}
-		else {
+		} else {
 			buttonPesquisaJogadorQueMatou.setDisable(true);
 			labelBarraDePesquisaJogadorQueMatou.setDisable(true);
 			lvJogadoresQueJáMataram.setDisable(true);
@@ -718,6 +733,6 @@ public class MenuPrincipalPaneController {
 			editJogadorQueMatou.setDisable(true);
 			removeJogadorQueMatou.setDisable(true);
 		}
-		
+
 	}
 }

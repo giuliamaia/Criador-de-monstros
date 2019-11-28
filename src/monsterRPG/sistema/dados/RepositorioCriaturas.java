@@ -17,12 +17,11 @@ import monsterRPG.sistema.CriaturaInvalidaException;
 import monsterRPG.sistema.Historico;
 import monsterRPG.sistema.Types;
 
-
 public class RepositorioCriaturas {
 	private List<Criatura> criaturas;
 	private Historico historico;
 	private File fileRepositorioAtual = null;
-	
+
 	public File getFileRepositorioAtual() {
 		return fileRepositorioAtual;
 	}
@@ -35,11 +34,11 @@ public class RepositorioCriaturas {
 		this.criaturas = new ArrayList<Criatura>();
 		historico = new Historico();
 		historico.carregarTodosArquivosHistorico();
-		if(tentaCarregarFileAntigo()) {
+		if (tentaCarregarFileAntigo()) {
 			carregar(fileRepositorioAtual);
 		}
 	}
-	
+
 	public List<String> pegarCriaturasAdicionadasHistorico() {
 		return historico.pegarCriaturasAdicionadasHistorico();
 	}
@@ -60,7 +59,7 @@ public class RepositorioCriaturas {
 		this.criaturas = criaturas;
 	}
 
-	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException{	
+	public void editarCriatura(Criatura antiga, Criatura nova) throws CriaturaInvalidaException {
 		antiga.setNome(nova.getNome());
 		antiga.setDescrição(nova.getDescrição());
 		antiga.setTipo(nova.getTipo());
@@ -75,11 +74,11 @@ public class RepositorioCriaturas {
 		antiga.setSabedoria(nova.getSabedoria());
 		antiga.setInteligencia(nova.getInteligencia());
 		antiga.setCarisma(nova.getCarisma());
-		
+
 		historico.adicionarNoHistoricoEditadas(nova);
 		historico.salvarArquivoHistoricoEditadas();
 	}
-		
+
 	public void adicionarCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.add(c);
@@ -89,7 +88,7 @@ public class RepositorioCriaturas {
 			throw new CriaturaInvalidaException("Criatura criada não pode ser vazia. SEU ANIMAL!");
 		}
 	}
-	
+
 	public void removerCriatura(Criatura c) throws CriaturaInvalidaException {
 		try {
 			this.criaturas.remove(c);
@@ -99,22 +98,21 @@ public class RepositorioCriaturas {
 			throw new CriaturaInvalidaException("Rapaz, n sei oq tu fez, mas fudeu!");
 		}
 	}
-	
+
 	public List<Criatura> filtrarPorNome(String nome) {
 		nome = nome.toUpperCase();
 		List<Criatura> ret = new ArrayList<Criatura>();
-		
-		if(nome == null) return null;
-		
-		for(Criatura c : this.criaturas) {
-			if(c.getNome().toUpperCase().contains(nome)) {
+
+		if (nome == null)
+			return null;
+
+		for (Criatura c : this.criaturas) {
+			if (c.getNome().toUpperCase().contains(nome)) {
 				ret.add(c);
 			}
 		}
 		return ret;
 	}
-	
-	
 
 	public void salvarTodosArquivosHistorico() {
 		historico.salvarTodosArquivosHistorico();
@@ -126,141 +124,142 @@ public class RepositorioCriaturas {
 
 	public List<Criatura> filtrarPorTipo(Types tipo) {
 		List<Criatura> ret = new ArrayList<Criatura>();
-		
-		for(Criatura c : this.criaturas) {
-			if(c.getTipo().equals(tipo)) {
+
+		for (Criatura c : this.criaturas) {
+			if (c.getTipo().equals(tipo)) {
 				ret.add(c);
 			}
 		}
 		return ret;
 	}
-	
+
 	public List<Criatura> filtrarPorNivel(double menor, double maior) {
 		List<Criatura> ret = new ArrayList<Criatura>();
-		
-		for(Criatura c : this.criaturas) {
+
+		for (Criatura c : this.criaturas) {
 			double nivel = c.getNivel();
-			if(menor <= nivel && nivel <= maior) {
+			if (menor <= nivel && nivel <= maior) {
 				ret.add(c);
 			}
 		}
 		return ret;
 	}
-	
-	public List<Criatura> filtrarPorQuemMatou(String nomeJogador){
+
+	public List<Criatura> filtrarPorQuemMatou(String nomeJogador) {
 		List<Criatura> ret = new ArrayList<Criatura>();
-		
-		for(int i=0; i<this.criaturas.size(); i++) {
-			for(int j=0; j<this.criaturas.get(i).getJogadoresQueMataram().size(); j++) {
-				if(this.criaturas.get(i).getJogadoresQueMataram().get(j).equals(nomeJogador)) {
+
+		for (int i = 0; i < this.criaturas.size(); i++) {
+			for (int j = 0; j < this.criaturas.get(i).getJogadoresQueMataram().size(); j++) {
+				if (this.criaturas.get(i).getJogadoresQueMataram().get(j).equals(nomeJogador)) {
 					ret.add(this.criaturas.get(i));
 				}
 			}
 		}
 		return ret;
 	}
-	
-	public List<Criatura> filtrarFavoritos(List<Criatura> aux){
+
+	public List<Criatura> filtrarFavoritos(List<Criatura> aux) {
 		List<Criatura> ret = new ArrayList<Criatura>();
-		for(int i=0; i<aux.size(); i++) {
-			if(aux.get(i).isFavorito()) {
+		for (int i = 0; i < aux.size(); i++) {
+			if (aux.get(i).isFavorito()) {
 				ret.add(aux.get(i));
 			}
 		}
 		return ret;
 	}
-	
-	public List<Criatura> filtrarPorData(LocalDate data){
+
+	public List<Criatura> filtrarPorData(LocalDate data) {
 		List<Criatura> ret = new ArrayList<Criatura>();
-		
-		for(int i=0; i<this.criaturas.size(); i++) {
-			if(this.criaturas.get(i).getDataCriação().isEqual(data)) {
+
+		for (int i = 0; i < this.criaturas.size(); i++) {
+			if (this.criaturas.get(i).getDataCriação().isEqual(data)) {
 				ret.add(this.criaturas.get(i));
 			}
 		}
 		return ret;
 	}
-	
-	public List<Criatura> filtrarCriaturasCriadasEntreDuasDatas(LocalDate inicio, LocalDate fim){
+
+	public List<Criatura> filtrarCriaturasCriadasEntreDuasDatas(LocalDate inicio, LocalDate fim) {
 		List<Criatura> ret = new ArrayList<Criatura>();
-		for(int i=0; i<this.criaturas.size(); i++) {
-			if(this.criaturas.get(i).getDataCriação().isAfter(inicio)&&this.criaturas.get(i).getDataCriação().isBefore(fim)) {
+		for (int i = 0; i < this.criaturas.size(); i++) {
+			if (this.criaturas.get(i).getDataCriação().isAfter(inicio)
+					&& this.criaturas.get(i).getDataCriação().isBefore(fim)) {
 				ret.add(this.criaturas.get(i));
 			}
 		}
 		return ret;
 	}
-	
-	public List<Criatura> ordenarNomesDoRepositorioPorOrdemAlfabetica(){
+
+	public List<Criatura> ordenarNomesDoRepositorioPorOrdemAlfabetica() {
 		Collections.sort(this.criaturas, new ComparadorNomes());
 		return this.criaturas;
 	}
-	
-	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametro(List<Criatura> listaCriaturas){
+
+	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametro(List<Criatura> listaCriaturas) {
 		Collections.sort(listaCriaturas, new ComparadorNomes());
 		return listaCriaturas;
 	}
 
-	public List<Criatura> ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse(){
+	public List<Criatura> ordenarNomesDoRepositorioPorOrdemAlfabeticaReverse() {
 		List<Criatura> ret = this.ordenarNomesDoRepositorioPorOrdemAlfabetica();
 		Collections.reverse(ret);
 		return ret;
 	}
-	
-	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametroReverse(List<Criatura> listaCriaturas){
+
+	public List<Criatura> ordenarNomesPorOrdemAlfabeticaComParametroReverse(List<Criatura> listaCriaturas) {
 		List<Criatura> ret = ordenarNomesPorOrdemAlfabeticaComParametro(listaCriaturas);
 		Collections.reverse(ret);
 		return ret;
 	}
-	
-	public List<Criatura> ordenarDatasCrescenteDoRepositorio(){
+
+	public List<Criatura> ordenarDatasCrescenteDoRepositorio() {
 		Collections.sort(this.criaturas, new ComparadorDatas());
 		return this.criaturas;
 	}
-	
-	public List<Criatura> ordenarDatasCrescenteComParametro(List<Criatura> listaCriaturas){
+
+	public List<Criatura> ordenarDatasCrescenteComParametro(List<Criatura> listaCriaturas) {
 		Collections.sort(listaCriaturas, new ComparadorDatas());
 		return listaCriaturas;
 	}
-	
-	public List<Criatura> ordenarDatasDecrescenteDoRepositorio(){
+
+	public List<Criatura> ordenarDatasDecrescenteDoRepositorio() {
 		Collections.sort(this.criaturas, new ComparadorDatas().reversed());
 		return this.criaturas;
 	}
-	
-	public List<Criatura> ordenarDatasDecrescenteComParametro(List<Criatura> listaCriaturas){
+
+	public List<Criatura> ordenarDatasDecrescenteComParametro(List<Criatura> listaCriaturas) {
 		Collections.sort(listaCriaturas, new ComparadorDatas().reversed());
 		return listaCriaturas;
 	}
-	
-	public Criatura procurarPorCriaturaPorUmNome(String nomeCriatura){
-		for(int i=0; i<this.criaturas.size(); i++) {
-			if(this.criaturas.get(i).getNome().contains(nomeCriatura)) {
+
+	public Criatura procurarPorCriaturaPorUmNome(String nomeCriatura) {
+		for (int i = 0; i < this.criaturas.size(); i++) {
+			if (this.criaturas.get(i).getNome().contains(nomeCriatura)) {
 				return this.criaturas.get(i);
 			}
 		}
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public void carregar() {
 		try {
-			
+
 			FileInputStream fis = new FileInputStream("RepoCriaturas.hnf");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			this.criaturas = (List<Criatura>) ois.readObject();
 			ois.close();
 			salvarFileAntigo();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Criando novo arquivo");
 			alert.setHeaderText("Novo arquivo de repositório criados!");
-			alert.setContentText("Como não foi possível encontrar um arquivo existente na sua máquina, um novo foi criado.");
+			alert.setContentText(
+					"Como não foi possível encontrar um arquivo existente na sua máquina, um novo foi criado.");
 			alert.showAndWait();
 		}
 	}
-	
-	
+
 	public void salvar() {
 		try {
 			salvarFileAntigo();
@@ -268,11 +267,11 @@ public class RepositorioCriaturas {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this.criaturas);
 			oos.close();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public void carregar(File path) {
 		try {
@@ -280,11 +279,11 @@ public class RepositorioCriaturas {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			this.criaturas = (List<Criatura>) ois.readObject();
 			ois.close();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void salvar(File path) {
 		try {
 			salvarFileAntigo();
@@ -293,11 +292,11 @@ public class RepositorioCriaturas {
 			oos.writeObject(this.criaturas);
 			carregar(path);
 			oos.close();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public boolean tentaCarregarFileAntigo() {
 		try {
 			carregarFileAntigo();
@@ -307,38 +306,39 @@ public class RepositorioCriaturas {
 		if (this.fileRepositorioAtual != null && fileRepositorioAtual.exists() && fileRepositorioAtual.canRead()) {
 			salvarFileAntigo();
 			return true;
-		}
-		else {
+		} else {
 			fileRepositorioAtual = null;
 			return false;
 		}
 	}
+
 	private void carregarFileAntigo() throws IOException {
-		 
+
 		try {
 			FileInputStream fis = new FileInputStream("SalvadorPath.galonegro");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			this.fileRepositorioAtual = (File) ois.readObject();
 			ois.close();
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			salvarFileAntigo();
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Criando novo arquivo");
 			alert.setHeaderText("Foi criado um novo arquivo para o funcionamento normal do programa");
-			alert.setContentText("Como não foi possível encontrar um arquivo necessario na sua máquina, um novo foi criado.");
+			alert.setContentText(
+					"Como não foi possível encontrar um arquivo necessario na sua máquina, um novo foi criado.");
 			alert.showAndWait();
 		}
 
 	}
-	
+
 	public void salvarFileAntigo() {
 		try {
 			FileOutputStream fos = new FileOutputStream("SalvadorPath.galonegro");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this.fileRepositorioAtual);
 			oos.close();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
