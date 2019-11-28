@@ -1,18 +1,19 @@
 package monsterRPG.sistema.dados;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import monsterRPG.sistema.usuario.Nota;
 
-public class RepositorioNotas {
+public class RepositorioNotas implements Serializable{
 	
-	
+	private static final long serialVersionUID = -7818432385271384758L;
+
 	private List<Nota> notas = new ArrayList<Nota>();
 	
 	public static RepositorioNotas INSTANCE = null;

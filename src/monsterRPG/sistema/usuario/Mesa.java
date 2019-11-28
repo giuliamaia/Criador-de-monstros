@@ -8,7 +8,7 @@ import java.util.List;
 
 import monsterRPG.sistema.dados.RepositorioNotas;
 
-public class Mesa implements Serializable{
+public class Mesa implements Serializable, Cloneable{
 	
 	private static final long serialVersionUID = 1564536536L;
 	private String nome;
@@ -114,5 +114,15 @@ public class Mesa implements Serializable{
 	@Override
 	public String toString() {
 		return this.getNome();
+	}
+	
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

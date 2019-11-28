@@ -28,6 +28,7 @@ public class ControladorSistema {
 	private String jogadorParaAdd;
 	private String jogadorParaEditar;
 	private String jogadorAuxiliar;
+	private Mesa mesaAux;
 	
 	
 	public File getFileRepositorioAtual() {
@@ -68,6 +69,12 @@ public class ControladorSistema {
 		repositCriaturas.editarCriatura(antiga, nova);
 		if (getFileRepositorioAtual()==null)repositCriaturas.salvar();
 		else repositCriaturas.salvar(getFileRepositorioAtual());
+	}
+	public Mesa getMesaAux() {
+		return this.mesaAux;
+	}
+	public void setMesaAux(Mesa mesaAux) {
+		this.mesaAux = mesaAux;
 	}
 	public Criatura getCriaturaAux() {
 		return criaturaAux;
