@@ -96,7 +96,7 @@ public class Mesa implements Serializable{
 	}
 	public void removerMonstro(String monstro) {
 		if(this.monstros.contains(monstro)) {
-			this.jogadores.remove(monstro);
+			this.monstros.remove(monstro);
 		}
 	}
 	public void adicionarNota(String titulo, String conteudo) {

@@ -20,6 +20,7 @@ public class MesaDialogController {
 	private ControladorSistema controlador = ControladorSistema.GetInstance();
 	private Mesa mesaSelecionada;
 	private List<Mesa> listaLocalDeMesas;
+	
     @FXML
     private Button buttonRemoverMesa;
 
