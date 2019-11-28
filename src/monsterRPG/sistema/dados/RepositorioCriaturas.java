@@ -35,8 +35,9 @@ public class RepositorioCriaturas {
 		this.criaturas = new ArrayList<Criatura>();
 		historico = new Historico();
 		historico.carregarTodosArquivosHistorico();
-		if(tentaCarregarFileAntigo());
-		carregar(fileRepositorioAtual);
+		if(tentaCarregarFileAntigo()) {
+			carregar(fileRepositorioAtual);
+		}
 	}
 	
 	public List<String> pegarCriaturasAdicionadasHistorico() {
