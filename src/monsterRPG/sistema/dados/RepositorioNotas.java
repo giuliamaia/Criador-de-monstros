@@ -8,7 +8,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import monsterRPG.sistema.usuario.Nota;
+
+import monsterRPG.sistema.Nota;
 
 public class RepositorioNotas implements Serializable {
 

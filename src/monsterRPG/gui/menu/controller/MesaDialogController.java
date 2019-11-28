@@ -11,9 +11,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import monsterRPG.gui.MonsterRPG;
+import monsterRPG.sistema.Mesa;
 import monsterRPG.sistema.MesaInvalidaException;
 import monsterRPG.sistema.negocio.ControladorSistema;
-import monsterRPG.sistema.usuario.Mesa;
 
 public class MesaDialogController {
 	private MonsterRPG monsterRPG = new MonsterRPG();
@@ -98,10 +98,19 @@ public class MesaDialogController {
 	void removeMesa() {
 		if (listMesas.getSelectionModel().getSelectedItem() != null) {
 			try {
-				controlador.removerMesa(listMesas.getSelectionModel().getSelectedItem());
-				atualizarListaDeMesas();
-				pesquisar();
-				zerarAtributos();
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("Confirmar remoção de arquivo");
+				alert.setHeaderText("Você realmente deseja remover esse arquivo?");
+				alert.setContentText("Confirme a remoção do arquivo");
+				alert.showAndWait();
+				if(alert.getResult() == alert.getResult().OK) {
+					controlador.removerMesa(listMesas.getSelectionModel().getSelectedItem());
+					zerarAtributos();
+					atualizarListaDeMesas();
+					pesquisar();
+				}
+				
+				
 			} catch (MesaInvalidaException e) {
 				System.out.println("Error");
 			}

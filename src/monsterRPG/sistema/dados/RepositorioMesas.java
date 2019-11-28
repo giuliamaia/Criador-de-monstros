@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import monsterRPG.sistema.usuario.Mesa;
+import monsterRPG.sistema.Mesa;
 import monsterRPG.sistema.MesaInvalidaException;
 
 public class RepositorioMesas implements Serializable {

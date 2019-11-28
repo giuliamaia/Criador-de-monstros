@@ -6,13 +6,13 @@ import java.time.LocalDate;
 import java.util.List;
 import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.CriaturaInvalidaException;
+import monsterRPG.sistema.Mesa;
 import monsterRPG.sistema.MesaInvalidaException;
+import monsterRPG.sistema.Nota;
 import monsterRPG.sistema.Types;
 import monsterRPG.sistema.dados.RepositorioCriaturas;
 import monsterRPG.sistema.dados.RepositorioMesas;
 import monsterRPG.sistema.dados.RepositorioNotas;
-import monsterRPG.sistema.usuario.Mesa;
-import monsterRPG.sistema.usuario.Nota;
 
 public class ControladorSistema {
 	private RepositorioCriaturas repositCriaturas;

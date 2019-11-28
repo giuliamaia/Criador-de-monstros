@@ -8,8 +8,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import monsterRPG.gui.MonsterRPG;
+import monsterRPG.sistema.Nota;
 import monsterRPG.sistema.negocio.ControladorSistema;
-import monsterRPG.sistema.usuario.Nota;
 
 public class NotasDialogController {
 	MonsterRPG monsterRPG = new MonsterRPG();

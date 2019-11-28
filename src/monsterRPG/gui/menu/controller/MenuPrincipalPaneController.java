@@ -487,6 +487,9 @@ public class MenuPrincipalPaneController {
 			criaturaSelecionada = null;
 			selecionaCriatura();
 			controlador.setCriaturaAux(null);
+			atualizarLista();
+			lvLista.setItems(null);
+			lvLista.setItems(FXCollections.observableList(listaLocal));
 		}
 
 	}

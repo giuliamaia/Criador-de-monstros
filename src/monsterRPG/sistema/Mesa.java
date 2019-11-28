@@ -1,4 +1,4 @@
-package monsterRPG.sistema.usuario;
+package monsterRPG.sistema;
 
 import java.io.Serializable;
 import java.util.ArrayList;

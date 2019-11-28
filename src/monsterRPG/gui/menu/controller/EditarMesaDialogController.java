@@ -12,10 +12,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import monsterRPG.gui.MonsterRPG;
+import monsterRPG.sistema.Mesa;
 import monsterRPG.sistema.MesaInvalidaException;
+import monsterRPG.sistema.Nota;
 import monsterRPG.sistema.negocio.ControladorSistema;
-import monsterRPG.sistema.usuario.Mesa;
-import monsterRPG.sistema.usuario.Nota;
 
 public class EditarMesaDialogController {
 
@@ -63,8 +63,10 @@ public class EditarMesaDialogController {
 			alerta.setContentText("Coloque um nome no jogador.");
 			alerta.showAndWait();
 		} else {
-			if (!auxMesa.getJogadores().contains(txNovoJogador.getText()))
+			if (!auxMesa.getJogadores().contains(txNovoJogador.getText())) {
 				auxMesa.adicionarJogador(txNovoJogador.getText());
+				txNovoJogador.setText("");
+			}
 			atualizarListaJogadores();
 		}
 	}
@@ -91,6 +93,8 @@ public class EditarMesaDialogController {
 			controlador.editarNota(listNotas.getSelectionModel().getSelectedItem(), txConteudoNota.getText());
 			selecionaNota();
 			atualizarListaNotas();
+			txConteudoNota.setText("");
+			txNomeNota.setText("");
 		}
 		else {
 			if(!txNomeNota.getText().isEmpty())

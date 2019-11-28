@@ -12,9 +12,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import monsterRPG.gui.MonsterRPG;
+import monsterRPG.sistema.Mesa;
 import monsterRPG.sistema.MesaInvalidaException;
 import monsterRPG.sistema.negocio.ControladorSistema;
-import monsterRPG.sistema.usuario.Mesa;
 
 public class CriarMesaDialogController {
 	private Mesa mesaAux = new Mesa();
@@ -74,9 +74,12 @@ public class CriarMesaDialogController {
 			alerta.setContentText("Coloque um nome no jogador.");
 			alerta.showAndWait();
 		} else {
-			if (!mesaAux.getJogadores().contains(txNomeJogador.getText()))
+			if (!mesaAux.getJogadores().contains(txNomeJogador.getText())) {
 				mesaAux.adicionarJogador(txNomeJogador.getText());
+				txNomeJogador.setText("");
+			}
 			atualizarListaJogadores();
+			
 		}
 	}
 
@@ -92,6 +95,8 @@ public class CriarMesaDialogController {
 			if (mesaAux.getBlocoNotas().get(txNomeNota.getText()) == null) {
 				mesaAux.adicionarNota(txNomeNota.getText(), txConteudoNota.getText());
 				atualizarListaNotas();
+				txNomeNota.setText("");
+				txConteudoNota.setText("");
 			}
 
 		}
@@ -110,6 +115,10 @@ public class CriarMesaDialogController {
 		listNotasAdicionadas.setItems(FXCollections.observableList(lista));
 	}
 
+    @FXML
+    void cancelar() {
+    	monsterRPG.fecharCriarMesasDialog();
+    }
 	@FXML
 	void initialize() {
 		mesaAux = new Mesa();

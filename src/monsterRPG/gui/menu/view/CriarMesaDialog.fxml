@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="517.0" prefWidth="828.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.CriarMesaDialogController">
+<AnchorPane prefHeight="517.0" prefWidth="828.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.CriarMesaDialogController">
    <children>
       <TextField fx:id="txNomeJogador" layoutX="191.0" layoutY="458.0" onAction="#addJogador" prefHeight="25.0" prefWidth="149.0" />
       <ListView fx:id="listJogadoresAdicionados" layoutX="191.0" layoutY="247.0" onMouseClicked="#selecionarJogador" prefHeight="209.0" prefWidth="176.0" />
@@ -47,7 +47,7 @@
          </graphic>
       </Button>
       <Button layoutX="14.0" layoutY="458.0" mnemonicParsing="false" onMouseClicked="#salvarMesa" text="Confirmar" />
-      <Button cancelButton="true" layoutX="103.0" layoutY="458.0" mnemonicParsing="false" text="Cancelar" />
+      <Button cancelButton="true" layoutX="103.0" layoutY="458.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
       <Button layoutX="339.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#removerJogador">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
