@@ -108,7 +108,7 @@ public class RepositorioNotas implements Serializable{
 	public List<Nota> pesquisarNota(String titulo) {
 		List<Nota> retorno = new ArrayList<Nota>();
 		for(Nota aux:this.notas) {
-			if (aux.getTitulo().contains(titulo)) {
+			if (aux.getTitulo().toUpperCase().contains(titulo.toUpperCase())) {
 				retorno.add(aux);
 			}
 		}
@@ -120,9 +120,4 @@ public class RepositorioNotas implements Serializable{
 			System.out.println(n.getConteudo());
 		}
 	}
-	
-	
-	
-	
-
 }

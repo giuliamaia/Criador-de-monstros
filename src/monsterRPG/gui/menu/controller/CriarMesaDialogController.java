@@ -1,7 +1,6 @@
 package monsterRPG.gui.menu.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -13,7 +12,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import monsterRPG.gui.MonsterRPG;
-import monsterRPG.sistema.Criatura;
 import monsterRPG.sistema.MesaInvalidaException;
 import monsterRPG.sistema.negocio.ControladorSistema;
 import monsterRPG.sistema.usuario.Mesa;
