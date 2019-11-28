@@ -1,5 +1,6 @@
 package monsterRPG.gui.menu.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -18,7 +19,7 @@ public class NotasDialogController {
     ControladorSistema controlador = ControladorSistema.GetInstance();
     private List<Nota> listaLocalNotas = controlador.getNotas();
     private Nota notaSelecionada = null;
-	
+	private HashMap<String, String> notaSelecionada2;
     @FXML
     private ListView<Nota> listNotas;
 
