@@ -66,10 +66,18 @@ public class MesaDialogController {
     }
     @FXML
     void abrirEditMesa() {
-    	monsterRPG.abrirEditarMesasDialog();
-    	atualizarListaDeMesas();
-    	pesquisar();
-    	
+    	if(mesaSelecionada != null) {
+			monsterRPG.abrirEditarMesasDialog();
+			resetarListaLocal();
+			listMesas.setItems(null);
+			listMesas.setItems(FXCollections.observableList(listaLocalDeMesas));
+		} else {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setTitle("Erro: Necessário selecionar uma mesa");
+			alerta.setContentText("Nenhuma mesa selecionada");
+			alerta.setHeaderText("Erro");
+			alerta.showAndWait();
+		}
     }
 
     @FXML
@@ -125,6 +133,7 @@ public class MesaDialogController {
     void selecionarMesa() {
     	if(listMesas.getSelectionModel().getSelectedItem()!=null) {
     		mesaSelecionada = listMesas.getSelectionModel().getSelectedItem();
+    		controlador.setMesaAux(mesaSelecionada);
         	resetarListaLocal();
         	setarListaJogadores();
         	setarListaMonstros();
@@ -132,7 +141,6 @@ public class MesaDialogController {
         	setarNomeDaMesa();
         	pesquisar();
     	}
-    	
     }
     void zerarAtributos() {
     	taDescricaoMesa.setText("");
