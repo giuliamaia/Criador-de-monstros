@@ -59,6 +59,7 @@ public class MesaDialogController {
     @FXML
     void abrirAddMesa() {
     	monsterRPG.abrirCriarMesasDialog();
+    	pesquisar();
     	atualizarListaDeMesas();
     }
     @FXML
@@ -68,11 +69,13 @@ public class MesaDialogController {
     @FXML
     void abrirEditMesa() {
     	monsterRPG.abrirEditarMesasDialog();
+    	atualizarListaDeMesas();
     }
 
     @FXML
     void abrirVerNotasDialog() {
     	monsterRPG.abrirNotasDialog();
+    	atualizarListaDeMesas();
     }
 
     @FXML
@@ -86,6 +89,7 @@ public class MesaDialogController {
     	if(listMesas.getSelectionModel().getSelectedItem()!=null) {
     		try {
 				controlador.removerMesa(listMesas.getSelectionModel().getSelectedItem());
+				atualizarListaDeMesas();
 			} catch (MesaInvalidaException e) {
 				System.out.println("Error");
 			}

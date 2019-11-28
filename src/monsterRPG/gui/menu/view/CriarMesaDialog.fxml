@@ -103,17 +103,17 @@
             <Image url="@../../images/ADICIONAR%20JOGADORES.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="24.0" fitWidth="97.0" layoutX="673.0" layoutY="365.0" preserveRatio="true">
+      <ImageView fitHeight="24.0" fitWidth="97.0" layoutX="613.0" layoutY="365.0" preserveRatio="true">
          <image>
             <Image url="@../../images/Conteúdo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="24.0" fitWidth="102.0" layoutX="32.0" layoutY="133.0" preserveRatio="true">
+      <ImageView fitHeight="52.0" fitWidth="149.0" layoutX="14.0" layoutY="116.0" preserveRatio="true">
          <image>
             <Image url="@../../images/nome%20da%20mesa.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="32.0" fitWidth="149.0" layoutX="14.0" layoutY="202.0" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="149.0" layoutX="37.0" layoutY="193.0" preserveRatio="true">
          <image>
             <Image url="@../../images/descricao2.png" />
          </image>
@@ -123,7 +123,7 @@
             <Image url="@../../images/Criar%20Mesa.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="41.0" fitWidth="62.0" layoutX="648.0" layoutY="299.0" preserveRatio="true">
+      <ImageView fitHeight="41.0" fitWidth="62.0" layoutX="613.0" layoutY="302.0" preserveRatio="true">
          <image>
             <Image url="@../../images/titulo1.png" />
          </image>

@@ -369,17 +369,7 @@ public class MenuPrincipalPaneController {
 	}
 	@FXML
 	void atualizaListaJogadoresQueMataram() {
-		if(criaturaSelecionada != null){
-			lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
-		}
-		else {
-			buttonPesquisaJogadorQueMatou.setDisable(true);
-			labelBarraDePesquisaJogadorQueMatou.setDisable(true);
-			lvJogadoresQueJáMataram.setDisable(true);
-			addJogadorQueMatou.setDisable(true);
-			editJogadorQueMatou.setDisable(true);
-			removeJogadorQueMatou.setDisable(true);
-		}
+		lvJogadoresQueJáMataram.setItems(FXCollections.observableList(listaLocalDeJogadores));
 	}
 	public void isBotaoFavoritoPressed() {
 		
@@ -534,15 +524,11 @@ public class MenuPrincipalPaneController {
 	}
     @FXML
     void pesquisaJogadorQueMatou() {
-    	try{
-    		if(!labelBarraDePesquisaJogadorQueMatou.getText().isEmpty()) {
-    			listaLocalDeJogadores = criaturaSelecionada.listarJogadoresMortosComNome(labelBarraDePesquisaJogadorQueMatou.getText());
-            	atualizaListaJogadoresQueMataram();
-    		}
-    	}
-    	catch(Exception e) {
-    		
-    	}
+    	
+   		listaLocalDeJogadores = criaturaSelecionada.listarJogadoresMortosComNome(labelBarraDePesquisaJogadorQueMatou.getText());
+     	atualizaListaJogadoresQueMataram();
+    	
+
     }
 
     @FXML
@@ -619,11 +605,12 @@ public class MenuPrincipalPaneController {
     void addJogadorQueMatou() {
     	if(criaturaSelecionada != null) {
     		monsterRPG.abrirNovoJogadorDialog();
-        	if(controlador.getJogadorParaAdd()!=null)
-        	criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());
-        	pesquisaJogadorQueMatou();
-        	atualizaListaJogadoresQueMataram();
-        	jogadorSelecionado=null;
+        	if(controlador.getJogadorParaAdd()!=null) {
+        		criaturaSelecionada.adicionarMortePeloJogador(controlador.getJogadorParaAdd());
+            	pesquisaJogadorQueMatou();
+            	controlador.setJogadorParaAdd(null);
+            	atualizaListaJogadoresQueMataram();
+        	}
     	}
     	else {
     		Alert alerta = new Alert(Alert.AlertType.ERROR);
