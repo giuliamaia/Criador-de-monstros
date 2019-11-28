@@ -671,6 +671,15 @@ public class MenuPrincipalPaneController {
     void salvarLista() {
     	controlador.salvar();
     	controlador.carregar();
+    	try {
+			controlador.salvarMesas();
+			controlador.salvarTodosArquivosHistorico();
+			controlador.salvarNotas();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     }
 
     @FXML
@@ -681,6 +690,14 @@ public class MenuPrincipalPaneController {
     		if (file != null) {
     			controlador.salvar(file);
         		controlador.carregar(file);
+        		try {
+        			controlador.salvarMesas();
+        			controlador.salvarTodosArquivosHistorico();
+        			controlador.salvarNotas();
+        		} catch (IOException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
     		}
 			
 		} catch (IOException e) {

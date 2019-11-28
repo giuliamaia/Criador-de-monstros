@@ -18,6 +18,12 @@ public class ControladorSistema {
 	private RepositorioCriaturas repositCriaturas;
 	private RepositorioMesas repositMesa;
 	private RepositorioNotas repositNotas;
+	public void salvarMesas() throws IOException {
+		repositMesa.salvarMesas();
+	}
+	public void carregarMesas() throws IOException, ClassNotFoundException {
+		repositMesa.carregarMesas();
+	}
 	private Criatura criaturaAux;
 	private String jogadorParaAdd;
 	private String jogadorParaEditar;
@@ -85,7 +91,7 @@ public class ControladorSistema {
 		this.repositCriaturas = new RepositorioCriaturas();
 		carregar();
 		this.repositMesa = new RepositorioMesas();
-		this.repositNotas = new RepositorioNotas();
+		this.repositNotas = RepositorioNotas.getInstance();
 		try {
 			this.repositNotas.carregarNotas();
 		} catch (ClassNotFoundException e) {
@@ -195,6 +201,18 @@ public class ControladorSistema {
 	}
 	public List<Nota> getNotas() {
 		return repositNotas.getNotas();
+	}
+	public void adicionarNota(Nota nota) {
+		repositNotas.adicionarNota(nota);
+	}
+	public void removerNota(String titulo) {
+		repositNotas.removerNota(titulo);
+	}
+	public void editarNota(Nota notaVelha, String notaNova) {
+		repositNotas.editarNota(notaVelha, notaNova);
+	}
+	public List<Nota> pesquisarNota(String titulo) {
+		return repositNotas.pesquisarNota(titulo);
 	}
 	public void salvarNotas() {
 		try {

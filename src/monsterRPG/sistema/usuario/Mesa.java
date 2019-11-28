@@ -1,16 +1,22 @@
 package monsterRPG.sistema.usuario;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Mesa {
+import monsterRPG.sistema.dados.RepositorioNotas;
+
+public class Mesa implements Serializable{
 	
+	private static final long serialVersionUID = 1564536536L;
 	private String nome;
 	private String descriçao;
 	private List<String> jogadores;
 	private List<String> monstros;
 	private HashMap<String, String> blocoNotas;
+	private RepositorioNotas repositNotas = RepositorioNotas.getInstance();
 	
 	public Mesa(String nome, String descriçao, List<String> jogadores, List<String> monstros,
 			HashMap<String, String> blocoNotas) {
@@ -86,7 +92,7 @@ public class Mesa {
 	public void editarMonstro(String monstroAntigo, String monstroNovo) {
 		int temp = this.getMonstros().indexOf(monstroAntigo);
 		removerMonstro(monstroAntigo);
-		this.getMonstros().add(monstroNovo);
+		this.getMonstros().add(temp ,monstroNovo);
 	}
 	public void removerMonstro(String monstro) {
 		if(this.monstros.contains(monstro)) {
@@ -95,12 +101,15 @@ public class Mesa {
 	}
 	public void adicionarNota(String titulo, String conteudo) {
 		this.blocoNotas.put(titulo, conteudo);
+		this.repositNotas.adicionarNota(new Nota(titulo, conteudo));
 	}
 	public void editarNova(String tituloAntigo, String conteudoAntigo, String conteudoNovo) {
 		this.blocoNotas.replace(tituloAntigo, conteudoAntigo, conteudoNovo);
+		this.repositNotas.editarNota(new Nota(tituloAntigo, conteudoAntigo), conteudoNovo);
 	}
 	public void removerNova(String titulo) {
 		this.blocoNotas.remove(titulo);
+		this.repositNotas.removerNota(titulo);
 	}
 	@Override
 	public String toString() {

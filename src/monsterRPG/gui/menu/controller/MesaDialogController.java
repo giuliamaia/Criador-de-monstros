@@ -1,9 +1,6 @@
 package monsterRPG.gui.menu.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -70,6 +67,8 @@ public class MesaDialogController {
     void abrirEditMesa() {
     	monsterRPG.abrirEditarMesasDialog();
     	atualizarListaDeMesas();
+    	pesquisar();
+    	
     }
 
     @FXML
@@ -90,6 +89,8 @@ public class MesaDialogController {
     		try {
 				controlador.removerMesa(listMesas.getSelectionModel().getSelectedItem());
 				atualizarListaDeMesas();
+				pesquisar();
+				zerarAtributos();
 			} catch (MesaInvalidaException e) {
 				System.out.println("Error");
 			}
@@ -132,6 +133,13 @@ public class MesaDialogController {
     	}
     	
     }
+    void zerarAtributos() {
+    	taDescricaoMesa.setText("");
+    	taNomeMesa.setText("");
+    	listJogadores.setItems(FXCollections.emptyObservableList());
+    	listMesas.setItems(FXCollections.emptyObservableList());
+    	listMonstros.setItems(FXCollections.emptyObservableList());
+    }
     void resetarListaLocal() {
     	listaLocalDeMesas = controlador.getMesas();
     }
@@ -139,5 +147,6 @@ public class MesaDialogController {
     @FXML
     void initialize() {
     	resetarListaLocal();
+    	pesquisar();
     }
 }

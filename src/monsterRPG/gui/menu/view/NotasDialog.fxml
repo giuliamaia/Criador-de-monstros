@@ -7,14 +7,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="382.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monsterRPG.gui.menu.controller.NotasDialogController">
    <children>
-      <Text layoutX="263.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VER NOTAS" />
       <ListView fx:id="listNotas" layoutX="19.0" layoutY="52.0" onMouseClicked="#selecionarNota" prefHeight="254.0" prefWidth="200.0" />
-      <TextField fx:id="procurarNomeNota" layoutX="19.0" layoutY="319.0" onKeyTyped="#Pesquisar" prefHeight="25.0" prefWidth="167.0" />
-      <Button layoutX="192.0" layoutY="320.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="16.0" prefWidth="17.0">
+      <TextField fx:id="procurarNomeNota" layoutX="19.0" layoutY="319.0" onKeyReleased="#Pesquisar" prefHeight="25.0" prefWidth="135.0" />
+      <Button layoutX="158.0" layoutY="319.0" mnemonicParsing="false" onAction="#Pesquisar" prefHeight="16.0" prefWidth="17.0">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,7 +21,21 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextArea fx:id="txConteudoNota" layoutX="257.0" layoutY="100.0" prefHeight="246.0" prefWidth="306.0" />
-      <TextArea fx:id="txTituloNota" layoutX="257.0" layoutY="52.0" prefHeight="38.0" prefWidth="306.0" />
+      <TextArea fx:id="txConteudoNota" editable="false" layoutX="257.0" layoutY="100.0" prefHeight="246.0" prefWidth="306.0" wrapText="true" />
+      <TextArea fx:id="txTituloNota" editable="false" layoutX="257.0" layoutY="52.0" prefHeight="38.0" prefWidth="306.0" />
+      <Button layoutX="189.0" layoutY="319.0" mnemonicParsing="false" onAction="#removeNota" prefHeight="15.0" prefWidth="2.0">
+         <graphic>
+            <ImageView fitHeight="14.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/remove-01-128.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="49.0" fitWidth="199.0" layoutX="192.0" layoutY="3.0">
+         <image>
+            <Image url="@../../../../../bin/monsterRPG/gui/images/Notas.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
